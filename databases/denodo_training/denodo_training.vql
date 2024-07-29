@@ -1,0 +1,13 @@
+﻿CREATE OR REPLACE DATABASE denodo_training 'Database for training purposes';
+
+ALTER DATABASE denodo_training
+  CHARSET DEFAULT;
+
+ALTER DATABASE denodo_training
+  CACHE ON (
+    MAINTENANCE OFF
+    MAINTAINERPERIOD 21600
+    TIMETOLIVE 0
+    DATASOURCE ds_historical_orders DATABASE denodo_training
+  );
+
