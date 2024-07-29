@@ -1,0 +1,4 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE USER ta '${users.ta.PASSWORD}'  ${users.ta.PASSWORD.ENCRYPTED} ${users.ta.PASSWORD.ALGORITHM}  ''
+GRANT ROLE allusers;
+
