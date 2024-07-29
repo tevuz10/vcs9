@@ -1,0 +1,3 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE USER ADMIN WITH_ASSIGN_PRIVILEGES_ROLE admin '${users.admin.PASSWORD}'  ${users.admin.PASSWORD.ENCRYPTED} ${users.admin.PASSWORD.ALGORITHM}  'admin user';
+
