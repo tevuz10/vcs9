@@ -5,17 +5,18 @@ CREATE OR REPLACE WRAPPER JDBC bv_cc_agent
     CATALOGNAME='${databases.denodo_training.folder.1 - connectivity.folder.2 - base views.views.jdbc.bv_cc_agent.CATALOGNAME}' 
     RELATIONNAME='agent' 
     OUTPUTSCHEMA (
-        agent_id = 'agent_id' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='', sourcetypeid='4', sourcetypename='INT')  SORTABLE,
+        agent_id = 'agent_id' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='', sourcetypeid='4', sourcetypename='INT')  NOT NULL SORTABLE,
         agent_code = 'agent_code' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='13', description='', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
         agent_name = 'agent_name' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='14', description='', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE
     );
 
 CREATE OR REPLACE TABLE bv_cc_agent I18N us_pst (
-        agent_id:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = ''),
+        agent_id:int (notnull, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = ''),
         agent_code:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '13', description = ''),
         agent_name:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '14', description = '')
     )
     FOLDER = '/1 - connectivity/2 - base views'
+    PRIMARY KEY ( 'agent_id' )
     CACHE OFF
     TIMETOLIVEINCACHE DEFAULT
     ADD SEARCHMETHOD bv_cc_agent(
