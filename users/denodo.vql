@@ -1,4 +1,5 @@
 ﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
 CREATE OR REPLACE USER denodo '${users.denodo.PASSWORD}'  ${users.denodo.PASSWORD.ENCRYPTED} ${users.denodo.PASSWORD.ALGORITHM}  ''
-GRANT ROLE allusers;
+GRANT ROLE allusers
+GRANT METADATA, EXECUTE, WRITE, INSERT, UPDATE, DELETE ON denodo_training.bv_cc_agent;
 
