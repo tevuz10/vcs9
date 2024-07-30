@@ -1,0 +1,90 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_tpcds_store_returns
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_tpcds
+    SCHEMANAME='${databases.denodo_training.folder.1 - connectivity.folder.2 - base views.views.jdbc.bv_tpcds_store_returns.SCHEMANAME}' ESCAPE
+    RELATIONNAME='store_returns' 
+    OUTPUTSCHEMA (
+        sr_returned_date_sk = 'sr_returned_date_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        sr_return_time_sk = 'sr_return_time_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        sr_item_sk = 'sr_item_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  NOT NULL SORTABLE,
+        sr_customer_sk = 'sr_customer_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        sr_cdemo_sk = 'sr_cdemo_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        sr_hdemo_sk = 'sr_hdemo_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        sr_addr_sk = 'sr_addr_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        sr_store_sk = 'sr_store_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        sr_reason_sk = 'sr_reason_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        sr_ticket_number = 'sr_ticket_number' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  NOT NULL SORTABLE,
+        sr_return_quantity = 'sr_return_quantity' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        sr_return_amt = 'sr_return_amt' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        sr_return_tax = 'sr_return_tax' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        sr_return_amt_inc_tax = 'sr_return_amt_inc_tax' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        sr_fee = 'sr_fee' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        sr_return_ship_cost = 'sr_return_ship_cost' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        sr_refunded_cash = 'sr_refunded_cash' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        sr_reversed_charge = 'sr_reversed_charge' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        sr_store_credit = 'sr_store_credit' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        sr_net_loss = 'sr_net_loss' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE
+    )
+    CONSTRAINT 'store_returns_pkey' PRIMARY KEY ( 'sr_item_sk' , 'sr_ticket_number' )
+    CONSTRAINT 'sr_ret_d' FOREIGN KEY ( 'sr_returned_date_sk' ) 
+    REFERENCES 'public'.'date_dim'( 'd_date_sk' )  ON UPDATE NO ACTION  ON DELETE NO ACTION NOT DEFERRABLE 
+    CONSTRAINT 'sr_t' FOREIGN KEY ( 'sr_return_time_sk' ) 
+    REFERENCES 'public'.'time_dim'( 't_time_sk' )  ON UPDATE NO ACTION  ON DELETE NO ACTION NOT DEFERRABLE 
+    INDEX 'store_returns_pkey' OTHER UNIQUE PRIMARY ( 'sr_item_sk' , 'sr_ticket_number' );
+
+CREATE OR REPLACE TABLE bv_tpcds_store_returns I18N us_pst (
+        sr_returned_date_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        sr_return_time_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        sr_item_sk:int (notnull, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        sr_customer_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        sr_cdemo_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        sr_hdemo_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        sr_addr_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        sr_store_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        sr_reason_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        sr_ticket_number:int (notnull, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        sr_return_quantity:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        sr_return_amt:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        sr_return_tax:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        sr_return_amt_inc_tax:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        sr_fee:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        sr_return_ship_cost:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        sr_refunded_cash:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        sr_reversed_charge:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        sr_store_credit:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        sr_net_loss:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7')
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    CONSTRAINT 'store_returns_pkey' PRIMARY KEY ( 'sr_item_sk' , 'sr_ticket_number' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_tpcds_store_returns(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD sr_returned_date_sk (any) OPT ANY
+             ADD sr_return_time_sk (any) OPT ANY
+             ADD sr_item_sk (any) OPT ANY
+             ADD sr_customer_sk (any) OPT ANY
+             ADD sr_cdemo_sk (any) OPT ANY
+             ADD sr_hdemo_sk (any) OPT ANY
+             ADD sr_addr_sk (any) OPT ANY
+             ADD sr_store_sk (any) OPT ANY
+             ADD sr_reason_sk (any) OPT ANY
+             ADD sr_ticket_number (any) OPT ANY
+             ADD sr_return_quantity (any) OPT ANY
+             ADD sr_return_amt (any) OPT ANY
+             ADD sr_return_tax (any) OPT ANY
+             ADD sr_return_amt_inc_tax (any) OPT ANY
+             ADD sr_fee (any) OPT ANY
+             ADD sr_return_ship_cost (any) OPT ANY
+             ADD sr_refunded_cash (any) OPT ANY
+             ADD sr_reversed_charge (any) OPT ANY
+             ADD sr_store_credit (any) OPT ANY
+             ADD sr_net_loss (any) OPT ANY
+        )
+        OUTPUTLIST (sr_addr_sk, sr_cdemo_sk, sr_customer_sk, sr_fee, sr_hdemo_sk, sr_item_sk, sr_net_loss, sr_reason_sk, sr_refunded_cash, sr_return_amt, sr_return_amt_inc_tax, sr_return_quantity, sr_return_ship_cost, sr_return_tax, sr_return_time_sk, sr_returned_date_sk, sr_reversed_charge, sr_store_credit, sr_store_sk, sr_ticket_number
+        )
+        WRAPPER (jdbc bv_tpcds_store_returns)
+    );
+

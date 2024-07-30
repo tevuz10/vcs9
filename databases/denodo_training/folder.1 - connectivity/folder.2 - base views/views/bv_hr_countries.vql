@@ -1,0 +1,37 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_hr_countries
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_human_resources
+    SCHEMANAME='${databases.denodo_training.folder.1 - connectivity.folder.2 - base views.views.jdbc.bv_hr_countries.SCHEMANAME}' ESCAPE
+    RELATIONNAME='COUNTRIES' ESCAPE
+    OUTPUTSCHEMA (
+        country_id = 'COUNTRY_ID' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='1', sourcetypename='bpchar')  ESCAPE NOT NULL SORTABLE,
+        country_name = 'COUNTRY_NAME' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='40', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE,
+        region_id = 'REGION_ID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  ESCAPE SORTABLE
+    )
+    CONSTRAINT 'COUNTRY_C_ID_PK' PRIMARY KEY ( 'COUNTRY_ID' )
+    CONSTRAINT 'COUNTR_REG_FK' FOREIGN KEY ( 'REGION_ID' ) 
+    REFERENCES 'public'.'REGIONS'( 'REGION_ID' )  ON UPDATE NO ACTION  ON DELETE NO ACTION NOT DEFERRABLE 
+    INDEX 'COUNTRY_C_ID_PK' OTHER UNIQUE PRIMARY ( 'COUNTRY_ID' );
+
+CREATE OR REPLACE TABLE bv_hr_countries I18N us_pst (
+        country_id:text (notnull, sourcetypeid = '1', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '20'),
+        country_name:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '40'),
+        region_id:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10')
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    CONSTRAINT 'COUNTRY_C_ID_PK' PRIMARY KEY ( 'country_id' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_hr_countries(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD country_id (any) OPT ANY
+             ADD country_name (any) OPT ANY
+             ADD region_id (any) OPT ANY
+        )
+        OUTPUTLIST (country_id, country_name, region_id
+        )
+        WRAPPER (jdbc bv_hr_countries)
+    );
+

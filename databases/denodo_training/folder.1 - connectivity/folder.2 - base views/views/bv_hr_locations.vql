@@ -1,0 +1,46 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_hr_locations
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_human_resources
+    SCHEMANAME='${databases.denodo_training.folder.1 - connectivity.folder.2 - base views.views.jdbc.bv_hr_locations.SCHEMANAME}' ESCAPE
+    RELATIONNAME='LOCATIONS' ESCAPE
+    OUTPUTSCHEMA (
+        location_id = 'LOCATION_ID' :'java.lang.Short' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='5', sourcetypeid='5', sourcetypename='int2')  ESCAPE NOT NULL SORTABLE,
+        street_address = 'STREET_ADDRESS' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='40', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE,
+        city = 'CITY' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='30', sourcetypeid='12', sourcetypename='varchar')  ESCAPE NOT NULL SORTABLE,
+        country = 'COUNTRY' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='30', sourcetypeid='12', sourcetypename='varchar')  ESCAPE NOT NULL SORTABLE,
+        country_code = 'COUNTRY_CODE' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='1', sourcetypename='bpchar')  ESCAPE SORTABLE,
+        postal_code = 'POSTAL_CODE' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE
+    )
+    CONSTRAINT 'LOC_ID_PK' PRIMARY KEY ( 'LOCATION_ID' )
+    CONSTRAINT 'LOC_C_ID_FK' FOREIGN KEY ( 'COUNTRY_CODE' ) 
+    REFERENCES 'public'.'COUNTRIES'( 'COUNTRY_ID' )  ON UPDATE NO ACTION  ON DELETE NO ACTION NOT DEFERRABLE 
+    INDEX 'LOC_ID_PK' OTHER UNIQUE PRIMARY ( 'LOCATION_ID' );
+
+CREATE OR REPLACE TABLE bv_hr_locations I18N us_pst (
+        location_id:int (notnull, sourcetypeid = '5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '5'),
+        street_address:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '40'),
+        city:text (notnull, sourcetypeid = '-9', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '30'),
+        country:text (notnull, sourcetypeid = '-9', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '30'),
+        country_code:text (sourcetypeid = '1', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '20'),
+        postal_code:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '50')
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    CONSTRAINT 'LOC_ID_PK' PRIMARY KEY ( 'location_id' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_hr_locations(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD location_id (any) OPT ANY
+             ADD street_address (any) OPT ANY
+             ADD city (any) OPT ANY
+             ADD country (any) OPT ANY
+             ADD country_code (any) OPT ANY
+             ADD postal_code (any) OPT ANY
+        )
+        OUTPUTLIST (city, country, country_code, location_id, postal_code, street_address
+        )
+        WRAPPER (jdbc bv_hr_locations)
+    );
+

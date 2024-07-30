@@ -1,0 +1,11 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE DF ds_connections
+    FOLDER = '/1 - connectivity/1 - data sources'
+    ROUTE HTTP 'http.ApacheHttpClientConnection,120000' GET '${databases.denodo_training.folder.1 - connectivity.folder.1 - data sources.datasources.df.ds_connections.ROUTE.HTTP.URL}'
+    CHECKCERTIFICATES
+    AUTHENTICATION OFF
+    PROXY OFF
+    TUPLEPATTERN = '\[(.+)Z\]\t([0-9\.]+)\t([a-zA-Z ]+)\t([^,]+),([0-2]+) \(Apache-Coyote/1.1: (.+)\) size:(.+)'
+    ENDOFLINEDELIMITER = '\n'
+    HEADER = FALSE;
+

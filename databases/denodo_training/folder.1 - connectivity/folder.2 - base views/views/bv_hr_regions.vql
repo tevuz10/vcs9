@@ -1,0 +1,32 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_hr_regions
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_human_resources
+    SCHEMANAME='${databases.denodo_training.folder.1 - connectivity.folder.2 - base views.views.jdbc.bv_hr_regions.SCHEMANAME}' ESCAPE
+    RELATIONNAME='REGIONS' ESCAPE
+    OUTPUTSCHEMA (
+        region_id = 'REGION_ID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  ESCAPE NOT NULL SORTABLE,
+        region_name = 'REGION_NAME' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='25', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE
+    )
+    CONSTRAINT 'REG_ID_PK' PRIMARY KEY ( 'REGION_ID' )
+    INDEX 'REG_ID_PK' OTHER UNIQUE PRIMARY ( 'REGION_ID' );
+
+CREATE OR REPLACE TABLE bv_hr_regions I18N us_pst (
+        region_id:int (notnull, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        region_name:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '25')
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    CONSTRAINT 'REG_ID_PK' PRIMARY KEY ( 'region_id' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_hr_regions(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD region_id (any) OPT ANY
+             ADD region_name (any) OPT ANY
+        )
+        OUTPUTLIST (region_id, region_name
+        )
+        WRAPPER (jdbc bv_hr_regions)
+    );
+

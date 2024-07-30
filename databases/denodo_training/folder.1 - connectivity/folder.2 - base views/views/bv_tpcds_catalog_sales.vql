@@ -1,0 +1,134 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_tpcds_catalog_sales
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_tpcds
+    SCHEMANAME='${databases.denodo_training.folder.1 - connectivity.folder.2 - base views.views.jdbc.bv_tpcds_catalog_sales.SCHEMANAME}' ESCAPE
+    RELATIONNAME='catalog_sales' 
+    OUTPUTSCHEMA (
+        cs_sold_date_sk = 'cs_sold_date_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cs_sold_time_sk = 'cs_sold_time_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cs_ship_date_sk = 'cs_ship_date_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cs_bill_customer_sk = 'cs_bill_customer_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cs_bill_cdemo_sk = 'cs_bill_cdemo_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cs_bill_hdemo_sk = 'cs_bill_hdemo_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cs_bill_addr_sk = 'cs_bill_addr_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cs_ship_customer_sk = 'cs_ship_customer_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cs_ship_cdemo_sk = 'cs_ship_cdemo_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cs_ship_hdemo_sk = 'cs_ship_hdemo_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cs_ship_addr_sk = 'cs_ship_addr_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cs_call_center_sk = 'cs_call_center_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cs_catalog_page_sk = 'cs_catalog_page_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cs_ship_mode_sk = 'cs_ship_mode_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cs_warehouse_sk = 'cs_warehouse_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cs_item_sk = 'cs_item_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  NOT NULL SORTABLE,
+        cs_promo_sk = 'cs_promo_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cs_order_number = 'cs_order_number' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  NOT NULL SORTABLE,
+        cs_quantity = 'cs_quantity' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cs_wholesale_cost = 'cs_wholesale_cost' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        cs_list_price = 'cs_list_price' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        cs_sales_price = 'cs_sales_price' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        cs_ext_discount_amt = 'cs_ext_discount_amt' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        cs_ext_sales_price = 'cs_ext_sales_price' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        cs_ext_wholesale_cost = 'cs_ext_wholesale_cost' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        cs_ext_list_price = 'cs_ext_list_price' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        cs_ext_tax = 'cs_ext_tax' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        cs_coupon_amt = 'cs_coupon_amt' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        cs_ext_ship_cost = 'cs_ext_ship_cost' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        cs_net_paid = 'cs_net_paid' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        cs_net_paid_inc_tax = 'cs_net_paid_inc_tax' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        cs_net_paid_inc_ship = 'cs_net_paid_inc_ship' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        cs_net_paid_inc_ship_tax = 'cs_net_paid_inc_ship_tax' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        cs_net_profit = 'cs_net_profit' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE
+    )
+    CONSTRAINT 'catalog_sales_pkey' PRIMARY KEY ( 'cs_item_sk' , 'cs_order_number' )
+    CONSTRAINT 'cs_d1' FOREIGN KEY ( 'cs_ship_date_sk' ) 
+    REFERENCES 'public'.'date_dim'( 'd_date_sk' )  ON UPDATE NO ACTION  ON DELETE NO ACTION NOT DEFERRABLE 
+    CONSTRAINT 'cs_d2' FOREIGN KEY ( 'cs_sold_date_sk' ) 
+    REFERENCES 'public'.'date_dim'( 'd_date_sk' )  ON UPDATE NO ACTION  ON DELETE NO ACTION NOT DEFERRABLE 
+    CONSTRAINT 'cs_t' FOREIGN KEY ( 'cs_sold_time_sk' ) 
+    REFERENCES 'public'.'time_dim'( 't_time_sk' )  ON UPDATE NO ACTION  ON DELETE NO ACTION NOT DEFERRABLE 
+    INDEX 'catalog_sales_pkey' OTHER UNIQUE PRIMARY ( 'cs_item_sk' , 'cs_order_number' );
+
+CREATE OR REPLACE TABLE bv_tpcds_catalog_sales I18N us_pst (
+        cs_sold_date_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cs_sold_time_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cs_ship_date_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cs_bill_customer_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cs_bill_cdemo_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cs_bill_hdemo_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cs_bill_addr_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cs_ship_customer_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cs_ship_cdemo_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cs_ship_hdemo_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cs_ship_addr_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cs_call_center_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cs_catalog_page_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cs_ship_mode_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cs_warehouse_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cs_item_sk:int (notnull, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cs_promo_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cs_order_number:int (notnull, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cs_quantity:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cs_wholesale_cost:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        cs_list_price:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        cs_sales_price:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        cs_ext_discount_amt:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        cs_ext_sales_price:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        cs_ext_wholesale_cost:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        cs_ext_list_price:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        cs_ext_tax:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        cs_coupon_amt:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        cs_ext_ship_cost:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        cs_net_paid:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        cs_net_paid_inc_tax:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        cs_net_paid_inc_ship:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        cs_net_paid_inc_ship_tax:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        cs_net_profit:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7')
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    CONSTRAINT 'catalog_sales_pkey' PRIMARY KEY ( 'cs_item_sk' , 'cs_order_number' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_tpcds_catalog_sales(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD cs_sold_date_sk (any) OPT ANY
+             ADD cs_sold_time_sk (any) OPT ANY
+             ADD cs_ship_date_sk (any) OPT ANY
+             ADD cs_bill_customer_sk (any) OPT ANY
+             ADD cs_bill_cdemo_sk (any) OPT ANY
+             ADD cs_bill_hdemo_sk (any) OPT ANY
+             ADD cs_bill_addr_sk (any) OPT ANY
+             ADD cs_ship_customer_sk (any) OPT ANY
+             ADD cs_ship_cdemo_sk (any) OPT ANY
+             ADD cs_ship_hdemo_sk (any) OPT ANY
+             ADD cs_ship_addr_sk (any) OPT ANY
+             ADD cs_call_center_sk (any) OPT ANY
+             ADD cs_catalog_page_sk (any) OPT ANY
+             ADD cs_ship_mode_sk (any) OPT ANY
+             ADD cs_warehouse_sk (any) OPT ANY
+             ADD cs_item_sk (any) OPT ANY
+             ADD cs_promo_sk (any) OPT ANY
+             ADD cs_order_number (any) OPT ANY
+             ADD cs_quantity (any) OPT ANY
+             ADD cs_wholesale_cost (any) OPT ANY
+             ADD cs_list_price (any) OPT ANY
+             ADD cs_sales_price (any) OPT ANY
+             ADD cs_ext_discount_amt (any) OPT ANY
+             ADD cs_ext_sales_price (any) OPT ANY
+             ADD cs_ext_wholesale_cost (any) OPT ANY
+             ADD cs_ext_list_price (any) OPT ANY
+             ADD cs_ext_tax (any) OPT ANY
+             ADD cs_coupon_amt (any) OPT ANY
+             ADD cs_ext_ship_cost (any) OPT ANY
+             ADD cs_net_paid (any) OPT ANY
+             ADD cs_net_paid_inc_tax (any) OPT ANY
+             ADD cs_net_paid_inc_ship (any) OPT ANY
+             ADD cs_net_paid_inc_ship_tax (any) OPT ANY
+             ADD cs_net_profit (any) OPT ANY
+        )
+        OUTPUTLIST (cs_bill_addr_sk, cs_bill_cdemo_sk, cs_bill_customer_sk, cs_bill_hdemo_sk, cs_call_center_sk, cs_catalog_page_sk, cs_coupon_amt, cs_ext_discount_amt, cs_ext_list_price, cs_ext_sales_price, cs_ext_ship_cost, cs_ext_tax, cs_ext_wholesale_cost, cs_item_sk, cs_list_price, cs_net_paid, cs_net_paid_inc_ship, cs_net_paid_inc_ship_tax, cs_net_paid_inc_tax, cs_net_profit, cs_order_number, cs_promo_sk, cs_quantity, cs_sales_price, cs_ship_addr_sk, cs_ship_cdemo_sk, cs_ship_customer_sk, cs_ship_date_sk, cs_ship_hdemo_sk, cs_ship_mode_sk, cs_sold_date_sk, cs_sold_time_sk, cs_warehouse_sk, cs_wholesale_cost
+        )
+        WRAPPER (jdbc bv_tpcds_catalog_sales)
+    );
+

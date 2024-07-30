@@ -1,0 +1,19 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE MONGODB ds_nosql
+    FOLDER = '/1 - connectivity/1 - data sources'
+    CONNECTION (
+        HOST = '${databases.denodo_training.folder.1 - connectivity.folder.1 - data sources.datasources.mongodb.ds_nosql.HOST}'
+        PORT = ${databases.denodo_training.folder.1 - connectivity.folder.1 - data sources.datasources.mongodb.ds_nosql.PORT}
+    )
+    AUTHENTICATION (
+        USERNAME = '${databases.denodo_training.folder.1 - connectivity.folder.1 - data sources.datasources.mongodb.ds_nosql.USERNAME}'
+        USERPASSWORD = '${databases.denodo_training.folder.1 - connectivity.folder.1 - data sources.datasources.mongodb.ds_nosql.USERPASSWORD}' ${databases.denodo_training.folder.1 - connectivity.folder.1 - data sources.datasources.mongodb.ds_nosql.USERPASSWORD.ENCRYPTED}
+     )
+    POOL (
+        MAXACTIVE = 100
+        MINACTIVE = 0
+        CONNECTTIMEOUT = 10000
+        SOCKETTIMEOUT = 0
+        WAITQUEUETIMEOUT = 120000
+    );
+

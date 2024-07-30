@@ -1,0 +1,38 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_hr_jobs
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_human_resources
+    SCHEMANAME='${databases.denodo_training.folder.1 - connectivity.folder.2 - base views.views.jdbc.bv_hr_jobs.SCHEMANAME}' ESCAPE
+    RELATIONNAME='JOBS' ESCAPE
+    OUTPUTSCHEMA (
+        job_id = 'JOB_ID' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='12', sourcetypename='varchar')  ESCAPE NOT NULL SORTABLE,
+        job_title = 'JOB_TITLE' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='35', sourcetypeid='12', sourcetypename='varchar')  ESCAPE NOT NULL SORTABLE,
+        min_salary = 'MIN_SALARY' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  ESCAPE SORTABLE,
+        max_salary = 'MAX_SALARY' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  ESCAPE SORTABLE
+    )
+    CONSTRAINT 'JOB_ID_PK' PRIMARY KEY ( 'JOB_ID' )
+    INDEX 'JOB_ID_PK' OTHER UNIQUE PRIMARY ( 'JOB_ID' );
+
+CREATE OR REPLACE TABLE bv_hr_jobs I18N us_pst (
+        job_id:text (notnull, sourcetypeid = '-9', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        job_title:text (notnull, sourcetypeid = '-9', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '35'),
+        min_salary:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        max_salary:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10')
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    CONSTRAINT 'JOB_ID_PK' PRIMARY KEY ( 'job_id' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_hr_jobs(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD job_id (any) OPT ANY
+             ADD job_title (any) OPT ANY
+             ADD min_salary (any) OPT ANY
+             ADD max_salary (any) OPT ANY
+        )
+        OUTPUTLIST (job_id, job_title, max_salary, min_salary
+        )
+        WRAPPER (jdbc bv_hr_jobs)
+    );
+

@@ -1,0 +1,102 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_tpcds_web_returns
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_tpcds
+    SCHEMANAME='${databases.denodo_training.folder.1 - connectivity.folder.2 - base views.views.jdbc.bv_tpcds_web_returns.SCHEMANAME}' ESCAPE
+    RELATIONNAME='web_returns' 
+    OUTPUTSCHEMA (
+        wr_returned_date_sk = 'wr_returned_date_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        wr_returned_time_sk = 'wr_returned_time_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        wr_item_sk = 'wr_item_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  NOT NULL SORTABLE,
+        wr_refunded_customer_sk = 'wr_refunded_customer_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        wr_refunded_cdemo_sk = 'wr_refunded_cdemo_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        wr_refunded_hdemo_sk = 'wr_refunded_hdemo_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        wr_refunded_addr_sk = 'wr_refunded_addr_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        wr_returning_customer_sk = 'wr_returning_customer_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        wr_returning_cdemo_sk = 'wr_returning_cdemo_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        wr_returning_hdemo_sk = 'wr_returning_hdemo_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        wr_returning_addr_sk = 'wr_returning_addr_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        wr_web_page_sk = 'wr_web_page_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        wr_reason_sk = 'wr_reason_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        wr_order_number = 'wr_order_number' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  NOT NULL SORTABLE,
+        wr_return_quantity = 'wr_return_quantity' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        wr_return_amt = 'wr_return_amt' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        wr_return_tax = 'wr_return_tax' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        wr_return_amt_inc_tax = 'wr_return_amt_inc_tax' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        wr_fee = 'wr_fee' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        wr_return_ship_cost = 'wr_return_ship_cost' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        wr_refunded_cash = 'wr_refunded_cash' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        wr_reversed_charge = 'wr_reversed_charge' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        wr_account_credit = 'wr_account_credit' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        wr_net_loss = 'wr_net_loss' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE
+    )
+    CONSTRAINT 'web_returns_pkey' PRIMARY KEY ( 'wr_item_sk' , 'wr_order_number' )
+    CONSTRAINT 'wr_ret_d' FOREIGN KEY ( 'wr_returned_date_sk' ) 
+    REFERENCES 'public'.'date_dim'( 'd_date_sk' )  ON UPDATE NO ACTION  ON DELETE NO ACTION NOT DEFERRABLE 
+    CONSTRAINT 'wr_ret_t' FOREIGN KEY ( 'wr_returned_time_sk' ) 
+    REFERENCES 'public'.'time_dim'( 't_time_sk' )  ON UPDATE NO ACTION  ON DELETE NO ACTION NOT DEFERRABLE 
+    INDEX 'web_returns_pkey' OTHER UNIQUE PRIMARY ( 'wr_item_sk' , 'wr_order_number' );
+
+CREATE OR REPLACE TABLE bv_tpcds_web_returns I18N us_pst (
+        wr_returned_date_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        wr_returned_time_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        wr_item_sk:int (notnull, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        wr_refunded_customer_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        wr_refunded_cdemo_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        wr_refunded_hdemo_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        wr_refunded_addr_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        wr_returning_customer_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        wr_returning_cdemo_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        wr_returning_hdemo_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        wr_returning_addr_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        wr_web_page_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        wr_reason_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        wr_order_number:int (notnull, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        wr_return_quantity:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        wr_return_amt:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        wr_return_tax:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        wr_return_amt_inc_tax:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        wr_fee:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        wr_return_ship_cost:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        wr_refunded_cash:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        wr_reversed_charge:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        wr_account_credit:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        wr_net_loss:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7')
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    CONSTRAINT 'web_returns_pkey' PRIMARY KEY ( 'wr_item_sk' , 'wr_order_number' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_tpcds_web_returns(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD wr_returned_date_sk (any) OPT ANY
+             ADD wr_returned_time_sk (any) OPT ANY
+             ADD wr_item_sk (any) OPT ANY
+             ADD wr_refunded_customer_sk (any) OPT ANY
+             ADD wr_refunded_cdemo_sk (any) OPT ANY
+             ADD wr_refunded_hdemo_sk (any) OPT ANY
+             ADD wr_refunded_addr_sk (any) OPT ANY
+             ADD wr_returning_customer_sk (any) OPT ANY
+             ADD wr_returning_cdemo_sk (any) OPT ANY
+             ADD wr_returning_hdemo_sk (any) OPT ANY
+             ADD wr_returning_addr_sk (any) OPT ANY
+             ADD wr_web_page_sk (any) OPT ANY
+             ADD wr_reason_sk (any) OPT ANY
+             ADD wr_order_number (any) OPT ANY
+             ADD wr_return_quantity (any) OPT ANY
+             ADD wr_return_amt (any) OPT ANY
+             ADD wr_return_tax (any) OPT ANY
+             ADD wr_return_amt_inc_tax (any) OPT ANY
+             ADD wr_fee (any) OPT ANY
+             ADD wr_return_ship_cost (any) OPT ANY
+             ADD wr_refunded_cash (any) OPT ANY
+             ADD wr_reversed_charge (any) OPT ANY
+             ADD wr_account_credit (any) OPT ANY
+             ADD wr_net_loss (any) OPT ANY
+        )
+        OUTPUTLIST (wr_account_credit, wr_fee, wr_item_sk, wr_net_loss, wr_order_number, wr_reason_sk, wr_refunded_addr_sk, wr_refunded_cash, wr_refunded_cdemo_sk, wr_refunded_customer_sk, wr_refunded_hdemo_sk, wr_return_amt, wr_return_amt_inc_tax, wr_return_quantity, wr_return_ship_cost, wr_return_tax, wr_returned_date_sk, wr_returned_time_sk, wr_returning_addr_sk, wr_returning_cdemo_sk, wr_returning_customer_sk, wr_returning_hdemo_sk, wr_reversed_charge, wr_web_page_sk
+        )
+        WRAPPER (jdbc bv_tpcds_web_returns)
+    );
+

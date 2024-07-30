@@ -1,0 +1,34 @@
+﻿CREATE OR REPLACE WRAPPER JDBC bv_hr_employees_mid_tier
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_human_resources
+    SQLSENTENCE='SELECT "FIRST_NAME", "LAST_NAME", "SALARY", "DEPARTMENT_ID" FROM "EMPLOYEES" WHERE "SALARY" between 5000 and 15000
+'   
+    OUTPUTSCHEMA (
+        first_name = 'FIRST_NAME' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='20', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE NOT UPDATEABLE,
+        last_name = 'LAST_NAME' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='25', sourcetypeid='12', sourcetypename='varchar')  ESCAPE NOT NULL SORTABLE NOT UPDATEABLE,
+        salary = 'SALARY' :'java.math.BigDecimal' (sourcetypedecimals='2', sourcetypesize='8', sourcetypeid='2', sourcetypename='numeric')  ESCAPE SORTABLE NOT UPDATEABLE,
+        department_id = 'DEPARTMENT_ID' :'java.lang.Short' (sourcetypedecimals='0', sourcetypesize='5', sourcetypeid='5', sourcetypename='int2')  ESCAPE SORTABLE NOT UPDATEABLE
+    );
+
+CREATE OR REPLACE TABLE bv_hr_employees_mid_tier I18N us_pst (
+        first_name:text (sourcetypeid = '-9', sourcetypedecimals = '0', sourcetypesize = '20'),
+        last_name:text (notnull, sourcetypeid = '-9', sourcetypedecimals = '0', sourcetypesize = '25'),
+        salary:decimal (sourcetypeid = '2', sourcetypedecimals = '2', sourcetypesize = '8'),
+        department_id:int (sourcetypeid = '5', sourcetypedecimals = '0', sourcetypesize = '5')
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_hr_employees_mid_tier(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD first_name NOS ZERO ()
+             ADD last_name NOS ZERO ()
+             ADD salary NOS ZERO ()
+             ADD department_id NOS ZERO ()
+        )
+        OUTPUTLIST (department_id, first_name, last_name, salary
+        )
+        WRAPPER (jdbc bv_hr_employees_mid_tier)
+    );
+

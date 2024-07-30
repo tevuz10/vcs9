@@ -1,0 +1,41 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_hr_departments
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_human_resources
+    SCHEMANAME='${databases.denodo_training.folder.1 - connectivity.folder.2 - base views.views.jdbc.bv_hr_departments.SCHEMANAME}' ESCAPE
+    RELATIONNAME='DEPARTMENTS' ESCAPE
+    OUTPUTSCHEMA (
+        department_id = 'DEPARTMENT_ID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  ESCAPE NOT NULL SORTABLE,
+        department_name = 'DEPARTMENT_NAME' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='30', sourcetypeid='12', sourcetypename='varchar')  ESCAPE NOT NULL SORTABLE,
+        manager_id = 'MANAGER_ID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  ESCAPE SORTABLE,
+        location_id = 'LOCATION_ID' :'java.lang.Short' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='5', sourcetypeid='5', sourcetypename='int2')  ESCAPE SORTABLE
+    )
+    CONSTRAINT 'DEPT_ID_PK' PRIMARY KEY ( 'DEPARTMENT_ID' )
+    CONSTRAINT 'DEPT_LOC_FK' FOREIGN KEY ( 'LOCATION_ID' ) 
+    REFERENCES 'public'.'LOCATIONS'( 'LOCATION_ID' )  ON UPDATE NO ACTION  ON DELETE NO ACTION NOT DEFERRABLE 
+    INDEX 'DEPT_ID_PK' OTHER UNIQUE PRIMARY ( 'DEPARTMENT_ID' );
+
+CREATE OR REPLACE TABLE bv_hr_departments I18N us_pst (
+        department_id:int (notnull, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        department_name:text (notnull, sourcetypeid = '-9', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '30'),
+        manager_id:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        location_id:int (sourcetypeid = '5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '5')
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    CONSTRAINT 'DEPT_ID_PK' PRIMARY KEY ( 'department_id' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_hr_departments(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD department_id (any) OPT ANY
+             ADD department_name (any) OPT ANY
+             ADD manager_id (any) OPT ANY
+             ADD location_id (any) OPT ANY
+        )
+        OUTPUTLIST (department_id, department_name, location_id, manager_id
+        )
+        WRAPPER (jdbc bv_hr_departments)
+    )
+    SMART_THEN_ATSOURCE_THROUGH_VDP;
+

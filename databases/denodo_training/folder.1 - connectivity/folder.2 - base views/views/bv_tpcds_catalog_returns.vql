@@ -1,0 +1,111 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_tpcds_catalog_returns
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_tpcds
+    SCHEMANAME='${databases.denodo_training.folder.1 - connectivity.folder.2 - base views.views.jdbc.bv_tpcds_catalog_returns.SCHEMANAME}' ESCAPE
+    RELATIONNAME='catalog_returns' 
+    OUTPUTSCHEMA (
+        cr_returned_date_sk = 'cr_returned_date_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cr_returned_time_sk = 'cr_returned_time_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cr_item_sk = 'cr_item_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  NOT NULL SORTABLE,
+        cr_refunded_customer_sk = 'cr_refunded_customer_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cr_refunded_cdemo_sk = 'cr_refunded_cdemo_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cr_refunded_hdemo_sk = 'cr_refunded_hdemo_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cr_refunded_addr_sk = 'cr_refunded_addr_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cr_returning_customer_sk = 'cr_returning_customer_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cr_returning_cdemo_sk = 'cr_returning_cdemo_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cr_returning_hdemo_sk = 'cr_returning_hdemo_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cr_returning_addr_sk = 'cr_returning_addr_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cr_call_center_sk = 'cr_call_center_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cr_catalog_page_sk = 'cr_catalog_page_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cr_ship_mode_sk = 'cr_ship_mode_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cr_warehouse_sk = 'cr_warehouse_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cr_reason_sk = 'cr_reason_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cr_order_number = 'cr_order_number' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  NOT NULL SORTABLE,
+        cr_return_quantity = 'cr_return_quantity' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        cr_return_amount = 'cr_return_amount' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        cr_return_tax = 'cr_return_tax' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        cr_return_amt_inc_tax = 'cr_return_amt_inc_tax' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        cr_fee = 'cr_fee' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        cr_return_ship_cost = 'cr_return_ship_cost' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        cr_refunded_cash = 'cr_refunded_cash' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        cr_reversed_charge = 'cr_reversed_charge' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        cr_store_credit = 'cr_store_credit' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        cr_net_loss = 'cr_net_loss' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE
+    )
+    CONSTRAINT 'catalog_returns_pkey' PRIMARY KEY ( 'cr_item_sk' , 'cr_order_number' )
+    CONSTRAINT 'cr_d1' FOREIGN KEY ( 'cr_returned_date_sk' ) 
+    REFERENCES 'public'.'date_dim'( 'd_date_sk' )  ON UPDATE NO ACTION  ON DELETE NO ACTION NOT DEFERRABLE 
+    CONSTRAINT 'cr_i' FOREIGN KEY ( 'cr_returned_time_sk' ) 
+    REFERENCES 'public'.'time_dim'( 't_time_sk' )  ON UPDATE NO ACTION  ON DELETE NO ACTION NOT DEFERRABLE 
+    INDEX 'catalog_returns_pkey' OTHER UNIQUE PRIMARY ( 'cr_item_sk' , 'cr_order_number' );
+
+CREATE OR REPLACE TABLE bv_tpcds_catalog_returns I18N us_pst (
+        cr_returned_date_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cr_returned_time_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cr_item_sk:int (notnull, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cr_refunded_customer_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cr_refunded_cdemo_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cr_refunded_hdemo_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cr_refunded_addr_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cr_returning_customer_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cr_returning_cdemo_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cr_returning_hdemo_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cr_returning_addr_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cr_call_center_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cr_catalog_page_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cr_ship_mode_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cr_warehouse_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cr_reason_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cr_order_number:int (notnull, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cr_return_quantity:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        cr_return_amount:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        cr_return_tax:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        cr_return_amt_inc_tax:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        cr_fee:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        cr_return_ship_cost:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        cr_refunded_cash:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        cr_reversed_charge:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        cr_store_credit:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        cr_net_loss:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7')
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    CONSTRAINT 'catalog_returns_pkey' PRIMARY KEY ( 'cr_item_sk' , 'cr_order_number' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_tpcds_catalog_returns(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD cr_returned_date_sk (any) OPT ANY
+             ADD cr_returned_time_sk (any) OPT ANY
+             ADD cr_item_sk (any) OPT ANY
+             ADD cr_refunded_customer_sk (any) OPT ANY
+             ADD cr_refunded_cdemo_sk (any) OPT ANY
+             ADD cr_refunded_hdemo_sk (any) OPT ANY
+             ADD cr_refunded_addr_sk (any) OPT ANY
+             ADD cr_returning_customer_sk (any) OPT ANY
+             ADD cr_returning_cdemo_sk (any) OPT ANY
+             ADD cr_returning_hdemo_sk (any) OPT ANY
+             ADD cr_returning_addr_sk (any) OPT ANY
+             ADD cr_call_center_sk (any) OPT ANY
+             ADD cr_catalog_page_sk (any) OPT ANY
+             ADD cr_ship_mode_sk (any) OPT ANY
+             ADD cr_warehouse_sk (any) OPT ANY
+             ADD cr_reason_sk (any) OPT ANY
+             ADD cr_order_number (any) OPT ANY
+             ADD cr_return_quantity (any) OPT ANY
+             ADD cr_return_amount (any) OPT ANY
+             ADD cr_return_tax (any) OPT ANY
+             ADD cr_return_amt_inc_tax (any) OPT ANY
+             ADD cr_fee (any) OPT ANY
+             ADD cr_return_ship_cost (any) OPT ANY
+             ADD cr_refunded_cash (any) OPT ANY
+             ADD cr_reversed_charge (any) OPT ANY
+             ADD cr_store_credit (any) OPT ANY
+             ADD cr_net_loss (any) OPT ANY
+        )
+        OUTPUTLIST (cr_call_center_sk, cr_catalog_page_sk, cr_fee, cr_item_sk, cr_net_loss, cr_order_number, cr_reason_sk, cr_refunded_addr_sk, cr_refunded_cash, cr_refunded_cdemo_sk, cr_refunded_customer_sk, cr_refunded_hdemo_sk, cr_return_amount, cr_return_amt_inc_tax, cr_return_quantity, cr_return_ship_cost, cr_return_tax, cr_returned_date_sk, cr_returned_time_sk, cr_returning_addr_sk, cr_returning_cdemo_sk, cr_returning_customer_sk, cr_returning_hdemo_sk, cr_reversed_charge, cr_ship_mode_sk, cr_store_credit, cr_warehouse_sk
+        )
+        WRAPPER (jdbc bv_tpcds_catalog_returns)
+    );
+

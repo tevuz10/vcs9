@@ -1,0 +1,29 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_cc_problem
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_call_center
+    CATALOGNAME='${databases.denodo_training.folder.1 - connectivity.folder.2 - base views.views.jdbc.bv_cc_problem.CATALOGNAME}' 
+    RELATIONNAME='problem' 
+    OUTPUTSCHEMA (
+        problem_code = 'problem_code' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='', sourcetypeid='4', sourcetypename='INT')  SORTABLE,
+        problem_description = 'problem_description' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='41', description='', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE bv_cc_problem I18N us_pst (
+        problem_code:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = ''),
+        problem_description:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '41', description = '')
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_cc_problem(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD problem_code (any) OPT ANY
+             ADD problem_description (any) OPT ANY
+        )
+        OUTPUTLIST (problem_code, problem_description
+        )
+        WRAPPER (jdbc bv_cc_problem)
+    );
+

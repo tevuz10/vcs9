@@ -1,0 +1,75 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_wo_customer
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_web_orders
+    SCHEMANAME='${databases.denodo_training.folder.1 - connectivity.folder.2 - base views.views.jdbc.bv_wo_customer.SCHEMANAME}' ESCAPE
+    RELATIONNAME='CUSTOMER' ESCAPE
+    OUTPUTSCHEMA (
+        id = 'ID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  ESCAPE NOT NULL SORTABLE,
+        customer_code_internal = 'CUSTOMER_CODE_INTERNAL' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='varchar')  ESCAPE NOT NULL SORTABLE,
+        first_name = 'FIRST_NAME' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='varchar')  ESCAPE NOT NULL SORTABLE,
+        last_name = 'LAST_NAME' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE,
+        email = 'EMAIL' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='varchar')  ESCAPE NOT NULL SORTABLE,
+        phone = 'PHONE' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE,
+        main_address = 'MAIN_ADDRESS' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='200', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE,
+        main_postcode = 'MAIN_POSTCODE' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE,
+        main_country = 'MAIN_COUNTRY' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE,
+        registered_date = 'REGISTERED_DATE' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='29', sourcetypeid='93', sourcetypename='timestamp')  ESCAPE NOT NULL SORTABLE
+    )
+    CONSTRAINT 'CUSTOMER_PK' PRIMARY KEY ( 'ID' , 'CUSTOMER_CODE_INTERNAL' )
+    INDEX 'CUSTOMER_PK' OTHER UNIQUE PRIMARY ( 'ID' , 'CUSTOMER_CODE_INTERNAL' );
+
+CREATE OR REPLACE WRAPPER JDBC ds_historical_orders_bv_wo_customer
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_historical_orders
+    SCHEMANAME='${databases.denodo_training.folder.1 - connectivity.folder.2 - base views.views.jdbc.ds_historical_orders_bv_wo_customer.SCHEMANAME}' ESCAPE
+    RELATIONNAME='CUSTOMER' ESCAPE
+    OUTPUTSCHEMA (
+        id = 'ID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  ESCAPE NOT NULL SORTABLE,
+        customer_code_internal = 'CUSTOMER_CODE_INTERNAL' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='varchar')  ESCAPE NOT NULL SORTABLE,
+        first_name = 'FIRST_NAME' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='varchar')  ESCAPE NOT NULL SORTABLE,
+        last_name = 'LAST_NAME' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE,
+        email = 'EMAIL' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='varchar')  ESCAPE NOT NULL SORTABLE,
+        phone = 'PHONE' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE,
+        main_address = 'MAIN_ADDRESS' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='200', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE,
+        main_postcode = 'MAIN_POSTCODE' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE,
+        main_country = 'MAIN_COUNTRY' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE,
+        registered_date = 'REGISTERED_DATE' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='29', sourcetypeid='93', sourcetypename='timestamp')  ESCAPE NOT NULL SORTABLE
+    );
+
+CREATE OR REPLACE TABLE bv_wo_customer I18N us_pst (
+        id:int (notnull, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        customer_code_internal:text (notnull, sourcetypeid = '-9', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '20'),
+        first_name:text (notnull, sourcetypeid = '-9', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '50'),
+        last_name:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '100'),
+        email:text (notnull, sourcetypeid = '-9', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '50'),
+        phone:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '20'),
+        main_address:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '200'),
+        main_postcode:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '20'),
+        main_country:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '100'),
+        registered_date:timestamp (notnull, sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '29')
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    CONSTRAINT 'CUSTOMER_PK' PRIMARY KEY ( 'id' , 'customer_code_internal' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_wo_customer(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD id (any) OPT ANY
+             ADD customer_code_internal (any) OPT ANY
+             ADD first_name (any) OPT ANY
+             ADD last_name (any) OPT ANY
+             ADD email (any) OPT ANY
+             ADD phone (any) OPT ANY
+             ADD main_address (any) OPT ANY
+             ADD main_postcode (any) OPT ANY
+             ADD main_country (any) OPT ANY
+             ADD registered_date (any) OPT ANY
+        )
+        OUTPUTLIST (customer_code_internal, email, first_name, id, last_name, main_address, main_country, main_postcode, phone, registered_date
+        )
+        WRAPPER (jdbc bv_wo_customer)
+        ALTERNATIVE_WRAPPERS (jdbc ds_historical_orders_bv_wo_customer)
+    );
+

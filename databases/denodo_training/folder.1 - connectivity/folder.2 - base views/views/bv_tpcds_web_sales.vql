@@ -1,0 +1,134 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_tpcds_web_sales
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_tpcds
+    SCHEMANAME='${databases.denodo_training.folder.1 - connectivity.folder.2 - base views.views.jdbc.bv_tpcds_web_sales.SCHEMANAME}' ESCAPE
+    RELATIONNAME='web_sales' 
+    OUTPUTSCHEMA (
+        ws_sold_date_sk = 'ws_sold_date_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        ws_sold_time_sk = 'ws_sold_time_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        ws_ship_date_sk = 'ws_ship_date_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        ws_item_sk = 'ws_item_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  NOT NULL SORTABLE,
+        ws_bill_customer_sk = 'ws_bill_customer_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        ws_bill_cdemo_sk = 'ws_bill_cdemo_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        ws_bill_hdemo_sk = 'ws_bill_hdemo_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        ws_bill_addr_sk = 'ws_bill_addr_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        ws_ship_customer_sk = 'ws_ship_customer_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        ws_ship_cdemo_sk = 'ws_ship_cdemo_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        ws_ship_hdemo_sk = 'ws_ship_hdemo_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        ws_ship_addr_sk = 'ws_ship_addr_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        ws_web_page_sk = 'ws_web_page_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        ws_web_site_sk = 'ws_web_site_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        ws_ship_mode_sk = 'ws_ship_mode_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        ws_warehouse_sk = 'ws_warehouse_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        ws_promo_sk = 'ws_promo_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        ws_order_number = 'ws_order_number' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  NOT NULL SORTABLE,
+        ws_quantity = 'ws_quantity' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        ws_wholesale_cost = 'ws_wholesale_cost' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        ws_list_price = 'ws_list_price' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        ws_sales_price = 'ws_sales_price' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        ws_ext_discount_amt = 'ws_ext_discount_amt' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        ws_ext_sales_price = 'ws_ext_sales_price' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        ws_ext_wholesale_cost = 'ws_ext_wholesale_cost' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        ws_ext_list_price = 'ws_ext_list_price' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        ws_ext_tax = 'ws_ext_tax' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        ws_coupon_amt = 'ws_coupon_amt' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        ws_ext_ship_cost = 'ws_ext_ship_cost' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        ws_net_paid = 'ws_net_paid' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        ws_net_paid_inc_tax = 'ws_net_paid_inc_tax' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        ws_net_paid_inc_ship = 'ws_net_paid_inc_ship' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        ws_net_paid_inc_ship_tax = 'ws_net_paid_inc_ship_tax' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        ws_net_profit = 'ws_net_profit' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='7', sourcetypeid='2', sourcetypename='numeric')  SORTABLE
+    )
+    CONSTRAINT 'web_sales_pkey' PRIMARY KEY ( 'ws_item_sk' , 'ws_order_number' )
+    CONSTRAINT 'ws_d2' FOREIGN KEY ( 'ws_sold_date_sk' ) 
+    REFERENCES 'public'.'date_dim'( 'd_date_sk' )  ON UPDATE NO ACTION  ON DELETE NO ACTION NOT DEFERRABLE 
+    CONSTRAINT 'ws_s_d' FOREIGN KEY ( 'ws_ship_date_sk' ) 
+    REFERENCES 'public'.'date_dim'( 'd_date_sk' )  ON UPDATE NO ACTION  ON DELETE NO ACTION NOT DEFERRABLE 
+    CONSTRAINT 'ws_t' FOREIGN KEY ( 'ws_sold_time_sk' ) 
+    REFERENCES 'public'.'time_dim'( 't_time_sk' )  ON UPDATE NO ACTION  ON DELETE NO ACTION NOT DEFERRABLE 
+    INDEX 'web_sales_pkey' OTHER UNIQUE PRIMARY ( 'ws_item_sk' , 'ws_order_number' );
+
+CREATE OR REPLACE TABLE bv_tpcds_web_sales I18N us_pst (
+        ws_sold_date_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        ws_sold_time_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        ws_ship_date_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        ws_item_sk:int (notnull, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        ws_bill_customer_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        ws_bill_cdemo_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        ws_bill_hdemo_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        ws_bill_addr_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        ws_ship_customer_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        ws_ship_cdemo_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        ws_ship_hdemo_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        ws_ship_addr_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        ws_web_page_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        ws_web_site_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        ws_ship_mode_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        ws_warehouse_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        ws_promo_sk:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        ws_order_number:int (notnull, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        ws_quantity:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        ws_wholesale_cost:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        ws_list_price:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        ws_sales_price:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        ws_ext_discount_amt:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        ws_ext_sales_price:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        ws_ext_wholesale_cost:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        ws_ext_list_price:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        ws_ext_tax:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        ws_coupon_amt:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        ws_ext_ship_cost:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        ws_net_paid:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        ws_net_paid_inc_tax:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        ws_net_paid_inc_ship:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        ws_net_paid_inc_ship_tax:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7'),
+        ws_net_profit:decimal (sourcetypeid = '2', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '7')
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    CONSTRAINT 'web_sales_pkey' PRIMARY KEY ( 'ws_item_sk' , 'ws_order_number' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_tpcds_web_sales(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD ws_sold_date_sk (any) OPT ANY
+             ADD ws_sold_time_sk (any) OPT ANY
+             ADD ws_ship_date_sk (any) OPT ANY
+             ADD ws_item_sk (any) OPT ANY
+             ADD ws_bill_customer_sk (any) OPT ANY
+             ADD ws_bill_cdemo_sk (any) OPT ANY
+             ADD ws_bill_hdemo_sk (any) OPT ANY
+             ADD ws_bill_addr_sk (any) OPT ANY
+             ADD ws_ship_customer_sk (any) OPT ANY
+             ADD ws_ship_cdemo_sk (any) OPT ANY
+             ADD ws_ship_hdemo_sk (any) OPT ANY
+             ADD ws_ship_addr_sk (any) OPT ANY
+             ADD ws_web_page_sk (any) OPT ANY
+             ADD ws_web_site_sk (any) OPT ANY
+             ADD ws_ship_mode_sk (any) OPT ANY
+             ADD ws_warehouse_sk (any) OPT ANY
+             ADD ws_promo_sk (any) OPT ANY
+             ADD ws_order_number (any) OPT ANY
+             ADD ws_quantity (any) OPT ANY
+             ADD ws_wholesale_cost (any) OPT ANY
+             ADD ws_list_price (any) OPT ANY
+             ADD ws_sales_price (any) OPT ANY
+             ADD ws_ext_discount_amt (any) OPT ANY
+             ADD ws_ext_sales_price (any) OPT ANY
+             ADD ws_ext_wholesale_cost (any) OPT ANY
+             ADD ws_ext_list_price (any) OPT ANY
+             ADD ws_ext_tax (any) OPT ANY
+             ADD ws_coupon_amt (any) OPT ANY
+             ADD ws_ext_ship_cost (any) OPT ANY
+             ADD ws_net_paid (any) OPT ANY
+             ADD ws_net_paid_inc_tax (any) OPT ANY
+             ADD ws_net_paid_inc_ship (any) OPT ANY
+             ADD ws_net_paid_inc_ship_tax (any) OPT ANY
+             ADD ws_net_profit (any) OPT ANY
+        )
+        OUTPUTLIST (ws_bill_addr_sk, ws_bill_cdemo_sk, ws_bill_customer_sk, ws_bill_hdemo_sk, ws_coupon_amt, ws_ext_discount_amt, ws_ext_list_price, ws_ext_sales_price, ws_ext_ship_cost, ws_ext_tax, ws_ext_wholesale_cost, ws_item_sk, ws_list_price, ws_net_paid, ws_net_paid_inc_ship, ws_net_paid_inc_ship_tax, ws_net_paid_inc_tax, ws_net_profit, ws_order_number, ws_promo_sk, ws_quantity, ws_sales_price, ws_ship_addr_sk, ws_ship_cdemo_sk, ws_ship_customer_sk, ws_ship_date_sk, ws_ship_hdemo_sk, ws_ship_mode_sk, ws_sold_date_sk, ws_sold_time_sk, ws_warehouse_sk, ws_web_page_sk, ws_web_site_sk, ws_wholesale_cost
+        )
+        WRAPPER (jdbc bv_tpcds_web_sales)
+    );
+

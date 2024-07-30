@@ -1,0 +1,56 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_tpcds_time_dim
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_tpcds
+    SCHEMANAME='${databases.denodo_training.folder.1 - connectivity.folder.2 - base views.views.jdbc.bv_tpcds_time_dim.SCHEMANAME}' ESCAPE
+    RELATIONNAME='time_dim' 
+    OUTPUTSCHEMA (
+        t_time_sk = 't_time_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  NOT NULL SORTABLE,
+        t_time_id = 't_time_id' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='16', sourcetypeid='1', sourcetypename='bpchar')  NOT NULL SORTABLE,
+        t_time = 't_time' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        t_hour = 't_hour' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        t_minute = 't_minute' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        t_second = 't_second' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE,
+        t_am_pm = 't_am_pm' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='2', sourcetypeid='1', sourcetypename='bpchar')  SORTABLE,
+        t_shift = 't_shift' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='1', sourcetypename='bpchar')  SORTABLE,
+        t_sub_shift = 't_sub_shift' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='1', sourcetypename='bpchar')  SORTABLE,
+        t_meal_time = 't_meal_time' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='1', sourcetypename='bpchar')  SORTABLE
+    )
+    CONSTRAINT 'time_dim_pkey' PRIMARY KEY ( 't_time_sk' )
+    INDEX 'time_dim_pkey' OTHER UNIQUE PRIMARY ( 't_time_sk' );
+
+CREATE OR REPLACE TABLE bv_tpcds_time_dim I18N us_pst (
+        t_time_sk:int (notnull, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        t_time_id:text (notnull, sourcetypeid = '1', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '16'),
+        t_time:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        t_hour:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        t_minute:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        t_second:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        t_am_pm:text (sourcetypeid = '1', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '2'),
+        t_shift:text (sourcetypeid = '1', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '20'),
+        t_sub_shift:text (sourcetypeid = '1', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '20'),
+        t_meal_time:text (sourcetypeid = '1', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '20')
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    CONSTRAINT 'time_dim_pkey' PRIMARY KEY ( 't_time_sk' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_tpcds_time_dim(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD t_time_sk (any) OPT ANY
+             ADD t_time_id (any) OPT ANY
+             ADD t_time (any) OPT ANY
+             ADD t_hour (any) OPT ANY
+             ADD t_minute (any) OPT ANY
+             ADD t_second (any) OPT ANY
+             ADD t_am_pm (any) OPT ANY
+             ADD t_shift (any) OPT ANY
+             ADD t_sub_shift (any) OPT ANY
+             ADD t_meal_time (any) OPT ANY
+        )
+        OUTPUTLIST (t_am_pm, t_hour, t_meal_time, t_minute, t_second, t_shift, t_sub_shift, t_time, t_time_id, t_time_sk
+        )
+        WRAPPER (jdbc bv_tpcds_time_dim)
+    );
+

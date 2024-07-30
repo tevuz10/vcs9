@@ -1,0 +1,21 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE XML ds_sales_search
+    FOLDER = '/1 - connectivity/1 - data sources'
+    ROUTE HTTP 'http.ApacheHttpClientConnection,120000' POST '${databases.denodo_training.folder.1 - connectivity.folder.1 - data sources.datasources.xml.ds_sales_search.ROUTE.HTTP.URL}'
+    POSTBODY '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<SalesPostData>
+   <customerId>@{{cid}}</customerId>
+   <employeeId>@{{eid}}</employeeId>
+   <productId>@{{pid}}</productId>
+</SalesPostData>
+'
+    MIME 'application/xml'
+    HEADERS (
+        'Accept'='application/xml', 
+        'Content-Type'='application/xml'
+    )
+    AUTHENTICATION BASIC ( 
+      USER '${databases.denodo_training.folder.1 - connectivity.folder.1 - data sources.datasources.xml.ds_sales_search.ROUTE.HTTP.USER}'
+      PASSWORD '${databases.denodo_training.folder.1 - connectivity.folder.1 - data sources.datasources.xml.ds_sales_search.ROUTE.HTTP.PASSWORD}' ${databases.denodo_training.folder.1 - connectivity.folder.1 - data sources.datasources.xml.ds_sales_search.ROUTE.HTTP.PASSWORD.ENCRYPTED} )
+    PROXY OFF;
+

@@ -1,0 +1,79 @@
+﻿CREATE OR REPLACE WRAPPER MONGODB products
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_nosql
+    DATABASE = 'product'
+    COLLECTION = 'products'
+    LIMITDOCUMENTS = 150
+    OUTPUTSCHEMA (
+        _id = '_id' : 'java.lang.String' SORTABLE,
+        index = 'index' : 'java.lang.Integer' SORTABLE,
+        productid = 'productid' : 'java.lang.Integer' SORTABLE,
+        productname = 'productname' : 'java.lang.String' SORTABLE,
+        productprice = 'productprice' : 'java.lang.Integer' SORTABLE,
+        category = 'category' : REGISTER OF (
+            categoryid = 'categoryid' : 'java.lang.Integer' SORTABLE,
+            categoryname = 'categoryname' : 'java.lang.String' SORTABLE
+        ),
+        characteristics = 'characteristics' : REGISTER OF (
+            characteristic_dimensions = 'characteristic_dimensions' : 'java.lang.String' SORTABLE,
+            characteristic_weight = 'characteristic_weight' : 'java.lang.String' SORTABLE,
+            characteristic_details = 'characteristic_details' : 'java.lang.String' SORTABLE,
+            characteristic_color = 'characteristic_color' : 'java.lang.String' SORTABLE
+        ),
+        accessories = 'accessories' : ARRAY OF (
+            accessories = 'accessories' : REGISTER OF (
+                productid = 'productid' : 'java.lang.Integer' SORTABLE,
+                productname = 'productname' : 'java.lang.String' SORTABLE,
+                productprice = 'productprice' : 'java.lang.Double' SORTABLE
+            )
+        )
+    );
+
+CREATE OR REPLACE TYPE products_category AS REGISTER OF (categoryid:int, categoryname:text);
+
+CREATE OR REPLACE TYPE products_characteristics AS REGISTER OF (characteristic_dimensions:text, characteristic_weight:text, characteristic_details:text, characteristic_color:text);
+
+CREATE OR REPLACE TYPE products_accessories_accessories AS REGISTER OF (productid:int, productname:text, productprice:double);
+
+CREATE OR REPLACE TYPE products_accessories AS ARRAY OF products_accessories_accessories;
+
+CREATE OR REPLACE TABLE bv_product I18N us_pst (
+        _id:text,
+        index:int,
+        productid:int,
+        productname:text,
+        productprice:int,
+        category:products_category,
+        characteristics:products_characteristics,
+        accessories:products_accessories
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD products(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD _id NOS ZERO ()
+             ADD index NOS ZERO ()
+             ADD productid NOS ZERO ()
+             ADD productname NOS ZERO ()
+             ADD productprice NOS ZERO ()
+             ADD category NOS ZERO ()
+             ADD category.categoryid NOS ZERO ()
+             ADD category.categoryname NOS ZERO ()
+             ADD characteristics NOS ZERO ()
+             ADD characteristics.characteristic_dimensions NOS ZERO ()
+             ADD characteristics.characteristic_weight NOS ZERO ()
+             ADD characteristics.characteristic_details NOS ZERO ()
+             ADD characteristics.characteristic_color NOS ZERO ()
+             ADD accessories NOS ZERO ()
+             ADD accessories NOS ZERO ()
+             ADD accessories.productid NOS ZERO ()
+             ADD accessories.productname NOS ZERO ()
+             ADD accessories.productprice NOS ZERO ()
+        )
+        OUTPUTLIST (_id, accessories, category, characteristics, index, productid, productname, productprice
+        )
+        WRAPPER (mongodb products)
+    );
+

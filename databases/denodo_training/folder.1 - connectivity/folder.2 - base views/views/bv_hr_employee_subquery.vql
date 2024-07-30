@@ -1,0 +1,54 @@
+﻿CREATE OR REPLACE WRAPPER JDBC bv_employee_subquery
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_human_resources
+    SQLSENTENCE='SELECT * FROM "EMPLOYEES" WHERE "DEPARTMENT_ID" = 100'   
+    OUTPUTSCHEMA (
+        employee_id = 'EMPLOYEE_ID' :'java.lang.Integer' (sourcetypedecimals='0', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  ESCAPE NOT NULL SORTABLE NOT UPDATEABLE,
+        first_name = 'FIRST_NAME' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='20', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE NOT UPDATEABLE,
+        last_name = 'LAST_NAME' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='25', sourcetypeid='12', sourcetypename='varchar')  ESCAPE NOT NULL SORTABLE NOT UPDATEABLE,
+        email = 'EMAIL' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='50', sourcetypeid='12', sourcetypename='varchar')  ESCAPE NOT NULL SORTABLE NOT UPDATEABLE,
+        phone_number = 'PHONE_NUMBER' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='20', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE NOT UPDATEABLE,
+        hire_date = 'HIRE_DATE' :'java.time.LocalDate' (sourcetypedecimals='0', sourcetypesize='13', sourcetypeid='91', sourcetypename='date')  ESCAPE NOT NULL SORTABLE NOT UPDATEABLE,
+        job_id = 'JOB_ID' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='10', sourcetypeid='12', sourcetypename='varchar')  ESCAPE NOT NULL SORTABLE NOT UPDATEABLE,
+        salary = 'SALARY' :'java.math.BigDecimal' (sourcetypedecimals='2', sourcetypesize='8', sourcetypeid='2', sourcetypename='numeric')  ESCAPE SORTABLE NOT UPDATEABLE,
+        commission_pct = 'COMMISSION_PCT' :'java.math.BigDecimal' (sourcetypedecimals='2', sourcetypesize='2', sourcetypeid='2', sourcetypename='numeric')  ESCAPE SORTABLE NOT UPDATEABLE,
+        manager_id = 'MANAGER_ID' :'java.lang.Integer' (sourcetypedecimals='0', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  ESCAPE SORTABLE NOT UPDATEABLE,
+        department_id = 'DEPARTMENT_ID' :'java.lang.Short' (sourcetypedecimals='0', sourcetypesize='5', sourcetypeid='5', sourcetypename='int2')  ESCAPE SORTABLE NOT UPDATEABLE
+    );
+
+CREATE OR REPLACE TABLE bv_hr_employee_subquery I18N us_pst (
+        employee_id:int (notnull, sourcetypeid = '4', sourcetypedecimals = '0', sourcetypesize = '10'),
+        first_name:text (sourcetypeid = '-9', sourcetypedecimals = '0', sourcetypesize = '20'),
+        last_name:text (notnull, sourcetypeid = '-9', sourcetypedecimals = '0', sourcetypesize = '25'),
+        email:text (notnull, sourcetypeid = '-9', sourcetypedecimals = '0', sourcetypesize = '50'),
+        phone_number:text (sourcetypeid = '-9', sourcetypedecimals = '0', sourcetypesize = '20'),
+        hire_date:localdate (notnull, sourcetypeid = '91', sourcetypedecimals = '0', sourcetypesize = '13'),
+        job_id:text (notnull, sourcetypeid = '-9', sourcetypedecimals = '0', sourcetypesize = '10'),
+        salary:decimal (sourcetypeid = '2', sourcetypedecimals = '2', sourcetypesize = '8'),
+        commission_pct:decimal (sourcetypeid = '2', sourcetypedecimals = '2', sourcetypesize = '2'),
+        manager_id:int (sourcetypeid = '4', sourcetypedecimals = '0', sourcetypesize = '10'),
+        department_id:int (sourcetypeid = '5', sourcetypedecimals = '0', sourcetypesize = '5')
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_employee_subquery(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD employee_id NOS ZERO ()
+             ADD first_name NOS ZERO ()
+             ADD last_name NOS ZERO ()
+             ADD email NOS ZERO ()
+             ADD phone_number NOS ZERO ()
+             ADD hire_date NOS ZERO ()
+             ADD job_id NOS ZERO ()
+             ADD salary NOS ZERO ()
+             ADD commission_pct NOS ZERO ()
+             ADD manager_id NOS ZERO ()
+             ADD department_id NOS ZERO ()
+        )
+        OUTPUTLIST (commission_pct, department_id, email, employee_id, first_name, hire_date, job_id, last_name, manager_id, phone_number, salary
+        )
+        WRAPPER (jdbc bv_employee_subquery)
+    );
+

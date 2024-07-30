@@ -1,0 +1,40 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_tpcds_inventory
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_tpcds
+    SCHEMANAME='${databases.denodo_training.folder.1 - connectivity.folder.2 - base views.views.jdbc.bv_tpcds_inventory.SCHEMANAME}' ESCAPE
+    RELATIONNAME='inventory' 
+    OUTPUTSCHEMA (
+        inv_date_sk = 'inv_date_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  NOT NULL SORTABLE,
+        inv_item_sk = 'inv_item_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  NOT NULL SORTABLE,
+        inv_warehouse_sk = 'inv_warehouse_sk' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  NOT NULL SORTABLE,
+        inv_quantity_on_hand = 'inv_quantity_on_hand' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  SORTABLE
+    )
+    CONSTRAINT 'inventory_pkey' PRIMARY KEY ( 'inv_date_sk' , 'inv_item_sk' , 'inv_warehouse_sk' )
+    CONSTRAINT 'inv_d' FOREIGN KEY ( 'inv_date_sk' ) 
+    REFERENCES 'public'.'date_dim'( 'd_date_sk' )  ON UPDATE NO ACTION  ON DELETE NO ACTION NOT DEFERRABLE 
+    INDEX 'inventory_pkey' OTHER UNIQUE PRIMARY ( 'inv_date_sk' , 'inv_item_sk' , 'inv_warehouse_sk' );
+
+CREATE OR REPLACE TABLE bv_tpcds_inventory I18N us_pst (
+        inv_date_sk:int (notnull, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        inv_item_sk:int (notnull, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        inv_warehouse_sk:int (notnull, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        inv_quantity_on_hand:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10')
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    CONSTRAINT 'inventory_pkey' PRIMARY KEY ( 'inv_date_sk' , 'inv_item_sk' , 'inv_warehouse_sk' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_tpcds_inventory(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD inv_date_sk (any) OPT ANY
+             ADD inv_item_sk (any) OPT ANY
+             ADD inv_warehouse_sk (any) OPT ANY
+             ADD inv_quantity_on_hand (any) OPT ANY
+        )
+        OUTPUTLIST (inv_date_sk, inv_item_sk, inv_quantity_on_hand, inv_warehouse_sk
+        )
+        WRAPPER (jdbc bv_tpcds_inventory)
+    );
+

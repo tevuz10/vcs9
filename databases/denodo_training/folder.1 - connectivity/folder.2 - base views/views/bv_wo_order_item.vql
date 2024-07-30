@@ -1,0 +1,35 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_wo_order_item
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_web_orders
+    SCHEMANAME='${databases.denodo_training.folder.1 - connectivity.folder.2 - base views.views.jdbc.bv_wo_order_item.SCHEMANAME}' ESCAPE
+    RELATIONNAME='ORDER_ITEM' ESCAPE
+    OUTPUTSCHEMA (
+        id = 'ID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  ESCAPE NOT NULL SORTABLE,
+        order_id = 'ORDER_ID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  ESCAPE NOT NULL SORTABLE,
+        product_id = 'PRODUCT_ID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  ESCAPE NOT NULL SORTABLE
+    )
+    CONSTRAINT 'ORDER_ITEM_PK' PRIMARY KEY ( 'ID' )
+    INDEX 'ORDER_ITEM_PK' OTHER UNIQUE PRIMARY ( 'ID' );
+
+CREATE OR REPLACE TABLE bv_wo_order_item I18N us_pst (
+        id:int (notnull, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        order_id:int (notnull, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        product_id:int (notnull, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10')
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    CONSTRAINT 'ORDER_ITEM_PK' PRIMARY KEY ( 'id' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_wo_order_item(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD id (any) OPT ANY
+             ADD order_id (any) OPT ANY
+             ADD product_id (any) OPT ANY
+        )
+        OUTPUTLIST (id, order_id, product_id
+        )
+        WRAPPER (jdbc bv_wo_order_item)
+    );
+

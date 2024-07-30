@@ -1,0 +1,44 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_ho_orders
+    FOLDER = '/1 - connectivity/2 - base views'
+    DATASOURCENAME=ds_historical_orders
+    SCHEMANAME='${databases.denodo_training.folder.1 - connectivity.folder.2 - base views.views.jdbc.bv_ho_orders.SCHEMANAME}' ESCAPE
+    RELATIONNAME='ORDERS' ESCAPE
+    OUTPUTSCHEMA (
+        id = 'ID' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='4', sourcetypename='int4')  ESCAPE NOT NULL SORTABLE,
+        customer_code = 'CUSTOMER_CODE' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='varchar')  ESCAPE NOT NULL SORTABLE,
+        status = 'STATUS' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='varchar')  ESCAPE NOT NULL SORTABLE,
+        date_placed = 'DATE_PLACED' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='29', sourcetypeid='93', sourcetypename='timestamp')  ESCAPE SORTABLE,
+        date_delivered = 'DATE_DELIVERED' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='60', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE,
+        date_closed = 'DATE_CLOSED' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='60', sourcetypeid='12', sourcetypename='varchar')  ESCAPE SORTABLE
+    )
+    CONSTRAINT 'ORDERS_PK' PRIMARY KEY ( 'ID' )
+    INDEX 'ORDERS_PK' OTHER UNIQUE PRIMARY ( 'ID' );
+
+CREATE OR REPLACE TABLE bv_ho_orders I18N us_pst (
+        id:int (notnull, sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        customer_code:text (notnull, sourcetypeid = '-9', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '20'),
+        status:text (notnull, sourcetypeid = '-9', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '20'),
+        date_placed:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '29'),
+        date_delivered:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '60'),
+        date_closed:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '60')
+    )
+    FOLDER = '/1 - connectivity/2 - base views'
+    CONSTRAINT 'ORDERS_PK' PRIMARY KEY ( 'id' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_ho_orders(
+        I18N us_pst
+        CONSTRAINTS (
+             ADD id (any) OPT ANY
+             ADD customer_code (any) OPT ANY
+             ADD status (any) OPT ANY
+             ADD date_placed (any) OPT ANY
+             ADD date_delivered (any) OPT ANY
+             ADD date_closed (any) OPT ANY
+        )
+        OUTPUTLIST (customer_code, date_closed, date_delivered, date_placed, id, status
+        )
+        WRAPPER (jdbc bv_ho_orders)
+    );
+
