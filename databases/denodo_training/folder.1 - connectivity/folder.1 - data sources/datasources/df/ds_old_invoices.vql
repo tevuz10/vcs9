@@ -1,0 +1,11 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE DF ds_old_invoices
+    FOLDER = '/1 - connectivity/1 - data sources'
+    ROUTE HTTP 'http.ApacheHttpClientConnection,120000' GET '${databases.denodo_training.folder.1 - connectivity.folder.1 - data sources.datasources.df.ds_old_invoices.ROUTE.HTTP.URL}'
+    AUTHENTICATION OFF
+    PROXY OFF
+    CHARSET = 'Adobe-Standard-Encoding'
+    COLUMNDELIMITER = ','
+    ENDOFLINEDELIMITER = '\n'
+    HEADER = TRUE;
+
