@@ -1,0 +1,37 @@
+﻿CREATE OR REPLACE WRAPPER JSON load_cache_and_update_statistics
+    FOLDER = '/denodo_logs'
+    DATASOURCENAME=load_cache_and_update_statistics
+    TUPLEROOT '/JSONFile'
+    OUTPUTSCHEMA (jsonfile = 'JSONFile' : REGISTER OF (
+        servername = 'SERVERNAME' : 'java.lang.String' (OBL) (DEFAULTVALUE='localhost') EXTERN,
+        allservers = 'ALLSERVERS' : 'java.lang.String' (OBL) (DEFAULTVALUE='false') EXTERN,
+        result = 'result' : 'java.lang.String',
+        data = 'data' : 'java.lang.String',
+        message = 'message' : 'java.lang.String'
+    )
+    );
+
+CREATE OR REPLACE TABLE load_cache_and_update_statistics I18N es_euro (
+        servername:text (extern),
+        allservers:text (extern),
+        result:text,
+        data:text,
+        message:text
+    )
+    FOLDER = '/denodo_logs'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD load_cache_and_update_statistics(
+        I18N es_euro
+        CONSTRAINTS (
+             ADD servername (=) OBL ONE
+             ADD allservers (=) OBL ONE
+             ADD result NOS ZERO ()
+             ADD data NOS ZERO ()
+             ADD message NOS ZERO ()
+        )
+        OUTPUTLIST (data, message, result
+        )
+        WRAPPER (json load_cache_and_update_statistics)
+    );
+

@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW p_tsv AS SELECT admin.tsv."住所CD" AS "住所CD", admin.tsv."都道府県CD" AS "都道府県CD", admin.tsv."市区町村CD" AS "市区町村CD", admin.tsv."町域CD" AS "町域CD", admin.tsv."郵便番号" AS "郵便番号", admin.tsv."事業所フラグ" AS "事業所フラグ", admin.tsv."廃止フラグ" AS "廃止フラグ", admin.tsv."都道府県" AS "都道府県", admin.tsv."都道府県カナ" AS "都道府県カナ", admin.tsv."市区町村" AS "市区町村", admin.tsv."市区町村カナ" AS "市区町村カナ", admin.tsv."町域" AS "町域", admin.tsv."町域カナ" AS "町域カナ", admin.tsv."町域補足" AS "町域補足", admin.tsv."京都通り名" AS "京都通り名", admin.tsv."字丁目" AS "字丁目", admin.tsv."字丁目カナ" AS "字丁目カナ", admin.tsv."補足" AS "補足", admin.tsv."事業所名" AS "事業所名", admin.tsv."事業所名カナ" AS "事業所名カナ", admin.tsv."事業所住所" AS "事業所住所", admin.tsv."新住所CD" AS "新住所CD" FROM admin.tsv;
+
+ALTER VIEW p_tsv
+ LAYOUT (tsv = [20, 20, 200, 200]);
+

@@ -1,0 +1,3 @@
+﻿CREATE OR REPLACE VIEW request_notification_split FOLDER = '/denodo_logs'
+    PRIMARY KEY ( 'autoincrementid' ) AS SELECT autoincrementid, id, username, duration, numrows, query, endtime, accessinterface, useragent, case WHEN (webservicename is null ) THEN split(' , ', trim(regexp(regexp(elements, '("(""|[^"])*")', ' $$1 '), ' \. ', '.'))) ELSE split(' , ', webservicename) END AS elements_array FROM request_notification WHERE (notificationtype = 'endRequest' AND (requesttype = 'SELECT VIEW' OR requesttype = 'SELECT BASE VIEW') AND state in ('OK', 'ROW_LIMIT_REACHED', 'THREAD_TIMEOUT', 'PROCESSING', 'QUERY_TIMEOUT', 'LICENSE_QUERY_TIMEOUT'));
+

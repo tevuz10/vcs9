@@ -1,0 +1,4 @@
+﻿1/databases/denodo_logs/folder.denodo_logs/denodo_logs.vql
+*/databases/denodo_logs/datasources/jdbc/postgres.vql
+1/databases/denodo_logs/views/request_notification.vql
+*/databases/denodo_logs/views/request_notification.vql

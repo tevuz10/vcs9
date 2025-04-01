@@ -1,0 +1,30 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE JDBC postgres
+    DRIVERCLASSNAME = 'org.postgresql.Driver'
+    DATABASEURI = '${databases.denodo_logs.datasources.jdbc.postgres.DATABASEURI}'
+    USERNAME = '${databases.denodo_logs.datasources.jdbc.postgres.USERNAME}'
+    USERPASSWORD = '${databases.denodo_logs.datasources.jdbc.postgres.USERPASSWORD}' ${databases.denodo_logs.datasources.jdbc.postgres.USERPASSWORD.ENCRYPTED}
+    CLASSPATH = 'postgresql-12'
+    DATABASENAME = 'postgresql'
+    DATABASEVERSION = '12'
+    FETCHSIZE = 1000
+    VALIDATIONQUERY = 'Select 1'
+    INITIALSIZE = 4
+    MAXIDLE = -1
+    MINIDLE = 0
+    MAXACTIVE = 20
+    EXHAUSTEDACTION = 1
+    TESTONBORROW = true
+    TESTONRETURN = false
+    TESTWHILEIDLE = false
+    TIMEBETWEENEVICTION = -1
+    NUMTESTPEREVICTION = 3
+    MINEVICTABLETIME = 1800000
+    POOLPREPAREDSTATEMENTS = false
+    MAXOPENPREPAREDSTATEMENTS = -1
+    PROPERTIES ('escapeSyntaxCallMode'='callIfNoReturn')
+    KERBEROSPROPERTIES ('jaasLogin'='false', 'user'='<user>')
+    DATA_LOAD_CONFIGURATION (
+        BATCHINSERTSIZE = 200
+    );
+

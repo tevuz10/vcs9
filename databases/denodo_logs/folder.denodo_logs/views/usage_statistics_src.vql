@@ -1,0 +1,3 @@
+﻿CREATE OR REPLACE VIEW usage_statistics_src FOLDER = '/denodo_logs'
+    PRIMARY KEY ( 'autoincrementid' ) AS SELECT autoincrementid, id, username, duration, numrows, query, endtime, useragent, string AS element, case WHEN (lower(accessinterface) = lower('WS-REST')) THEN 'WS-REST' WHEN (lower(accessinterface) = lower('WS-SOAP')) THEN 'WS-SOAP' ELSE 'JDBC' END AS element_type FROM FLATTEN request_notification_split AS v ( v.elements_array);
+

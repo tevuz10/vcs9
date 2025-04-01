@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE DATABASE denodo_logs '';
+
+ALTER DATABASE denodo_logs
+  CHARSET DEFAULT;
+
