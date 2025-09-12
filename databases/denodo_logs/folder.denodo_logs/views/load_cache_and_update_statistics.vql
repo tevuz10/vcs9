@@ -1,0 +1,27 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JSON load_cache_and_update_statistics
+    FOLDER = '/denodo_logs'
+    DATASOURCENAME=load_cache_and_update_statistics
+    TUPLEROOT '/JSONFile'
+    ROUTE HTTP 'http.ApacheHttpClientConnection,1500000' POST '${databases.denodo_logs.folder.denodo_logs.views.json.load_cache_and_update_statistics.ROUTE.HTTP.URL}'
+    OUTPUTSCHEMA ("JSONFile" = 'JSONFile' : REGISTER OF (
+        result = 'result' : 'java.lang.String'
+    )
+    );
+
+CREATE OR REPLACE TABLE load_cache_and_update_statistics I18N jp (
+        result:text
+    )
+    FOLDER = '/denodo_logs'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD load_cache_and_update_statistics(
+        I18N jp
+        CONSTRAINTS (
+             ADD result NOS ZERO ()
+        )
+        OUTPUTLIST (result
+        )
+        WRAPPER (json load_cache_and_update_statistics)
+    );
+

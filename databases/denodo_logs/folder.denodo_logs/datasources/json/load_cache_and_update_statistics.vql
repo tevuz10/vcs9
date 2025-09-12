@@ -2,7 +2,8 @@
 CREATE OR REPLACE DATASOURCE JSON load_cache_and_update_statistics
     FOLDER = '/denodo_logs'
     ROUTE HTTP 'http.ApacheHttpClientConnection,1500000' POST '${databases.denodo_logs.folder.denodo_logs.datasources.json.load_cache_and_update_statistics.ROUTE.HTTP.URL}'
-    AUTHENTICATION BASIC ( 
+    GENERATE_OUTPUT_ON_EMPTY_CONTENT
+ AUTHENTICATION BASIC ( 
       USER '${databases.denodo_logs.folder.denodo_logs.datasources.json.load_cache_and_update_statistics.ROUTE.HTTP.USER}'
       PASSWORD '${databases.denodo_logs.folder.denodo_logs.datasources.json.load_cache_and_update_statistics.ROUTE.HTTP.PASSWORD}' ${databases.denodo_logs.folder.denodo_logs.datasources.json.load_cache_and_update_statistics.ROUTE.HTTP.PASSWORD.ENCRYPTED} )
     PROXY OFF;
