@@ -1,3 +1,0 @@
-ALTER ROLE oauth_read
-GRANT ADMIN ON denodo_logs;
-

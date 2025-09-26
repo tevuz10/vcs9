@@ -1,0 +1,88 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC tsv
+    DATASOURCENAME=duckdb
+    CATALOGNAME='${databases.denodo_logs.views.jdbc.tsv.CATALOGNAME}' 
+    SCHEMANAME='${databases.denodo_logs.views.jdbc.tsv.SCHEMANAME}' 
+    RELATIONNAME='tsv' 
+    OUTPUTSCHEMA (
+        "住所CD" = '住所CD' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='64', sourcetypeid='-5', sourcetypename='BIGINT')  ESCAPE SORTABLE,
+        "都道府県CD" = '都道府県CD' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='64', sourcetypeid='-5', sourcetypename='BIGINT')  ESCAPE SORTABLE,
+        "市区町村CD" = '市区町村CD' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='64', sourcetypeid='-5', sourcetypename='BIGINT')  ESCAPE SORTABLE,
+        "町域CD" = '町域CD' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='64', sourcetypeid='-5', sourcetypename='BIGINT')  ESCAPE SORTABLE,
+        "郵便番号" = '郵便番号' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypeid='12', sourcetypename='VARCHAR')  ESCAPE SORTABLE,
+        "事業所フラグ" = '事業所フラグ' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='64', sourcetypeid='-5', sourcetypename='BIGINT')  ESCAPE SORTABLE,
+        "廃止フラグ" = '廃止フラグ' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='64', sourcetypeid='-5', sourcetypename='BIGINT')  ESCAPE SORTABLE,
+        "都道府県" = '都道府県' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypeid='12', sourcetypename='VARCHAR')  ESCAPE SORTABLE,
+        "都道府県カナ" = '都道府県カナ' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypeid='12', sourcetypename='VARCHAR')  ESCAPE SORTABLE,
+        "市区町村" = '市区町村' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypeid='12', sourcetypename='VARCHAR')  ESCAPE SORTABLE,
+        "市区町村カナ" = '市区町村カナ' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypeid='12', sourcetypename='VARCHAR')  ESCAPE SORTABLE,
+        "町域" = '町域' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypeid='12', sourcetypename='VARCHAR')  ESCAPE SORTABLE,
+        "町域カナ" = '町域カナ' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypeid='12', sourcetypename='VARCHAR')  ESCAPE SORTABLE,
+        "町域補足" = '町域補足' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypeid='12', sourcetypename='VARCHAR')  ESCAPE SORTABLE,
+        "京都通り名" = '京都通り名' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypeid='12', sourcetypename='VARCHAR')  ESCAPE SORTABLE,
+        "字丁目" = '字丁目' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypeid='12', sourcetypename='VARCHAR')  ESCAPE SORTABLE,
+        "字丁目カナ" = '字丁目カナ' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypeid='12', sourcetypename='VARCHAR')  ESCAPE SORTABLE,
+        "補足" = '補足' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypeid='12', sourcetypename='VARCHAR')  ESCAPE SORTABLE,
+        "事業所名" = '事業所名' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypeid='12', sourcetypename='VARCHAR')  ESCAPE SORTABLE,
+        "事業所名カナ" = '事業所名カナ' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypeid='12', sourcetypename='VARCHAR')  ESCAPE SORTABLE,
+        "事業所住所" = '事業所住所' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypeid='12', sourcetypename='VARCHAR')  ESCAPE SORTABLE,
+        "新住所CD" = '新住所CD' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypeid='12', sourcetypename='VARCHAR')  ESCAPE SORTABLE
+    );
+
+CREATE OR REPLACE TABLE tsv I18N jp (
+        "住所CD":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '64'),
+        "都道府県CD":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '64'),
+        "市区町村CD":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '64'),
+        "町域CD":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '64'),
+        "郵便番号":text (sourcetypeid = '12', sourcetyperadix = '10'),
+        "事業所フラグ":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '64'),
+        "廃止フラグ":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '64'),
+        "都道府県":text (sourcetypeid = '12', sourcetyperadix = '10'),
+        "都道府県カナ":text (sourcetypeid = '12', sourcetyperadix = '10'),
+        "市区町村":text (sourcetypeid = '12', sourcetyperadix = '10'),
+        "市区町村カナ":text (sourcetypeid = '12', sourcetyperadix = '10'),
+        "町域":text (sourcetypeid = '12', sourcetyperadix = '10'),
+        "町域カナ":text (sourcetypeid = '12', sourcetyperadix = '10'),
+        "町域補足":text (sourcetypeid = '12', sourcetyperadix = '10'),
+        "京都通り名":text (sourcetypeid = '12', sourcetyperadix = '10'),
+        "字丁目":text (sourcetypeid = '12', sourcetyperadix = '10'),
+        "字丁目カナ":text (sourcetypeid = '12', sourcetyperadix = '10'),
+        "補足":text (sourcetypeid = '12', sourcetyperadix = '10'),
+        "事業所名":text (sourcetypeid = '12', sourcetyperadix = '10'),
+        "事業所名カナ":text (sourcetypeid = '12', sourcetyperadix = '10'),
+        "事業所住所":text (sourcetypeid = '12', sourcetyperadix = '10'),
+        "新住所CD":text (sourcetypeid = '12', sourcetyperadix = '10')
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD tsv(
+        I18N jp
+        CONSTRAINTS (
+             ADD "住所CD" (any) OPT ANY
+             ADD "都道府県CD" (any) OPT ANY
+             ADD "市区町村CD" (any) OPT ANY
+             ADD "町域CD" (any) OPT ANY
+             ADD "郵便番号" (any) OPT ANY
+             ADD "事業所フラグ" (any) OPT ANY
+             ADD "廃止フラグ" (any) OPT ANY
+             ADD "都道府県" (any) OPT ANY
+             ADD "都道府県カナ" (any) OPT ANY
+             ADD "市区町村" (any) OPT ANY
+             ADD "市区町村カナ" (any) OPT ANY
+             ADD "町域" (any) OPT ANY
+             ADD "町域カナ" (any) OPT ANY
+             ADD "町域補足" (any) OPT ANY
+             ADD "京都通り名" (any) OPT ANY
+             ADD "字丁目" (any) OPT ANY
+             ADD "字丁目カナ" (any) OPT ANY
+             ADD "補足" (any) OPT ANY
+             ADD "事業所名" (any) OPT ANY
+             ADD "事業所名カナ" (any) OPT ANY
+             ADD "事業所住所" (any) OPT ANY
+             ADD "新住所CD" (any) OPT ANY
+        )
+        OUTPUTLIST ("事業所フラグ", "事業所住所", "事業所名", "事業所名カナ", "京都通り名", "住所CD", "字丁目", "字丁目カナ", "市区町村", "市区町村CD", "市区町村カナ", "廃止フラグ", "新住所CD", "町域", "町域CD", "町域カナ", "町域補足", "補足", "郵便番号", "都道府県", "都道府県CD", "都道府県カナ"
+        )
+        WRAPPER (jdbc tsv)
+    );
+
