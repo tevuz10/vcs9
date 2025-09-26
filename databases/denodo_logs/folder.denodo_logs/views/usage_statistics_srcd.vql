@@ -1,10 +1,10 @@
-﻿CREATE OR REPLACE VIEW usage_statistics_src FOLDER = '/denodo_logs' DESCRIPTION = 'd' 
+﻿CREATE OR REPLACE VIEW usage_statistics_srcd FOLDER = '/denodo_logs' DESCRIPTION = 'd' 
     PRIMARY KEY ( 'autoincrementid' ) AS SELECT autoincrementid AS autoincrementid, id AS id, username AS username, duration AS duration, numrows AS numrows, query AS query, endtime AS endtime, useragent AS useragent, string AS element, case WHEN (lower(accessinterface) = lower('WS-REST')) THEN 'WS-REST' WHEN (lower(accessinterface) = lower('WS-SOAP')) THEN 'WS-SOAP' ELSE 'JDBC' END AS element_type FROM FLATTEN request_notification_split AS v ( v.elements_array);
 
-ALTER VIEW usage_statistics_src
+ALTER VIEW usage_statistics_srcd
  LAYOUT (request_notification_split = [0, 0, 200, 200]);
 
-ALTER VIEW usage_statistics_src
+ALTER VIEW usage_statistics_srcd
  CACHE FULL
     BATCHSIZEINCACHE DEFAULT TIMETOLIVEINCACHE NOEXPIRE;
 
