@@ -1,3 +1,5 @@
 ﻿1/databases/denodo_logs/folder.denodo_logs/denodo_logs.vql
 */databases/denodo_logs/folder.denodo_logs/denodo_logs.vql
+*/databases/denodo_logs/datasources/jdbc/postgres.vql
+*/databases/denodo_logs/views/request_notification.vql
 1/databases/denodo_logs/folder.denodo_logs/views/request_notification_split.vql
