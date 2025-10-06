@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW p_p_tsv AS SELECT denodo_logs.p_tsv."住所CD" AS "住所", denodo_logs.p_tsv."都道府県CD" AS "都道府県CD", denodo_logs.p_tsv."市区町村CD" AS "市区町村CD", denodo_logs.p_tsv."町域CD" AS "町域CD", denodo_logs.p_tsv."郵便番号" AS "郵便番号", denodo_logs.p_tsv."事業所フラグ" AS "事業所フラグ", denodo_logs.p_tsv."廃止フラグ" AS "廃止フラグ", denodo_logs.p_tsv."都道府県" AS "都道府県", denodo_logs.p_tsv."都道府県カナ" AS "都道府県カナ", denodo_logs.p_tsv."市区町村" AS "市区町村", denodo_logs.p_tsv."市区町村カナ" AS "市区町村カナ", denodo_logs.p_tsv."町域" AS "町域", denodo_logs.p_tsv."町域カナ" AS "町域カナ", denodo_logs.p_tsv."町域補足" AS "町域補足", denodo_logs.p_tsv."京都通り名" AS "京都通り名", denodo_logs.p_tsv."字丁目" AS "字丁目", denodo_logs.p_tsv."字丁目カナ" AS "字丁目カナ", denodo_logs.p_tsv."補足" AS "補足", denodo_logs.p_tsv."事業所名" AS "事業所名", denodo_logs.p_tsv."事業所名カナ" AS "事業所名カナ", denodo_logs.p_tsv."事業所住所" AS "事業所住所", denodo_logs.p_tsv."新住所CD" AS "新住所CD" FROM denodo_logs.p_tsv;
+
+ALTER VIEW p_p_tsv
+ LAYOUT (p_tsv = [157, 229, 200, 200]);
+

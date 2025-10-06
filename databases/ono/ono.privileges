@@ -1,0 +1,4 @@
+ALTER ROLE oauth_read
+GRANT ROLE assign_all_privileges,serveradmin,assignprivileges,scheduler_admin,monitor_admin,"Administration",assign_vdb_admin_privileges,data_catalog_admin,data_catalog_content_admin,diagnostic_monitoring_tool_admin,jmxadmin,saas_server_admin,selfserviceadmin
+GRANT ADMIN ON ono;
+
