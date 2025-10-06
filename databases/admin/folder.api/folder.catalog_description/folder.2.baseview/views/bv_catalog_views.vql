@@ -1,0 +1,46 @@
+﻿CREATE OR REPLACE WRAPPER JSON bv_catalog_views
+    FOLDER = '/api/catalog_description/2.baseview'
+    DATASOURCENAME=ds_catalog_views
+    TUPLEROOT '/JSONFile/JSONArray'
+    OUTPUTSCHEMA ("JSONFile" = 'JSONFile' : REGISTER OF (
+        name = 'JSONFile.JSONArray.name' : 'java.lang.String',
+        db = 'JSONFile.JSONArray.db' : 'java.lang.String',
+        "elementType" = 'JSONFile.JSONArray.elementType' : 'java.lang.String',
+        "elementSubtype" = 'JSONFile.JSONArray.elementSubtype' : 'java.lang.String',
+        path = 'JSONFile.JSONArray.path' : 'java.lang.String',
+        "lastModificationDate" = 'JSONFile.JSONArray.lastModificationDate' : 'java.lang.String',
+        fields = 'JSONFile.JSONArray.fields' : 'java.lang.String',
+        description = 'JSONFile.JSONArray.description' : 'java.lang.String'
+    )
+    );
+
+CREATE OR REPLACE TABLE bv_catalog_views I18N jp (
+        name:text,
+        db:text,
+        "elementType":text,
+        "elementSubtype":text,
+        path:text,
+        "lastModificationDate":text,
+        fields:text,
+        description:text
+    )
+    FOLDER = '/api/catalog_description/2.baseview'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_catalog_views(
+        I18N jp
+        CONSTRAINTS (
+             ADD name NOS ZERO ()
+             ADD db NOS ZERO ()
+             ADD "elementType" NOS ZERO ()
+             ADD "elementSubtype" NOS ZERO ()
+             ADD path NOS ZERO ()
+             ADD "lastModificationDate" NOS ZERO ()
+             ADD fields NOS ZERO ()
+             ADD description NOS ZERO ()
+        )
+        OUTPUTLIST (db, description, "elementSubtype", "elementType", fields, "lastModificationDate", name, path
+        )
+        WRAPPER (json bv_catalog_views)
+    );
+

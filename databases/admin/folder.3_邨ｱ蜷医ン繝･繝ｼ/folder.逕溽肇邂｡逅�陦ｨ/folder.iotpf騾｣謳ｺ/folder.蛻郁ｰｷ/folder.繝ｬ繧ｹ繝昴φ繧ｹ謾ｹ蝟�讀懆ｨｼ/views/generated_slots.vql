@@ -1,0 +1,2 @@
+﻿CREATE OR REPLACE VIEW generated_slots FOLDER = '/3_邨ｱ蜷医ン繝･繝ｼ/逕溽肇邂｡逅�陦ｨ/iotpf騾｣謳ｺ/蛻郁ｰｷ/繝ｬ繧ｹ繝昴φ繧ｹ謾ｹ蝟�讀懆ｨｼ' AS SELECT ((substring(cast(d.date_value AS TEXT), 0, 10)||' ')||substring(cast(t.time_start AS TEXT), 0, 8)) AS slot_start_text, ((substring(cast(d.date_value AS TEXT), 0, 10)||' ')||substring(cast(t.time_end AS TEXT), 0, 8)) AS slot_end_text FROM date_master AS d INNER JOIN time_slot_master AS t ON 1 = 1 ;
+

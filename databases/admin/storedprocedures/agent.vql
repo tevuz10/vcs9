@@ -1,0 +1,17 @@
+﻿CREATE OR REPLACE VQL PROCEDURE agent
+(agent_id OUT INTEGER)
+AS (
+    CURSOR cursordata IS 'SELECT * FROM bv_cc_agent';
+    rdata cursordata%ROWTYPE;
+)
+BEGIN
+    OPEN cursordata;
+    LOOP 
+        FETCH cursordata INTO rdata;
+        RETURN ROW ( agent_id) VALUES (rdata);
+        EXIT WHEN cursordata%NOTFOUND;
+    END LOOP;
+    CLOSE cursordata;
+
+END;
+

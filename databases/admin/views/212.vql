@@ -1,0 +1,108 @@
+﻿CREATE OR REPLACE WRAPPER DF "212"
+    DATASOURCENAME=querylog
+    OUTPUTSCHEMA (
+        "ServerName" = 'ServerName' (OPT),
+        "Host" = 'Host' (OPT),
+        "Port" = 'Port' (OPT),
+        "Id" = 'Id' (OPT),
+        "Database" = 'Database' (OPT),
+        "UserName" = 'UserName' (OPT),
+        "NotificationType" = 'NotificationType' (OPT),
+        "SessionId" = 'SessionId' (OPT),
+        "StartTime" = 'StartTime' (OPT),
+        "EndTime" = 'EndTime' (OPT),
+        "Duration" = 'Duration' (OPT),
+        "WaitingTime" = 'WaitingTime' (OPT),
+        "NumRows" = 'NumRows' (OPT),
+        "State" = 'State' (OPT),
+        "Completed" = 'Completed' (OPT),
+        "Cache" = 'Cache' (OPT),
+        "Query" = 'Query' (OPT),
+        "RequestType" = 'RequestType' (OPT),
+        "Elements" = 'Elements' (OPT),
+        "UserAgent" = 'UserAgent' (OPT),
+        "AccessInterface" = 'AccessInterface' (OPT),
+        "ClientIP" = 'ClientIP' (OPT),
+        "TransactionId" = 'TransactionId' (OPT),
+        "WebServiceName" = 'WebServiceName' (OPT),
+        "CpuTime" = 'CpuTime' (OPT),
+        "CpuUsageAvg" = 'CpuUsageAvg' (OPT),
+        "CpuUsageMax" = 'CpuUsageMax' (OPT),
+        "CpuUsageMaxTime" = 'CpuUsageMaxTime' (OPT),
+        "CpuUsageStdDev" = 'CpuUsageStdDev' (OPT),
+        "EstimatedQueryCost" = 'EstimatedQueryCost' (OPT)
+    );
+
+CREATE OR REPLACE TABLE "212" I18N jp (
+        "ServerName":text,
+        "Host":text,
+        "Port":text,
+        "Id":text,
+        "Database":text,
+        "UserName":text,
+        "NotificationType":text,
+        "SessionId":text,
+        "StartTime":text,
+        "EndTime":text,
+        "Duration":text,
+        "WaitingTime":text,
+        "NumRows":text,
+        "State":text,
+        "Completed":text,
+        "Cache":text,
+        "Query":text,
+        "RequestType":text,
+        "Elements":text,
+        "UserAgent":text,
+        "AccessInterface":text,
+        "ClientIP":text,
+        "TransactionId":text,
+        "WebServiceName":text,
+        "CpuTime":text,
+        "CpuUsageAvg":text,
+        "CpuUsageMax":text,
+        "CpuUsageMaxTime":text,
+        "CpuUsageStdDev":text,
+        "EstimatedQueryCost":text
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD "212"(
+        I18N jp
+        CONSTRAINTS (
+             ADD "ServerName" (any) OPT ANY
+             ADD "Host" (any) OPT ANY
+             ADD "Port" (any) OPT ANY
+             ADD "Id" (any) OPT ANY
+             ADD "Database" (any) OPT ANY
+             ADD "UserName" (any) OPT ANY
+             ADD "NotificationType" (any) OPT ANY
+             ADD "SessionId" (any) OPT ANY
+             ADD "StartTime" (any) OPT ANY
+             ADD "EndTime" (any) OPT ANY
+             ADD "Duration" (any) OPT ANY
+             ADD "WaitingTime" (any) OPT ANY
+             ADD "NumRows" (any) OPT ANY
+             ADD "State" (any) OPT ANY
+             ADD "Completed" (any) OPT ANY
+             ADD "Cache" (any) OPT ANY
+             ADD "Query" (any) OPT ANY
+             ADD "RequestType" (any) OPT ANY
+             ADD "Elements" (any) OPT ANY
+             ADD "UserAgent" (any) OPT ANY
+             ADD "AccessInterface" (any) OPT ANY
+             ADD "ClientIP" (any) OPT ANY
+             ADD "TransactionId" (any) OPT ANY
+             ADD "WebServiceName" (any) OPT ANY
+             ADD "CpuTime" (any) OPT ANY
+             ADD "CpuUsageAvg" (any) OPT ANY
+             ADD "CpuUsageMax" (any) OPT ANY
+             ADD "CpuUsageMaxTime" (any) OPT ANY
+             ADD "CpuUsageStdDev" (any) OPT ANY
+             ADD "EstimatedQueryCost" (any) OPT ANY
+        )
+        OUTPUTLIST ("AccessInterface", "Cache", "ClientIP", "Completed", "CpuTime", "CpuUsageAvg", "CpuUsageMax", "CpuUsageMaxTime", "CpuUsageStdDev", "Database", "Duration", "Elements", "EndTime", "EstimatedQueryCost", "Host", "Id", "NotificationType", "NumRows", "Port", "Query", "RequestType", "ServerName", "SessionId", "StartTime", "State", "TransactionId", "UserAgent", "UserName", "WaitingTime", "WebServiceName"
+        )
+        WRAPPER (df "212")
+    );
+

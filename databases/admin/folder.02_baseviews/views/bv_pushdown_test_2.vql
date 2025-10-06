@@ -1,0 +1,36 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC "PUSHDOWN_TEST"
+    FOLDER = '/02_baseviews'
+    DATASOURCENAME="ds_RTGS"
+    SCHEMANAME='${databases.admin.folder.02_baseviews.views.jdbc.pushdown_test.SCHEMANAME}' 
+    RELATIONNAME='PUSHDOWN_TEST' 
+    OUTPUTSCHEMA (
+        "ID" = 'ID' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='38', sourcetypeid='2', sourcetypename='NUMBER')  NOT NULL SORTABLE,
+        data = 'data' :'java.lang.String' (OPT) (sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='VARCHAR2')  ESCAPE SORTABLE,
+        "UPDATE_TIME" = 'UPDATE_TIME' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='11', sourcetypeid='93', sourcetypename='TIMESTAMP(6)')  SORTABLE
+    )
+    CONSTRAINT 'PUSHDOWN_TEST_PK' PRIMARY KEY ( 'ID' )
+    INDEX 'PUSHDOWN_TEST_PK' CLUSTER UNIQUE PRIMARY ( 'ID' );
+
+CREATE OR REPLACE TABLE "bv_PUSHDOWN_TEST_2" I18N jp (
+        "ID":decimal (notnull, sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '38'),
+        data:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypesize = '50'),
+        "UPDATE_TIME":timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '11')
+    )
+    FOLDER = '/02_baseviews'
+    CONSTRAINT 'PUSHDOWN_TEST_PK' PRIMARY KEY ( 'ID' )
+    CACHE FULL CONDITION '"UPDATE_TIME">=''@LAST_REFRESH_DATE''' INCREMENTAL
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD "PUSHDOWN_TEST"(
+        I18N jp
+        CONSTRAINTS (
+             ADD "ID" (any) OPT ANY
+             ADD data (any) OPT ANY
+             ADD "UPDATE_TIME" (any) OPT ANY
+        )
+        OUTPUTLIST ("ID", "UPDATE_TIME", data
+        )
+        WRAPPER (jdbc "PUSHDOWN_TEST")
+    );
+

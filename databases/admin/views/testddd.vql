@@ -1,0 +1,294 @@
+﻿CREATE OR REPLACE WRAPPER DF testddd
+    DATASOURCENAME=testddd
+    OUTPUTSCHEMA (
+        "Column0" = 'Column0',
+        "Column1" = 'Column1',
+        "Column2" = 'Column2',
+        "Column3" = 'Column3',
+        "Column4" = 'Column4',
+        "Column5" = 'Column5',
+        "Column6" = 'Column6',
+        "Column7" = 'Column7',
+        "Column8" = 'Column8',
+        "Column9" = 'Column9',
+        "Column10" = 'Column10',
+        "Column11" = 'Column11',
+        "Column12" = 'Column12',
+        "Column13" = 'Column13',
+        "Column14" = 'Column14',
+        "Column15" = 'Column15',
+        "Column16" = 'Column16',
+        "Column17" = 'Column17',
+        "Column18" = 'Column18',
+        "Column19" = 'Column19',
+        "Column20" = 'Column20',
+        "Column21" = 'Column21',
+        "Column22" = 'Column22',
+        "Column23" = 'Column23',
+        "Column24" = 'Column24',
+        "Column25" = 'Column25',
+        "Column26" = 'Column26',
+        "Column27" = 'Column27',
+        "Column28" = 'Column28',
+        "Column29" = 'Column29',
+        "Column30" = 'Column30',
+        "Column31" = 'Column31',
+        "Column32" = 'Column32',
+        "Column33" = 'Column33',
+        "Column34" = 'Column34',
+        "Column35" = 'Column35',
+        "Column36" = 'Column36',
+        "Column37" = 'Column37',
+        "Column38" = 'Column38',
+        "Column39" = 'Column39',
+        "Column40" = 'Column40',
+        "Column41" = 'Column41',
+        "Column42" = 'Column42',
+        "Column43" = 'Column43',
+        "Column44" = 'Column44',
+        "Column45" = 'Column45',
+        "Column46" = 'Column46',
+        "Column47" = 'Column47',
+        "Column48" = 'Column48',
+        "Column49" = 'Column49',
+        "Column50" = 'Column50',
+        "Column51" = 'Column51',
+        "Column52" = 'Column52',
+        "Column53" = 'Column53',
+        "Column54" = 'Column54',
+        "Column55" = 'Column55',
+        "Column56" = 'Column56',
+        "Column57" = 'Column57',
+        "Column58" = 'Column58',
+        "Column59" = 'Column59',
+        "Column60" = 'Column60',
+        "Column61" = 'Column61',
+        "Column62" = 'Column62',
+        "Column63" = 'Column63',
+        "Column64" = 'Column64',
+        "Column65" = 'Column65',
+        "Column66" = 'Column66',
+        "Column67" = 'Column67',
+        "Column68" = 'Column68',
+        "Column69" = 'Column69',
+        "Column70" = 'Column70',
+        "Column71" = 'Column71',
+        "Column72" = 'Column72',
+        "Column73" = 'Column73',
+        "Column74" = 'Column74',
+        "Column75" = 'Column75',
+        "Column76" = 'Column76',
+        "Column77" = 'Column77',
+        "Column78" = 'Column78',
+        "Column79" = 'Column79',
+        "Column80" = 'Column80',
+        "Column81" = 'Column81',
+        "Column82" = 'Column82',
+        "Column83" = 'Column83',
+        "Column84" = 'Column84',
+        "Column85" = 'Column85',
+        "Column86" = 'Column86',
+        "Column87" = 'Column87',
+        "Column88" = 'Column88',
+        "Column89" = 'Column89',
+        "Column90" = 'Column90',
+        "Column91" = 'Column91'
+    );
+
+CREATE OR REPLACE TABLE testddd I18N jp (
+        "Column0":text,
+        "Column1":text,
+        "Column2":text,
+        "Column3":text,
+        "Column4":text,
+        "Column5":text,
+        "Column6":text,
+        "Column7":text,
+        "Column8":text,
+        "Column9":text,
+        "Column10":text,
+        "Column11":text,
+        "Column12":text,
+        "Column13":text,
+        "Column14":text,
+        "Column15":text,
+        "Column16":text,
+        "Column17":text,
+        "Column18":text,
+        "Column19":text,
+        "Column20":text,
+        "Column21":text,
+        "Column22":text,
+        "Column23":text,
+        "Column24":text,
+        "Column25":text,
+        "Column26":text,
+        "Column27":text,
+        "Column28":text,
+        "Column29":text,
+        "Column30":text,
+        "Column31":text,
+        "Column32":text,
+        "Column33":text,
+        "Column34":text,
+        "Column35":text,
+        "Column36":text,
+        "Column37":text,
+        "Column38":text,
+        "Column39":text,
+        "Column40":text,
+        "Column41":text,
+        "Column42":text,
+        "Column43":text,
+        "Column44":text,
+        "Column45":text,
+        "Column46":text,
+        "Column47":text,
+        "Column48":text,
+        "Column49":text,
+        "Column50":text,
+        "Column51":text,
+        "Column52":text,
+        "Column53":text,
+        "Column54":text,
+        "Column55":text,
+        "Column56":text,
+        "Column57":text,
+        "Column58":text,
+        "Column59":text,
+        "Column60":text,
+        "Column61":text,
+        "Column62":text,
+        "Column63":text,
+        "Column64":text,
+        "Column65":text,
+        "Column66":text,
+        "Column67":text,
+        "Column68":text,
+        "Column69":text,
+        "Column70":text,
+        "Column71":text,
+        "Column72":text,
+        "Column73":text,
+        "Column74":text,
+        "Column75":text,
+        "Column76":text,
+        "Column77":text,
+        "Column78":text,
+        "Column79":text,
+        "Column80":text,
+        "Column81":text,
+        "Column82":text,
+        "Column83":text,
+        "Column84":text,
+        "Column85":text,
+        "Column86":text,
+        "Column87":text,
+        "Column88":text,
+        "Column89":text,
+        "Column90":text,
+        "Column91":text
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD testddd(
+        I18N jp
+        CONSTRAINTS (
+             ADD "Column0" NOS ZERO ()
+             ADD "Column1" NOS ZERO ()
+             ADD "Column2" NOS ZERO ()
+             ADD "Column3" NOS ZERO ()
+             ADD "Column4" NOS ZERO ()
+             ADD "Column5" NOS ZERO ()
+             ADD "Column6" NOS ZERO ()
+             ADD "Column7" NOS ZERO ()
+             ADD "Column8" NOS ZERO ()
+             ADD "Column9" NOS ZERO ()
+             ADD "Column10" NOS ZERO ()
+             ADD "Column11" NOS ZERO ()
+             ADD "Column12" NOS ZERO ()
+             ADD "Column13" NOS ZERO ()
+             ADD "Column14" NOS ZERO ()
+             ADD "Column15" NOS ZERO ()
+             ADD "Column16" NOS ZERO ()
+             ADD "Column17" NOS ZERO ()
+             ADD "Column18" NOS ZERO ()
+             ADD "Column19" NOS ZERO ()
+             ADD "Column20" NOS ZERO ()
+             ADD "Column21" NOS ZERO ()
+             ADD "Column22" NOS ZERO ()
+             ADD "Column23" NOS ZERO ()
+             ADD "Column24" NOS ZERO ()
+             ADD "Column25" NOS ZERO ()
+             ADD "Column26" NOS ZERO ()
+             ADD "Column27" NOS ZERO ()
+             ADD "Column28" NOS ZERO ()
+             ADD "Column29" NOS ZERO ()
+             ADD "Column30" NOS ZERO ()
+             ADD "Column31" NOS ZERO ()
+             ADD "Column32" NOS ZERO ()
+             ADD "Column33" NOS ZERO ()
+             ADD "Column34" NOS ZERO ()
+             ADD "Column35" NOS ZERO ()
+             ADD "Column36" NOS ZERO ()
+             ADD "Column37" NOS ZERO ()
+             ADD "Column38" NOS ZERO ()
+             ADD "Column39" NOS ZERO ()
+             ADD "Column40" NOS ZERO ()
+             ADD "Column41" NOS ZERO ()
+             ADD "Column42" NOS ZERO ()
+             ADD "Column43" NOS ZERO ()
+             ADD "Column44" NOS ZERO ()
+             ADD "Column45" NOS ZERO ()
+             ADD "Column46" NOS ZERO ()
+             ADD "Column47" NOS ZERO ()
+             ADD "Column48" NOS ZERO ()
+             ADD "Column49" NOS ZERO ()
+             ADD "Column50" NOS ZERO ()
+             ADD "Column51" NOS ZERO ()
+             ADD "Column52" NOS ZERO ()
+             ADD "Column53" NOS ZERO ()
+             ADD "Column54" NOS ZERO ()
+             ADD "Column55" NOS ZERO ()
+             ADD "Column56" NOS ZERO ()
+             ADD "Column57" NOS ZERO ()
+             ADD "Column58" NOS ZERO ()
+             ADD "Column59" NOS ZERO ()
+             ADD "Column60" NOS ZERO ()
+             ADD "Column61" NOS ZERO ()
+             ADD "Column62" NOS ZERO ()
+             ADD "Column63" NOS ZERO ()
+             ADD "Column64" NOS ZERO ()
+             ADD "Column65" NOS ZERO ()
+             ADD "Column66" NOS ZERO ()
+             ADD "Column67" NOS ZERO ()
+             ADD "Column68" NOS ZERO ()
+             ADD "Column69" NOS ZERO ()
+             ADD "Column70" NOS ZERO ()
+             ADD "Column71" NOS ZERO ()
+             ADD "Column72" NOS ZERO ()
+             ADD "Column73" NOS ZERO ()
+             ADD "Column74" NOS ZERO ()
+             ADD "Column75" NOS ZERO ()
+             ADD "Column76" NOS ZERO ()
+             ADD "Column77" NOS ZERO ()
+             ADD "Column78" NOS ZERO ()
+             ADD "Column79" NOS ZERO ()
+             ADD "Column80" NOS ZERO ()
+             ADD "Column81" NOS ZERO ()
+             ADD "Column82" NOS ZERO ()
+             ADD "Column83" NOS ZERO ()
+             ADD "Column84" NOS ZERO ()
+             ADD "Column85" NOS ZERO ()
+             ADD "Column86" NOS ZERO ()
+             ADD "Column87" NOS ZERO ()
+             ADD "Column88" NOS ZERO ()
+             ADD "Column89" NOS ZERO ()
+             ADD "Column90" NOS ZERO ()
+             ADD "Column91" NOS ZERO ()
+        )
+        OUTPUTLIST ("Column0", "Column1", "Column10", "Column11", "Column12", "Column13", "Column14", "Column15", "Column16", "Column17", "Column18", "Column19", "Column2", "Column20", "Column21", "Column22", "Column23", "Column24", "Column25", "Column26", "Column27", "Column28", "Column29", "Column3", "Column30", "Column31", "Column32", "Column33", "Column34", "Column35", "Column36", "Column37", "Column38", "Column39", "Column4", "Column40", "Column41", "Column42", "Column43", "Column44", "Column45", "Column46", "Column47", "Column48", "Column49", "Column5", "Column50", "Column51", "Column52", "Column53", "Column54", "Column55", "Column56", "Column57", "Column58", "Column59", "Column6", "Column60", "Column61", "Column62", "Column63", "Column64", "Column65", "Column66", "Column67", "Column68", "Column69", "Column7", "Column70", "Column71", "Column72", "Column73", "Column74", "Column75", "Column76", "Column77", "Column78", "Column79", "Column8", "Column80", "Column81", "Column82", "Column83", "Column84", "Column85", "Column86", "Column87", "Column88", "Column89", "Column9", "Column90", "Column91"
+        )
+        WRAPPER (df testddd)
+    );
+

@@ -1,0 +1,32 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE JDBC athena
+    DRIVERCLASSNAME = 'com.simba.athena.jdbc.Driver'
+    DATABASEURI = '${databases.admin.datasources.jdbc.athena.DATABASEURI}'
+    USERNAME = '${databases.admin.datasources.jdbc.athena.USERNAME}'
+    USERPASSWORD = '${databases.admin.datasources.jdbc.athena.USERPASSWORD}' ${databases.admin.datasources.jdbc.athena.USERPASSWORD.ENCRYPTED}
+    CLASSPATH = 'amazon-athena-1.0'
+    DATABASENAME = 'athena'
+    DATABASEVERSION = '1_0'
+    FETCHSIZE = 1000
+    VALIDATIONQUERY = 'Select 1'
+    INITIALSIZE = 4
+    MAXIDLE = -1
+    MINIDLE = 0
+    MAXACTIVE = 20
+    EXHAUSTEDACTION = 1
+    TESTONBORROW = true
+    TESTONRETURN = false
+    TESTWHILEIDLE = false
+    TIMEBETWEENEVICTION = -1
+    NUMTESTPEREVICTION = 3
+    MINEVICTABLETIME = 1800000
+    POOLPREPAREDSTATEMENTS = false
+    MAXOPENPREPAREDSTATEMENTS = -1
+    OAUTHPROPERTIES ('AwsCredentialsProviderClass'='com.simba.athena.iamsupport.plugin.JwtCredentialsProvider')
+    DATA_LOAD_CONFIGURATION (
+        BATCHINSERTSIZE = 200
+    )
+    SOURCECONFIGURATION (
+        delegateanalyticfunctionslist = (avg, cume_dist, dense_rank, first_value, lag, last_value, lead, max, min, ntile, percent_rank, rank, row_number, sum)
+    );
+

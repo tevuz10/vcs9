@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW files_j_filesystem AS SELECT files."PATH" AS "PATH", files."Column0" AS "Column0", files."Column1" AS "Column1", filesystem.parentfolder AS parentfolder, filesystem.recursive AS recursive FROM files AS files INNER JOIN filesystem AS filesystem ON files."PATH" = filesystem.fullpath ;
+
+ALTER VIEW files_j_filesystem
+ LAYOUT (files = [20, 20, 200, 200], filesystem = [286, 15, 200, 200]);
+

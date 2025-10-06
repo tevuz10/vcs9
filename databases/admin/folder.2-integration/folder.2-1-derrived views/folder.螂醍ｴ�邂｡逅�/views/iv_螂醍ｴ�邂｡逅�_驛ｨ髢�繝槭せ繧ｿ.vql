@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW "iv_螂醍ｴ�邂｡逅�_驛ｨ髢�繝槭せ繧ｿ" FOLDER = '/2-integration/2-1-derrived views/螂醍ｴ�邂｡逅�'
+    PRIMARY KEY ( 'kaishacd' , 'juchbg' , 'jucheda' , 'rban' ) AS SELECT iv_v_keiyk_rownum.kaishacd AS kaishacd, iv_v_keiyk_rownum.juchbg AS juchbg, iv_v_keiyk_rownum.jucheda AS jucheda, iv_v_keiyk_rownum.rban AS rban, iv_v_bumn.bumnmei_seisk AS eigybumn_bumnmei_seisk, iv_v_bumn1.bumnmei_seisk AS keiykbumn_bumnmei_seisk FROM (iv_v_keiyk_rownum AS iv_v_keiyk_rownum LEFT OUTER JOIN iv_v_bumn AS iv_v_bumn ON (iv_v_keiyk_rownum.kaishacd = iv_v_bumn.kaishacd AND iv_v_keiyk_rownum.eigybumncd = iv_v_bumn.bumncd) ) LEFT OUTER JOIN iv_v_bumn AS iv_v_bumn1 ON (iv_v_keiyk_rownum.kaishacd = iv_v_bumn1.kaishacd AND iv_v_keiyk_rownum.keiykbumncd = iv_v_bumn1.bumncd)  WHERE iv_v_keiyk_rownum.rownum = 1;
+
+ALTER VIEW "iv_螂醍ｴ�邂｡逅�_驛ｨ髢�繝槭せ繧ｿ"
+ LAYOUT (iv_v_keiyk_rownum = [137, 16, 200, 200], iv_v_bumn = [363, 151, 200, 200], iv_v_bumn = [365, 260, 200, 200]);
+

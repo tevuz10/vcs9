@@ -1,0 +1,29 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE CUSTOM "ds_forms_t-1"
+    FOLDER = '/test'
+    CLASSNAME='com.denodo.vdb.contrib.wrapper.xls.ExcelWrapper';
+
+CREATE OR REPLACE WRAPPER CUSTOM "ds_forms_t-1"
+    FOLDER = '/test'
+    DATASOURCENAME="ds_forms_t-1"
+    PARAMETERS (
+      'Type of file' = 'Excel 2007 or later (*.xlsx)',
+      'File location' = ROUTE LOCAL 'LocalConnection' '${databases.admin.folder.test.views.custom.ds_forms_t-1.File location.ROUTE.LOCAL.PATH}',
+      'Worksheet' = 'Sheet1',
+      'Extract data from all sheets' = false,
+      'Extract sheet name as a new column' = false,
+      'Has headers' = true,
+      'Stream tuples' = true
+    )
+    OUTPUTSCHEMA (
+        "Id" = 'Id' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+        "開始時刻" = '開始時刻' : 'java.time.LocalDateTime' (OPT) (sourcetypeid='93')  SORTABLE,
+        "完了時刻" = '完了時刻' : 'java.time.LocalDateTime' (OPT) (sourcetypeid='93')  SORTABLE,
+        "メール" = 'メール' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        "名前" = '名前' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        "あなたの所属は" = 'あなたの所属は' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        "このアンケートの満足度を教えてください。" = 'このアンケートの満足度を教えてください。' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+        "ご意見・ご感想があればお聞かせください。" = 'ご意見・ご感想があればお聞かせください。' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        "VARIABLENAME" = 'VARIABLENAME' : 'java.lang.String' (OBL) (DEFAULTVALUE='適当なアンケート.xlsx')  EXTERN NOT SORTABLE NOT UPDATEABLE
+    );
+

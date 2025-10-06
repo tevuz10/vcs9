@@ -1,0 +1,8 @@
+﻿CREATE OR REPLACE VIEW iv_catalog_tag_views FOLDER = '/api/catalog_tags/3.integrationview' (
+    serverid (description = 'データソースの設定を手動で設定')
+ )
+ AS SELECT bv_catalog_tags.id AS tag_id, bv_catalog_tags.name AS tag_name, (('"'||bv_catalog_tags.description)||'"') AS tag_description, 1 AS serverid, bv_catalog_tag_views_para."databaseName" AS "databaseName", bv_catalog_tag_views_para.name AS view_name FROM bv_catalog_tag_views_para AS bv_catalog_tag_views_para INNER JOIN bv_catalog_tags AS bv_catalog_tags ON bv_catalog_tag_views_para."TAGID" = bv_catalog_tags.id ;
+
+ALTER VIEW iv_catalog_tag_views
+ LAYOUT (bv_catalog_tag_views_para = [30, 20, 200, 105], bv_catalog_tags = [291, 42, 200, 105]);
+

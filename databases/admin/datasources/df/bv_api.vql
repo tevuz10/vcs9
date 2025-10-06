@@ -1,0 +1,25 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE DF bv_api
+    ROUTE HTTP 'http.ApacheHttpClientConnection,120000' GET '${databases.admin.datasources.df.bv_api.ROUTE.HTTP.URL}'
+    CHECKCERTIFICATES
+    GENERATE_OUTPUT_ON_EMPTY_CONTENT
+ AUTHENTICATION OAUTH20 ( 
+      ACCESSTOKEN = '${databases.admin.datasources.df.bv_api.ROUTE.HTTP.ACCESSTOKEN}' ${databases.admin.datasources.df.bv_api.ROUTE.HTTP.ACCESSTOKEN.ENCRYPTED}
+      REQUESTSIGNINGMETHOD = ${databases.admin.datasources.df.bv_api.ROUTE.HTTP.REQUESTSIGNINGMETHOD}
+      AUTHENTICATION_GRANT = ${databases.admin.datasources.df.bv_api.ROUTE.AUTHENTICATION.GRANT}
+      TOKENENDPOINTURL = '${databases.admin.datasources.df.bv_api.ROUTE.HTTP.TOKENENDPOINTURL}'
+      CLIENTIDENTIFIER = '${databases.admin.datasources.df.bv_api.ROUTE.HTTP.CLIENTIDENTIFIER}'
+      CLIENTSECRET = '${databases.admin.datasources.df.bv_api.ROUTE.HTTP.CLIENTSECRET}' ${databases.admin.datasources.df.bv_api.ROUTE.HTTP.CLIENTSECRET.ENCRYPTED}
+      AUTHENTICATION_METHOD_OF_AUTHORIZATION_SERVERS = ${databases.admin.datasources.df.bv_api.ROUTE.HTTP.AUTHENTICATION_METHOD_OF_AUTHORIZATION_SERVERS}
+      ACCESSTOKENEXPIRESIN = ${databases.admin.datasources.df.bv_api.ROUTE.HTTP.ACCESSTOKENEXPIRESIN}
+      AUTHORIZATIONSERVERURL = '${databases.admin.datasources.df.bv_api.ROUTE.HTTP.AUTHORIZATIONSERVERURL}'
+      REDIRECTIONENDPOINTURL = ${databases.admin.datasources.df.bv_api.ROUTE.HTTP.REDIRECTIONENDPOINTURL}
+      SCOPES = ${databases.admin.datasources.df.bv_api.ROUTE.HTTP.SCOPES}
+      SETSTATEPARAMETER = ${databases.admin.datasources.df.bv_api.ROUTE.HTTP.SETSTATEPARAMETER}
+    )
+    PROXY OFF
+    CHARSET = 'UTF-8'
+    COLUMNDELIMITER = ','
+    ENDOFLINEDELIMITER = '\n'
+    HEADER = FALSE;
+

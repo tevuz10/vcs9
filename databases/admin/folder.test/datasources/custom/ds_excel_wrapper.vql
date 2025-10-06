@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE DATASOURCE CUSTOM ds_excel_wrapper
+    FOLDER = '/test'
+    CLASSNAME='com.denodo.connect.filesystem.ReadFileSystemConnector'
+    JARS 'denodo-filesystem-customwrapper';
+

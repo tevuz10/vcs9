@@ -1,0 +1,10 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE LDAP ds_ldap
+    FOLDER = '/ad'
+    URI='${databases.admin.folder.ad.datasources.ldap.ds_ldap.URI}'
+    USERNAME='${databases.admin.folder.ad.datasources.ldap.ds_ldap.USERNAME}'
+    USERPASSWORD='${databases.admin.folder.ad.datasources.ldap.ds_ldap.USERPASSWORD}' ${databases.admin.folder.ad.datasources.ldap.ds_ldap.USERPASSWORD.ENCRYPTED}
+    USEPAGING=FALSE
+    MAXPAGESIZE=1000
+    POOL_ENABLED = TRUE;
+

@@ -1,0 +1,25 @@
+﻿CREATE OR REPLACE WRAPPER DF gsp
+    DATASOURCENAME=gsp
+    OUTPUTSCHEMA (
+        "ID" = 'ID',
+        email = 'email'
+    );
+
+CREATE OR REPLACE TABLE gsp I18N jp (
+        "ID":text,
+        email:text
+    )
+    TAGS (confidential)
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD gsp(
+        I18N jp
+        CONSTRAINTS (
+             ADD "ID" NOS ZERO ()
+             ADD email NOS ZERO ()
+        )
+        OUTPUTLIST ("ID", email
+        )
+        WRAPPER (df gsp)
+    );
+

@@ -1,0 +1,27 @@
+﻿CREATE OR REPLACE WRAPPER DF test_new
+    DATASOURCENAME=test
+    OUTPUTSCHEMA (
+        "Column0" = 'Column0',
+        "Column1" = 'Column1',
+        "Column2" = 'Column2'
+    );
+
+CREATE OR REPLACE TABLE test_new I18N jp (
+        "Column0":text,
+        "Column1":text,
+        "Column2":text
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD test_new(
+        I18N jp
+        CONSTRAINTS (
+             ADD "Column0" NOS ZERO ()
+             ADD "Column1" NOS ZERO ()
+             ADD "Column2" NOS ZERO ()
+        )
+        OUTPUTLIST ("Column0", "Column1", "Column2"
+        )
+        WRAPPER (df test_new)
+    );
+

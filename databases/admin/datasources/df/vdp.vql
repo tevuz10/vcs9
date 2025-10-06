@@ -1,0 +1,18 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE DF "VDP"
+    ROUTE HTTP 'http.ApacheHttpClientConnection,120000' GET '${databases.admin.datasources.df.vdp.ROUTE.HTTP.URL}'
+    CHECKCERTIFICATES
+    GENERATE_OUTPUT_ON_EMPTY_CONTENT
+ AUTHENTICATION OAUTH20 ( 
+      ACCESSTOKEN = '${databases.admin.datasources.df.vdp.ROUTE.HTTP.ACCESSTOKEN}' ${databases.admin.datasources.df.vdp.ROUTE.HTTP.ACCESSTOKEN.ENCRYPTED}
+      REQUESTSIGNINGMETHOD = ${databases.admin.datasources.df.vdp.ROUTE.HTTP.REQUESTSIGNINGMETHOD}
+      AUTHENTICATION_GRANT = ${databases.admin.datasources.df.vdp.ROUTE.AUTHENTICATION.GRANT}
+      CLIENTIDENTIFIER = '${databases.admin.datasources.df.vdp.ROUTE.HTTP.CLIENTIDENTIFIER}'
+      CLIENTSECRET = '${databases.admin.datasources.df.vdp.ROUTE.HTTP.CLIENTSECRET}' ${databases.admin.datasources.df.vdp.ROUTE.HTTP.CLIENTSECRET.ENCRYPTED}
+    )
+    PROXY OFF
+    CHARSET = 'UTF-8'
+    COLUMNDELIMITER = ','
+    ENDOFLINEDELIMITER = '\n'
+    HEADER = FALSE;
+

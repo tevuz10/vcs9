@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW iv_v_nokikait FOLDER = '/2-integration' DESCRIPTION = '邏肴悄蝗樒ｭ�' 
+    PRIMARY KEY ( 'kaishacd' , 'hatchbg' , 'hatchhans' , 'hatchmeisrban' , 'knshyoteirban' , 'nokikairban' ) AS SELECT bv_v_nokikait.kaishacd AS kaishacd, bv_v_nokikait.hatchbg AS hatchbg, bv_v_nokikait.hatchhans AS hatchhans, bv_v_nokikait.hatchmeisrban AS hatchmeisrban, bv_v_nokikait.knshyoteirban AS knshyoteirban, bv_v_nokikait.nokikairban AS nokikairban, bv_v_nokikait.nohnsury AS nohnsury, bv_v_nokikait.nohntani AS nohntani, bv_v_nokikait.noki AS noki, bv_v_nokikait.nokikaitnaiy AS nokikaitnaiy, bv_v_nokikait.nokikaithenkonaiy AS nokikaithenkonaiy, bv_v_nokikait.nokikaitcomnt AS nokikaitcomnt, bv_v_nokikait.koshnnichj_edi AS koshnnichj_edi, bv_v_nokikait.saprnkeijtaikb AS saprnkeijtaikb, bv_v_nokikait.sakjflg AS sakjflg, bv_v_nokikait.skseibi AS skseibi, bv_v_nokikait.skseishabumncd AS skseishabumncd, bv_v_nokikait.skseishashaincd AS skseishashaincd, bv_v_nokikait.skseipgid AS skseipgid, bv_v_nokikait.kshinbi AS kshinbi, bv_v_nokikait.kshinshabumncd AS kshinshabumncd, bv_v_nokikait.kshinshashaincd AS kshinshashaincd, bv_v_nokikait.kshinpgid AS kshinpgid, bv_v_nokikait.rvs AS rvs FROM bv_v_nokikait;
+
+ALTER VIEW iv_v_nokikait
+ LAYOUT (bv_v_nokikait = [20, 20, 200, 200]);
+

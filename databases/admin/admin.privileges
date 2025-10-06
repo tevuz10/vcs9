@@ -1,0 +1,40 @@
+ALTER ROLE "Accounting"
+GRANT ADMIN ON admin;
+
+ALTER ROLE allusers
+GRANT ADMIN ON admin;
+
+ALTER ROLE denodo_read
+GRANT ADMIN ON admin;
+
+ALTER ROLE openid
+GRANT ADMIN ON admin;
+
+ALTER USER "odbc"
+GRANT ADMIN ON admin;
+
+ALTER USER hrice
+GRANT ADMIN ON admin;
+
+ALTER ROLE "IT"
+GRANT ADMIN ON admin;
+
+ALTER USER miu
+GRANT CONNECT ON admin;
+
+ALTER ROLE writer
+GRANT CONNECT, METADATA, EXECUTE ON admin;
+
+ALTER ROLE oauth_read
+GRANT ROLE assign_all_privileges,serveradmin,assignprivileges,scheduler_admin,monitor_admin,"Administration",assign_vdb_admin_privileges,data_catalog_admin,data_catalog_content_admin,diagnostic_monitoring_tool_admin,jmxadmin,saas_server_admin,selfserviceadmin
+GRANT ADMIN ON admin;
+
+ALTER USER api
+GRANT ADMIN ON admin;
+
+ALTER USER catalog2
+GRANT CONNECT ON admin;
+
+ALTER ROLE vdp_developer
+GRANT CONNECT, CREATE, METADATA, EXECUTE, WRITE ON admin;
+

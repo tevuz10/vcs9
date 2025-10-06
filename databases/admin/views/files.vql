@@ -1,0 +1,27 @@
+﻿CREATE OR REPLACE WRAPPER DF files
+    DATASOURCENAME=files
+    OUTPUTSCHEMA (
+        "PATH" = 'PATH' (OBL) (DEFAULTVALUE='C:\Users\TatsuyaZenbutsu\Downloads\deli') EXTERN,
+        "Column0" = 'Column0',
+        "Column1" = 'Column1'
+    );
+
+CREATE OR REPLACE TABLE files I18N jp (
+        "PATH":text (extern),
+        "Column0":text,
+        "Column1":text
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD files(
+        I18N jp
+        CONSTRAINTS (
+             ADD "PATH" (=) OBL ONE
+             ADD "Column0" NOS ZERO ()
+             ADD "Column1" NOS ZERO ()
+        )
+        OUTPUTLIST ("Column0", "Column1"
+        )
+        WRAPPER (df files)
+    );
+

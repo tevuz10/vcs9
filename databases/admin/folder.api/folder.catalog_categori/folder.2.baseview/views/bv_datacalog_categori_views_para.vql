@@ -1,0 +1,85 @@
+﻿CREATE OR REPLACE WRAPPER JSON bv_datacalog_categori_views_para
+    FOLDER = '/api/catalog_categori/2.baseview'
+    DATASOURCENAME=ds_datacalog_categori_views
+    TUPLEROOT '/JSONFile/JSONArray'
+    OUTPUTSCHEMA ("JSONFile" = 'JSONFile' : REGISTER OF (
+        "CATE_ID" = 'CATE_ID' : 'java.lang.String' (OBL) (DEFAULTVALUE='1') EXTERN URIPARAM,
+        id = 'JSONFile.JSONArray.id' : 'java.lang.Integer',
+        name = 'JSONFile.JSONArray.name' : 'java.lang.String',
+        description = 'JSONFile.JSONArray.description' : 'java.lang.String',
+        "descriptionType" = 'JSONFile.JSONArray.descriptionType' : 'java.lang.String',
+        "lastModificationVdpData" = 'JSONFile.JSONArray.lastModificationVdpData' : 'java.lang.String',
+        "lastModificationIsstData" = 'JSONFile.JSONArray.lastModificationIsstData' : 'java.lang.String',
+        "matchedFields" = 'JSONFile.JSONArray.matchedFields' : 'java.lang.String',
+        "database" = 'JSONFile.JSONArray.database' : REGISTER OF (
+            "databaseId" = 'databaseId' : 'java.lang.Integer',
+            "serverId" = 'serverId' : 'java.lang.Integer',
+            "databaseName" = 'databaseName' : 'java.lang.String',
+            description = 'description' : 'java.lang.String',
+            "descriptionType" = 'descriptionType' : 'java.lang.String',
+            "matchedCustomProperties" = 'matchedCustomProperties' : 'java.lang.String'
+        ),
+        categories = 'JSONFile.JSONArray.categories' : 'java.lang.String',
+        tags = 'JSONFile.JSONArray.tags' : 'java.lang.String',
+        "matchedCustomProperties" = 'JSONFile.JSONArray.matchedCustomProperties' : 'java.lang.String',
+        "countEndorsements" = 'JSONFile.JSONArray.countEndorsements' : 'java.lang.String',
+        "countWarnings" = 'JSONFile.JSONArray.countWarnings' : 'java.lang.String',
+        "countDeprecations" = 'JSONFile.JSONArray.countDeprecations' : 'java.lang.String',
+        ranking = 'JSONFile.JSONArray.ranking' : 'java.lang.String'
+    )
+    );
+
+CREATE OR REPLACE TYPE ds_datacalog_categori_views_database AS REGISTER OF ("databaseId":int, "serverId":int, "databaseName":text, description:text, "descriptionType":text, "matchedCustomProperties":text);
+
+CREATE OR REPLACE TABLE bv_datacalog_categori_views_para I18N jp (
+        "CATE_ID":text (extern),
+        id:int,
+        name:text,
+        description:text,
+        "descriptionType":text,
+        "lastModificationVdpData":text,
+        "lastModificationIsstData":text,
+        "matchedFields":text,
+        "database":ds_datacalog_categori_views_database,
+        categories:text,
+        tags:text,
+        "matchedCustomProperties":text,
+        "countEndorsements":text,
+        "countWarnings":text,
+        "countDeprecations":text,
+        ranking:text
+    )
+    FOLDER = '/api/catalog_categori/2.baseview'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_datacalog_categori_views_para(
+        I18N jp
+        CONSTRAINTS (
+             ADD "CATE_ID" (=) OBL ONE
+             ADD id NOS ZERO ()
+             ADD name NOS ZERO ()
+             ADD description NOS ZERO ()
+             ADD "descriptionType" NOS ZERO ()
+             ADD "lastModificationVdpData" NOS ZERO ()
+             ADD "lastModificationIsstData" NOS ZERO ()
+             ADD "matchedFields" NOS ZERO ()
+             ADD "database" NOS ZERO ()
+             ADD "database"."databaseId" NOS ZERO ()
+             ADD "database"."serverId" NOS ZERO ()
+             ADD "database"."databaseName" NOS ZERO ()
+             ADD "database".description NOS ZERO ()
+             ADD "database"."descriptionType" NOS ZERO ()
+             ADD "database"."matchedCustomProperties" NOS ZERO ()
+             ADD categories NOS ZERO ()
+             ADD tags NOS ZERO ()
+             ADD "matchedCustomProperties" NOS ZERO ()
+             ADD "countEndorsements" NOS ZERO ()
+             ADD "countWarnings" NOS ZERO ()
+             ADD "countDeprecations" NOS ZERO ()
+             ADD ranking NOS ZERO ()
+        )
+        OUTPUTLIST (categories, "countDeprecations", "countEndorsements", "countWarnings", "database", description, "descriptionType", id, "lastModificationIsstData", "lastModificationVdpData", "matchedCustomProperties", "matchedFields", name, ranking, tags
+        )
+        WRAPPER (json bv_datacalog_categori_views_para)
+    );
+

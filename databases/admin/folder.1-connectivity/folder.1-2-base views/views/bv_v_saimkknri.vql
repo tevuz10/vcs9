@@ -1,0 +1,90 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_v_saimkknri
+    FOLDER = '/1-connectivity/1-2-base views'
+    DATASOURCENAME=ds_gloviasmart_dev
+    SCHEMANAME='${databases.admin.folder.1-connectivity.folder.1-2-base views.views.jdbc.bv_v_saimkknri.SCHEMANAME}' ESCAPE
+    RELATIONNAME='v_saimkknri' 
+    OUTPUTSCHEMA (
+        kaishacd = 'kaishacd' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='2', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        saimkkshucd = 'saimkkshucd' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        hinmei = 'hinmei' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='30', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        shiy = 'shiy' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='30', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        hyjntani = 'hyjntani' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='6', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        hyjntank = 'hyjntank' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='13', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        hyjngnkahimkcd = 'hyjngnkahimkcd' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='5', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        jigyshur = 'jigyshur' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        makercd = 'makercd' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='4', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        shiyfukflg = 'shiyfukflg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='1', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        yukohizk_from = 'yukohizk_from' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='29', sourcetypeid='93', sourcetypename='timestamp')  SORTABLE,
+        yukohizk_to = 'yukohizk_to' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='29', sourcetypeid='93', sourcetypename='timestamp')  SORTABLE,
+        skseibi = 'skseibi' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='29', sourcetypeid='93', sourcetypename='timestamp')  SORTABLE,
+        skseishabumncd = 'skseishabumncd' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='12', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        skseishashaincd = 'skseishashaincd' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='12', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        skseipgid = 'skseipgid' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='9', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        kshinbi = 'kshinbi' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='29', sourcetypeid='93', sourcetypename='timestamp')  SORTABLE,
+        kshinshabumncd = 'kshinshabumncd' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='12', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        kshinshashaincd = 'kshinshashaincd' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='12', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        kshinpgid = 'kshinpgid' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='9', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        rvs = 'rvs' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='16', sourcetypeid='2', sourcetypename='numeric')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE bv_v_saimkknri I18N jp (
+        kaishacd:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '2'),
+        saimkkshucd:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        hinmei:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '30'),
+        shiy:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '30'),
+        hyjntani:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '6'),
+        hyjntank:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '13'),
+        hyjngnkahimkcd:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '5'),
+        jigyshur:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        makercd:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '4'),
+        shiyfukflg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '1'),
+        yukohizk_from:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '29'),
+        yukohizk_to:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '29'),
+        skseibi:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '29'),
+        skseishabumncd:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '12'),
+        skseishashaincd:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '12'),
+        skseipgid:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '9'),
+        kshinbi:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '29'),
+        kshinshabumncd:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '12'),
+        kshinshashaincd:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '12'),
+        kshinpgid:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '9'),
+        rvs:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '16')
+    )
+    FOLDER = '/1-connectivity/1-2-base views'
+    DESCRIPTION = '邏ｰ逶ｮ邂｡逅�繝槭せ繧ｿ'
+    PRIMARY KEY ( 'kaishacd' , 'saimkkshucd' )
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE NOEXPIRE
+    ADD SEARCHMETHOD bv_v_saimkknri(
+        I18N jp
+        CONSTRAINTS (
+             ADD kaishacd (any) OPT ANY
+             ADD saimkkshucd (any) OPT ANY
+             ADD hinmei (any) OPT ANY
+             ADD shiy (any) OPT ANY
+             ADD hyjntani (any) OPT ANY
+             ADD hyjntank (any) OPT ANY
+             ADD hyjngnkahimkcd (any) OPT ANY
+             ADD jigyshur (any) OPT ANY
+             ADD makercd (any) OPT ANY
+             ADD shiyfukflg (any) OPT ANY
+             ADD yukohizk_from (any) OPT ANY
+             ADD yukohizk_to (any) OPT ANY
+             ADD skseibi (any) OPT ANY
+             ADD skseishabumncd (any) OPT ANY
+             ADD skseishashaincd (any) OPT ANY
+             ADD skseipgid (any) OPT ANY
+             ADD kshinbi (any) OPT ANY
+             ADD kshinshabumncd (any) OPT ANY
+             ADD kshinshashaincd (any) OPT ANY
+             ADD kshinpgid (any) OPT ANY
+             ADD rvs (any) OPT ANY
+        )
+        OUTPUTLIST (hinmei, hyjngnkahimkcd, hyjntani, hyjntank, jigyshur, kaishacd, kshinbi, kshinpgid, kshinshabumncd, kshinshashaincd, makercd, rvs, saimkkshucd, shiy, shiyfukflg, skseibi, skseipgid, skseishabumncd, skseishashaincd, yukohizk_from, yukohizk_to
+        )
+        WRAPPER (jdbc bv_v_saimkknri)
+    )
+    DECLARE CACHE INDEX idx_v_saimkknri UNIQUE  ON (kaishacd, saimkkshucd);
+

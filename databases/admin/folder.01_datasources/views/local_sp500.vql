@@ -1,0 +1,46 @@
+﻿CREATE OR REPLACE WRAPPER DF local_sp500
+    FOLDER = '/01_datasources'
+    DATASOURCENAME=local_sp500
+    OUTPUTSCHEMA (
+        date = 'Date',
+        open = 'Open',
+        high = 'High',
+        low = 'Low',
+        close = 'Close',
+        adjclose_0 = 'Adj Close',
+        volume = 'Volume',
+        ticker = 'Ticker'
+    );
+
+CREATE OR REPLACE TABLE local_sp500 I18N jp (
+        date:text,
+        open:text,
+        high:text,
+        low:text,
+        close:text,
+        adjclose_0:text,
+        volume:text,
+        ticker:text
+    )
+    FOLDER = '/01_datasources'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD local_sp500(
+        I18N jp
+        CONSTRAINTS (
+             ADD date NOS ZERO ()
+             ADD open NOS ZERO ()
+             ADD high NOS ZERO ()
+             ADD low NOS ZERO ()
+             ADD close NOS ZERO ()
+             ADD adjclose_0 NOS ZERO ()
+             ADD volume NOS ZERO ()
+             ADD ticker NOS ZERO ()
+        )
+        OUTPUTLIST (adjclose_0, close, date, high, low, open, ticker, volume
+        )
+        WRAPPER (df local_sp500)
+    )
+    DECLARE VIEW HASH INDEX shs ON (date)
+    ATSOURCE_THROUGH_VDP_ONLY;
+

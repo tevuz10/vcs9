@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW "iv_scheduler_jobs_必要項目のみ" FOLDER = '/api/joblist' AS SELECT DISTINCT type AS type, id AS id, "projectId" AS "projectId", "projectName" AS "projectName", name AS name, draft AS draft, disabled AS disabled, description AS description, "cronExpression" AS "handlerSection_cronExpression", "executeAnyway" AS "handlerSection_executeAnyway", "triggerSection_triggers_dependencyInfo_jobIDs_field_0" AS "dependencyInfo_jobIDs" FROM FLATTEN bv_scheduler_jobs AS v ( v."extractionSection".loadprocesses) ( v."extractionSection"."extractionData".fields) ( v."handlerSection".handlers AS field0, field0."mailAddresses") ( v."handlerSection".handlers AS field1, field1.send) ( v."triggerSection".triggers AS field2, field2."dependencyInfo"."jobIDs");
+
+ALTER VIEW "iv_scheduler_jobs_必要項目のみ"
+ LAYOUT (bv_scheduler_jobs = [20, 20, 200, 105]);
+

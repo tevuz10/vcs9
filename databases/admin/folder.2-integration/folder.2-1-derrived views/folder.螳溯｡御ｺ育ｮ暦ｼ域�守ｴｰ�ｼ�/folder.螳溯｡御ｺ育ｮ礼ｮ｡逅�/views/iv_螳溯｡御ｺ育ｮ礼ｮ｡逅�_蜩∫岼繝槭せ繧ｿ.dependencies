@@ -1,0 +1,18 @@
+﻿*/databases/admin/folder.2-integration/2-integration.vql
+*/databases/admin/folder.2-integration/folder.2-1-derrived views/2-1-derrived views.vql
+*/databases/admin/folder.2-integration/folder.2-1-derrived views/folder.螳溯｡御ｺ育ｮ暦ｼ域�守ｴｰ�ｼ�/螳溯｡御ｺ育ｮ暦ｼ域�守ｴｰ�ｼ�.vql
+1/databases/admin/folder.2-integration/folder.2-1-derrived views/folder.螳溯｡御ｺ育ｮ暦ｼ域�守ｴｰ�ｼ�/folder.螳溯｡御ｺ育ｮ礼ｮ｡逅�/螳溯｡御ｺ育ｮ礼ｮ｡逅�.vql
+*/databases/admin/folder.2-integration/folder.2-1-derrived views/folder.2-1-1-rownum views/2-1-1-rownum views.vql
+*/databases/admin/folder.1-connectivity/1-connectivity.vql
+*/databases/admin/folder.1-connectivity/folder.1-2-base views/1-2-base views.vql
+*/databases/admin/folder.1-connectivity/folder.1-1-data sources/1-1-data sources.vql
+*/databases/admin/folder.1-connectivity/folder.1-1-data sources/datasources/jdbc/ds_gloviasmart_dev.vql
+*/databases/admin/folder.1-connectivity/folder.1-2-base views/views/bv_v_jysn.vql
+1/databases/admin/folder.2-integration/folder.2-1-derrived views/folder.2-1-1-rownum views/views/iv_v_jysn_rownum.vql
+*/databases/admin/folder.1-connectivity/folder.1-2-base views/views/bv_v_seko.vql
+1/databases/admin/folder.2-integration/views/iv_v_seko.vql
+*/databases/admin/folder.1-connectivity/folder.1-2-base views/views/bv_v_himk.vql
+1/databases/admin/folder.2-integration/views/iv_v_himk.vql
+*/databases/admin/folder.2-integration/folder.2-1-derrived views/folder.2-1-1-rownum views/views/iv_v_jysn_rownum.vql
+*/databases/admin/folder.2-integration/views/iv_v_himk.vql
+*/databases/admin/folder.2-integration/views/iv_v_seko.vql

@@ -1,0 +1,2 @@
+﻿CREATE OR REPLACE VIEW date_master FOLDER = '/3_邨ｱ蜷医ン繝･繝ｼ/逕溽肇邂｡逅�陦ｨ/iotpf騾｣謳ｺ/蛻郁ｰｷ/繝ｬ繧ｹ繝昴φ繧ｹ謾ｹ蝟�讀懆ｨｼ' AS SELECT (current_date()-to_interval_day_second((1*number_master.serial_number), 'DAY')) AS date_value FROM number_master;
+

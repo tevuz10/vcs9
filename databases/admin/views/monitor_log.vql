@@ -1,0 +1,21 @@
+﻿CREATE OR REPLACE WRAPPER DF monitor_log
+    DATASOURCENAME=monitor_log
+    OUTPUTSCHEMA (
+        "Loggingstartedat20250116T091005035DenodoMonitor910startedat20250116T091003062VDPServer910startedat_0" = 'Logging started at: 2025-01-16T09:10:05.035. Denodo Monitor 9.1.0 started at: 2025-01-16T09:10:03.062. VDP Server 9.1.0 started at: 2025-01-15T09:12:29.059'
+    );
+
+CREATE OR REPLACE TABLE monitor_log I18N jp (
+        "Loggingstartedat20250116T091005035DenodoMonitor910startedat20250116T091003062VDPServer910startedat_0":text
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD monitor_log(
+        I18N jp
+        CONSTRAINTS (
+             ADD "Loggingstartedat20250116T091005035DenodoMonitor910startedat20250116T091003062VDPServer910startedat_0" NOS ZERO ()
+        )
+        OUTPUTLIST ("Loggingstartedat20250116T091005035DenodoMonitor910startedat20250116T091003062VDPServer910startedat_0"
+        )
+        WRAPPER (df monitor_log)
+    );
+

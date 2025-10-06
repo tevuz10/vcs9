@@ -1,0 +1,17 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE JSON test
+    FOLDER = '/01_datasources'
+    ROUTE HTTP 'http.ApacheHttpClientConnection,120000' POST '${databases.admin.folder.01_datasources.datasources.json.test.ROUTE.HTTP.URL}'
+    BODY_FORM_PARAMETERS (
+        'grant_type'='password', 
+        'client_id'='denodo80', 
+        'username'='dcox19', 
+        'password'='Denodo00', 
+        'client_secret'='2EP4nyLuf65xHch4kKiwV1m8737g18rf'
+    )
+    MIME 'application/x-www-form-urlencoded'
+    GENERATE_OUTPUT_ON_EMPTY_CONTENT
+ AUTHENTICATION OFF
+    PROXY OFF
+    CHARSET = 'UTF-8';
+

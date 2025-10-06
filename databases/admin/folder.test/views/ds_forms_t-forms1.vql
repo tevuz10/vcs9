@@ -1,0 +1,30 @@
+﻿CREATE OR REPLACE TABLE "ds_forms_t-forms1" I18N jp (
+        "Id":int (sourcetypeid = '4'),
+        "開始時刻":timestamp (sourcetypeid = '93'),
+        "完了時刻":timestamp (sourcetypeid = '93'),
+        "メール":text (sourcetypeid = '12'),
+        "名前":text (sourcetypeid = '12'),
+        "犬派？猫派？":text (sourcetypeid = '12'),
+        "犬・猫を飼うとしたら毛並みの色は？":text (sourcetypeid = '12'),
+        "名前を付けるとしたら":text (sourcetypeid = '12')
+    )
+    FOLDER = '/test'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD "ds_forms_t-forms1"(
+        I18N jp
+        CONSTRAINTS (
+             ADD "Id" (any) OPT ANY
+             ADD "開始時刻" (any) OPT ANY
+             ADD "完了時刻" (any) OPT ANY
+             ADD "メール" (any) OPT ANY
+             ADD "名前" (any) OPT ANY
+             ADD "犬派？猫派？" (any) OPT ANY
+             ADD "犬・猫を飼うとしたら毛並みの色は？" (any) OPT ANY
+             ADD "名前を付けるとしたら" (any) OPT ANY
+        )
+        OUTPUTLIST ("Id", "メール", "名前", "名前を付けるとしたら", "完了時刻", "犬・猫を飼うとしたら毛並みの色は？", "犬派？猫派？", "開始時刻"
+        )
+        WRAPPER (custom "ds_forms_t-forms1")
+    );
+

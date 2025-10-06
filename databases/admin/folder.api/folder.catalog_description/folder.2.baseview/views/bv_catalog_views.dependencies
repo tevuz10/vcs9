@@ -1,0 +1,5 @@
+﻿*/databases/admin/folder.api/api.vql
+*/databases/admin/folder.api/folder.catalog_description/catalog_description.vql
+1/databases/admin/folder.api/folder.catalog_description/folder.2.baseview/2.baseview.vql
+*/databases/admin/folder.api/folder.catalog_description/folder.1.datasource/1.datasource.vql
+1/databases/admin/folder.api/folder.catalog_description/folder.1.datasource/datasources/json/ds_catalog_views.vql

@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE DATASOURCE CUSTOM "20250424_customwrapper"
+    FOLDER = '/test'
+    CLASSNAME='com.denodo.connect.filesystem.ReadFileSystemConnector'
+    JARS 'denodo-filesystem-customwrapper';
+

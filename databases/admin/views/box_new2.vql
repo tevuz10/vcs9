@@ -1,0 +1,42 @@
+﻿CREATE OR REPLACE WRAPPER DF box_new2
+    DATASOURCENAME=box
+    OUTPUTSCHEMA (
+        "Date" = 'Date',
+        "Open" = 'Open',
+        "High" = 'High',
+        "Low" = 'Low',
+        "Close" = 'Close',
+        "Adj Close" = 'Adj Close',
+        "Volume" = 'Volume',
+        "Ticker" = 'Ticker'
+    );
+
+CREATE OR REPLACE TABLE box_new2 I18N jp (
+        "Date":text,
+        "Open":text,
+        "High":text,
+        "Low":text,
+        "Close":text,
+        "Adj Close":text,
+        "Volume":text,
+        "Ticker":text
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD box_new2(
+        I18N jp
+        CONSTRAINTS (
+             ADD "Date" NOS ZERO ()
+             ADD "Open" NOS ZERO ()
+             ADD "High" NOS ZERO ()
+             ADD "Low" NOS ZERO ()
+             ADD "Close" NOS ZERO ()
+             ADD "Adj Close" NOS ZERO ()
+             ADD "Volume" NOS ZERO ()
+             ADD "Ticker" NOS ZERO ()
+        )
+        OUTPUTLIST ("Adj Close", "Close", "Date", "High", "Low", "Open", "Ticker", "Volume"
+        )
+        WRAPPER (df box_new2)
+    );
+

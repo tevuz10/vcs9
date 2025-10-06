@@ -1,0 +1,21 @@
+﻿CREATE OR REPLACE WRAPPER DF dd_new3
+    DATASOURCENAME=dd
+    OUTPUTSCHEMA (
+        "Column0" = 'Column0'
+    );
+
+CREATE OR REPLACE TABLE dd_new3 I18N jp (
+        "Column0":text
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD dd_new3(
+        I18N jp
+        CONSTRAINTS (
+             ADD "Column0" NOS ZERO ()
+        )
+        OUTPUTLIST ("Column0"
+        )
+        WRAPPER (df dd_new3)
+    );
+

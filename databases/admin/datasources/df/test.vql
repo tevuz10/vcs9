@@ -1,0 +1,13 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE DF test
+    ROUTE S3 'hdfs.S3Connection' '${databases.admin.datasources.df.test.ROUTE.S3.URI}' FILENAMEPATTERN = ''
+    AUTHENTICATION (
+      AWS_ACCESS_KEY_ID = '${databases.admin.datasources.df.test.ROUTE.S3.AWS_ACCESS_KEY_ID}'
+      AWS_SECRET_ACCESS_KEY = '${databases.admin.datasources.df.test.ROUTE.S3.AWS_SECRET_ACCESS_KEY}' ${databases.admin.datasources.df.test.ROUTE.S3.AWS_SECRET_ACCESS_KEY.ENCRYPTED}
+    )
+    CUSTOM_PROPERTIES = ('fs.s3a.endpoint'='http://127.0.0.1:9000')
+    CHARSET = 'UTF-8'
+    COLUMNDELIMITER = ','
+    ENDOFLINEDELIMITER = '\n'
+    HEADER = FALSE;
+

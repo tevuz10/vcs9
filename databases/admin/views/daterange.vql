@@ -1,0 +1,33 @@
+﻿CREATE OR REPLACE WRAPPER DF daterange
+    DATASOURCENAME=daterange
+    OUTPUTSCHEMA (
+        "SDATE" = 'SDATE' (OBL) (DEFAULTVALUE='2024/11/19') EXTERN,
+        "EDATE" = 'EDATE' (OBL) (DEFAULTVALUE='2024/11/21') EXTERN,
+        "Column0" = 'Column0',
+        "Column1" = 'Column1',
+        "Column2" = 'Column2'
+    );
+
+CREATE OR REPLACE TABLE daterange I18N jp (
+        "SDATE":text (extern),
+        "EDATE":text (extern),
+        "Column0":text,
+        "Column1":text,
+        "Column2":text
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD daterange(
+        I18N jp
+        CONSTRAINTS (
+             ADD "SDATE" (=) OBL ONE
+             ADD "EDATE" (=) OBL ONE
+             ADD "Column0" NOS ZERO ()
+             ADD "Column1" NOS ZERO ()
+             ADD "Column2" NOS ZERO ()
+        )
+        OUTPUTLIST ("Column0", "Column1", "Column2"
+        )
+        WRAPPER (df daterange)
+    );
+

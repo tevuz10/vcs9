@@ -1,0 +1,15 @@
+﻿CREATE OR REPLACE VIEW deployed FOLDER = '/01_datasources' (
+    employee_id (description = '従業員のID'),
+    first_name (description = 'test'),
+    last_name (description = 'test'),
+    email (description = 'test'),
+    phone_number (description = 'test'),
+    hire_date (description = 'test'),
+    job_id (description = 'test'),
+    salary (description = 'test'),
+    commission_pct (description = 'test'),
+    manager_id (description = 'test'),
+    department_id (description = 'test')
+ )
+ AS SELECT denodo_training.bv_hr_employees.employee_id AS employee_id, denodo_training.bv_hr_employees.first_name AS first_name, denodo_training.bv_hr_employees.last_name AS last_name, denodo_training.bv_hr_employees.email AS email, denodo_training.bv_hr_employees.phone_number AS phone_number, denodo_training.bv_hr_employees.hire_date AS hire_date, denodo_training.bv_hr_employees.job_id AS job_id, denodo_training.bv_hr_employees.salary AS salary, denodo_training.bv_hr_employees.commission_pct AS commission_pct, denodo_training.bv_hr_employees.manager_id AS manager_id, denodo_training.bv_hr_employees.department_id AS department_id FROM denodo_training.bv_hr_employees;
+

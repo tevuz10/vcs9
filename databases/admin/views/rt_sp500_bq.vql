@@ -1,0 +1,47 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC rt_sp500_bq
+    DATASOURCENAME=denodobricks
+    CATALOGNAME='${databases.admin.views.jdbc.rt_sp500_bq.CATALOGNAME}' 
+    SCHEMANAME='${databases.admin.views.jdbc.rt_sp500_bq.SCHEMANAME}' ESCAPE
+    RELATIONNAME='sp500_bq' 
+    OUTPUTSCHEMA (
+        "Date" = 'field_0' :'java.time.LocalDate' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='10', description='', sourcetypeid='91', sourcetypename='DATE')  SORTABLE,
+        "Open" = 'field_1' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='15', description='', sourcetypeid='8', sourcetypename='DOUBLE')  SORTABLE,
+        "High" = 'High' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='15', description='', sourcetypeid='8', sourcetypename='DOUBLE')  SORTABLE,
+        "Low" = 'Low' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='15', description='', sourcetypeid='8', sourcetypename='DOUBLE')  SORTABLE,
+        "Close" = 'field_2' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='15', description='', sourcetypeid='8', sourcetypename='DOUBLE')  SORTABLE,
+        "Adj Close" = 'AdjClose' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='15', description='', sourcetypeid='8', sourcetypename='DOUBLE')  SORTABLE,
+        "Volume" = 'Volume' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='15', description='', sourcetypeid='8', sourcetypename='DOUBLE')  SORTABLE,
+        "Ticker" = 'Ticker' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='255', description='', sourcetypeid='12', sourcetypename='STRING')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE rt_sp500_bq I18N jp (
+        "Date":localdate (sourcetypeid = '91', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '10', description = ''),
+        "Open":double (sourcetypeid = '8', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '15', description = ''),
+        "High":double (sourcetypeid = '8', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '15', description = ''),
+        "Low":double (sourcetypeid = '8', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '15', description = ''),
+        "Close":double (sourcetypeid = '8', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '15', description = ''),
+        "Adj Close":double (sourcetypeid = '8', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '15', description = ''),
+        "Volume":double (sourcetypeid = '8', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '15', description = ''),
+        "Ticker":text (sourcetypeid = '12', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '255', description = '')
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD rt_sp500_bq(
+        I18N jp
+        CONSTRAINTS (
+             ADD "Date" (any) OPT ANY
+             ADD "Open" (any) OPT ANY
+             ADD "High" (any) OPT ANY
+             ADD "Low" (any) OPT ANY
+             ADD "Close" (any) OPT ANY
+             ADD "Adj Close" (any) OPT ANY
+             ADD "Volume" (any) OPT ANY
+             ADD "Ticker" (any) OPT ANY
+        )
+        OUTPUTLIST ("Adj Close", "Close", "Date", "High", "Low", "Open", "Ticker", "Volume"
+        )
+        WRAPPER (jdbc rt_sp500_bq)
+    )
+    DATA_LOAD_QUERY = 'SELECT "Date", "Open", "High", "Low", "Close", "Adj Close", "Volume", "Ticker" FROM admin.sp500_bq';
+

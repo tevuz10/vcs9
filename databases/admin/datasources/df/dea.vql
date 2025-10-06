@@ -1,0 +1,8 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE DF dea
+    ROUTE LOCAL 'LocalConnection' '${databases.admin.datasources.df.dea.ROUTE.LOCAL.PATH}' FILENAMEPATTERN = 'a(.*).csv'
+    CHARSET = 'UTF-8' FILTER (CUSTOM  JARS 'denodo-filesystem-customwrapper' CLASSNAME='com.denodo.connect.filesystem.ReadFileSystemConnector')
+    COLUMNDELIMITER = ','
+    ENDOFLINEDELIMITER = '\n'
+    HEADER = TRUE;
+

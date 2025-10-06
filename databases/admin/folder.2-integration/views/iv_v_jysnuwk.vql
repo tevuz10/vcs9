@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW iv_v_jysnuwk FOLDER = '/2-integration' DESCRIPTION = '螳溯｡御ｺ育ｮ怜��險ｳ' 
+    PRIMARY KEY ( 'kaishacd' , 'kojibg' , 'kojieda' , 'jysnhans' , 'kshucd' ) AS SELECT bv_v_jysnuwk.kaishacd AS kaishacd, bv_v_jysnuwk.kojibg AS kojibg, bv_v_jysnuwk.kojieda AS kojieda, bv_v_jysnuwk.jysnhans AS jysnhans, bv_v_jysnuwk.kshucd AS kshucd, bv_v_jysnuwk.gnkabunrkb AS gnkabunrkb, bv_v_jysnuwk.kshubunrkb AS kshubunrkb, bv_v_jysnuwk.oyakshucd AS oyakshucd, bv_v_jysnuwk.kshuhyojtaikcd AS kshuhyojtaikcd, bv_v_jysnuwk.kshukaislev AS kshukaislev, bv_v_jysnuwk.sakjflg AS sakjflg, bv_v_jysnuwk.skseibi AS skseibi, bv_v_jysnuwk.skseishabumncd AS skseishabumncd, bv_v_jysnuwk.skseishashaincd AS skseishashaincd, bv_v_jysnuwk.skseipgid AS skseipgid, bv_v_jysnuwk.kshinbi AS kshinbi, bv_v_jysnuwk.kshinshabumncd AS kshinshabumncd, bv_v_jysnuwk.kshinshashaincd AS kshinshashaincd, bv_v_jysnuwk.kshinpgid AS kshinpgid, bv_v_jysnuwk.rvs AS rvs FROM bv_v_jysnuwk;
+
+ALTER VIEW iv_v_jysnuwk
+ LAYOUT (bv_v_jysnuwk = [20, 20, 200, 200]);
+

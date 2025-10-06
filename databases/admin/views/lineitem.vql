@@ -1,0 +1,70 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC lineitem
+    DATASOURCENAME=denodobricks
+    CATALOGNAME='${databases.admin.views.jdbc.lineitem.CATALOGNAME}' 
+    SCHEMANAME='${databases.admin.views.jdbc.lineitem.SCHEMANAME}' 
+    RELATIONNAME='lineitem' 
+    OUTPUTSCHEMA (
+        l_orderkey = 'l_orderkey' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', description='', sourcetypeid='-5', sourcetypename='BIGINT')  SORTABLE,
+        l_partkey = 'l_partkey' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', description='', sourcetypeid='-5', sourcetypename='BIGINT')  SORTABLE,
+        l_suppkey = 'l_suppkey' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', description='', sourcetypeid='-5', sourcetypename='BIGINT')  SORTABLE,
+        l_linenumber = 'l_linenumber' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='', sourcetypeid='4', sourcetypename='INT')  SORTABLE,
+        l_quantity = 'l_quantity' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='18', description='', sourcetypeid='3', sourcetypename='DECIMAL')  SORTABLE,
+        l_extendedprice = 'l_extendedprice' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='18', description='', sourcetypeid='3', sourcetypename='DECIMAL')  SORTABLE,
+        l_discount = 'l_discount' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='18', description='', sourcetypeid='3', sourcetypename='DECIMAL')  SORTABLE,
+        l_tax = 'l_tax' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetyperadix='10', sourcetypesize='18', description='', sourcetypeid='3', sourcetypename='DECIMAL')  SORTABLE,
+        l_returnflag = 'l_returnflag' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='255', description='', sourcetypeid='12', sourcetypename='STRING')  SORTABLE,
+        l_linestatus = 'l_linestatus' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='255', description='', sourcetypeid='12', sourcetypename='STRING')  SORTABLE,
+        l_shipdate = 'l_shipdate' :'java.time.LocalDate' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='10', description='', sourcetypeid='91', sourcetypename='DATE')  SORTABLE,
+        l_commitdate = 'l_commitdate' :'java.time.LocalDate' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='10', description='', sourcetypeid='91', sourcetypename='DATE')  SORTABLE,
+        l_receiptdate = 'l_receiptdate' :'java.time.LocalDate' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='10', description='', sourcetypeid='91', sourcetypename='DATE')  SORTABLE,
+        l_shipinstruct = 'l_shipinstruct' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='255', description='', sourcetypeid='12', sourcetypename='STRING')  SORTABLE,
+        l_shipmode = 'l_shipmode' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='255', description='', sourcetypeid='12', sourcetypename='STRING')  SORTABLE,
+        l_comment = 'l_comment' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='0', sourcetypesize='255', description='', sourcetypeid='12', sourcetypename='STRING')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE lineitem I18N jp (
+        l_orderkey:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = ''),
+        l_partkey:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = ''),
+        l_suppkey:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19', description = ''),
+        l_linenumber:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = ''),
+        l_quantity:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '18', description = ''),
+        l_extendedprice:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '18', description = ''),
+        l_discount:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '18', description = ''),
+        l_tax:decimal (sourcetypeid = '3', sourcetyperadix = '10', sourcetypedecimals = '2', sourcetypesize = '18', description = ''),
+        l_returnflag:text (sourcetypeid = '12', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '255', description = ''),
+        l_linestatus:text (sourcetypeid = '12', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '255', description = ''),
+        l_shipdate:localdate (sourcetypeid = '91', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '10', description = ''),
+        l_commitdate:localdate (sourcetypeid = '91', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '10', description = ''),
+        l_receiptdate:localdate (sourcetypeid = '91', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '10', description = ''),
+        l_shipinstruct:text (sourcetypeid = '12', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '255', description = ''),
+        l_shipmode:text (sourcetypeid = '12', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '255', description = ''),
+        l_comment:text (sourcetypeid = '12', sourcetyperadix = '0', sourcetypedecimals = '0', sourcetypesize = '255', description = '')
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD lineitem(
+        I18N jp
+        CONSTRAINTS (
+             ADD l_orderkey (any) OPT ANY
+             ADD l_partkey (any) OPT ANY
+             ADD l_suppkey (any) OPT ANY
+             ADD l_linenumber (any) OPT ANY
+             ADD l_quantity (any) OPT ANY
+             ADD l_extendedprice (any) OPT ANY
+             ADD l_discount (any) OPT ANY
+             ADD l_tax (any) OPT ANY
+             ADD l_returnflag (any) OPT ANY
+             ADD l_linestatus (any) OPT ANY
+             ADD l_shipdate (any) OPT ANY
+             ADD l_commitdate (any) OPT ANY
+             ADD l_receiptdate (any) OPT ANY
+             ADD l_shipinstruct (any) OPT ANY
+             ADD l_shipmode (any) OPT ANY
+             ADD l_comment (any) OPT ANY
+        )
+        OUTPUTLIST (l_comment, l_commitdate, l_discount, l_extendedprice, l_linenumber, l_linestatus, l_orderkey, l_partkey, l_quantity, l_receiptdate, l_returnflag, l_shipdate, l_shipinstruct, l_shipmode, l_suppkey, l_tax
+        )
+        WRAPPER (jdbc lineitem)
+    );
+

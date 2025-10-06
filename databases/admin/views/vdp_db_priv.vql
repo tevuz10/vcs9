@@ -1,0 +1,42 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC vdp_db_priv
+    DATASOURCENAME=sqlserver2
+    CATALOGNAME='${databases.admin.views.jdbc.vdp_db_priv.CATALOGNAME}' 
+    SCHEMANAME='${databases.admin.views.jdbc.vdp_db_priv.SCHEMANAME}' 
+    RELATIONNAME='vdp_db_priv' 
+    OUTPUTSCHEMA (
+        name = 'name' :'java.lang.String' (OPT) (sourcetypesize='100', sourcetypeid='-9', sourcetypename='nvarchar')  NOT NULL SORTABLE,
+        db = 'db' :'java.lang.String' (OPT) (sourcetypesize='100', sourcetypeid='-9', sourcetypename='nvarchar')  NOT NULL SORTABLE,
+        "ownerType" = 'ownerType' :'java.lang.Short' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='5', sourcetypeid='5', sourcetypename='smallint')  NOT NULL SORTABLE,
+        bin_data = 'bin_data' :'java.sql.Blob' (OPT) (sourcetypesize='2147483647', sourcetypeid='-3', sourcetypename='varbinary')  NOT SORTABLE,
+        "lastModificationEpoch" = 'lastModificationEpoch' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='-5', sourcetypename='bigint')  SORTABLE
+    )
+    CONSTRAINT 'PK__vdp_db_p__A87BAA8D8052C5A7' PRIMARY KEY ( 'name' , 'db' , 'ownerType' )
+    INDEX 'PK__vdp_db_p__A87BAA8D8052C5A7' CLUSTER UNIQUE PRIMARY ( 'name' , 'db' , 'ownerType' )
+    INDEX 'vdp_db_priv_idxdb' OTHER ( 'db' )
+    INDEX 'vdp_db_priv_idxn' OTHER ( 'name' );
+
+CREATE OR REPLACE TABLE vdp_db_priv I18N jp (
+        name:text (notnull, sourcetypeid = '-9', sourcetypesize = '100'),
+        db:text (notnull, sourcetypeid = '-9', sourcetypesize = '100'),
+        "ownerType":int (notnull, sourcetypeid = '5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '5'),
+        bin_data:blob (sourcetypeid = '-3', sourcetypesize = '2147483647'),
+        "lastModificationEpoch":long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19')
+    )
+    CONSTRAINT 'PK__vdp_db_p__A87BAA8D8052C5A7' PRIMARY KEY ( 'name' , 'db' , 'ownerType' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD vdp_db_priv(
+        I18N jp
+        CONSTRAINTS (
+             ADD name (any) OPT ANY
+             ADD db (any) OPT ANY
+             ADD "ownerType" (any) OPT ANY
+             ADD "lastModificationEpoch" (any) OPT ANY
+             ADD bin_data NOS ZERO ()
+        )
+        OUTPUTLIST (bin_data, db, "lastModificationEpoch", name, "ownerType"
+        )
+        WRAPPER (jdbc vdp_db_priv)
+    );
+

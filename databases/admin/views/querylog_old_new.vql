@@ -1,0 +1,108 @@
+﻿CREATE OR REPLACE WRAPPER DF querylog_old_new
+    DATASOURCENAME=querylog_old
+    OUTPUTSCHEMA (
+        "ServerName" = 'ServerName',
+        "Host" = 'Host',
+        "Port" = 'Port',
+        "Id" = 'Id',
+        "Database" = 'Database',
+        "UserName" = 'UserName',
+        "NotificationType" = 'NotificationType',
+        "SessionId" = 'SessionId',
+        "StartTime" = 'StartTime',
+        "EndTime" = 'EndTime',
+        "Duration" = 'Duration',
+        "WaitingTime" = 'WaitingTime',
+        "NumRows" = 'NumRows',
+        "State" = 'State',
+        "Completed" = 'Completed',
+        "Cache" = 'Cache',
+        "Query" = 'Query',
+        "RequestType" = 'RequestType',
+        "Elements" = 'Elements',
+        "UserAgent" = 'UserAgent',
+        "AccessInterface" = 'AccessInterface',
+        "ClientIP" = 'ClientIP',
+        "TransactionId" = 'TransactionId',
+        "WebServiceName" = 'WebServiceName',
+        "CpuTime" = 'CpuTime',
+        "CpuUsageAvg" = 'CpuUsageAvg',
+        "CpuUsageMax" = 'CpuUsageMax',
+        "CpuUsageMaxTime" = 'CpuUsageMaxTime',
+        "CpuUsageStdDev" = 'CpuUsageStdDev',
+        "EstimatedQueryCost" = 'EstimatedQueryCost'
+    );
+
+CREATE OR REPLACE TABLE querylog_old_new I18N jp (
+        "ServerName":text,
+        "Host":text,
+        "Port":text,
+        "Id":text,
+        "Database":text,
+        "UserName":text,
+        "NotificationType":text,
+        "SessionId":text,
+        "StartTime":text,
+        "EndTime":text,
+        "Duration":text,
+        "WaitingTime":text,
+        "NumRows":text,
+        "State":text,
+        "Completed":text,
+        "Cache":text,
+        "Query":text,
+        "RequestType":text,
+        "Elements":text,
+        "UserAgent":text,
+        "AccessInterface":text,
+        "ClientIP":text,
+        "TransactionId":text,
+        "WebServiceName":text,
+        "CpuTime":text,
+        "CpuUsageAvg":text,
+        "CpuUsageMax":text,
+        "CpuUsageMaxTime":text,
+        "CpuUsageStdDev":text,
+        "EstimatedQueryCost":text
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD querylog_old_new(
+        I18N jp
+        CONSTRAINTS (
+             ADD "ServerName" NOS ZERO ()
+             ADD "Host" NOS ZERO ()
+             ADD "Port" NOS ZERO ()
+             ADD "Id" NOS ZERO ()
+             ADD "Database" NOS ZERO ()
+             ADD "UserName" NOS ZERO ()
+             ADD "NotificationType" NOS ZERO ()
+             ADD "SessionId" NOS ZERO ()
+             ADD "StartTime" NOS ZERO ()
+             ADD "EndTime" NOS ZERO ()
+             ADD "Duration" NOS ZERO ()
+             ADD "WaitingTime" NOS ZERO ()
+             ADD "NumRows" NOS ZERO ()
+             ADD "State" NOS ZERO ()
+             ADD "Completed" NOS ZERO ()
+             ADD "Cache" NOS ZERO ()
+             ADD "Query" NOS ZERO ()
+             ADD "RequestType" NOS ZERO ()
+             ADD "Elements" NOS ZERO ()
+             ADD "UserAgent" NOS ZERO ()
+             ADD "AccessInterface" NOS ZERO ()
+             ADD "ClientIP" NOS ZERO ()
+             ADD "TransactionId" NOS ZERO ()
+             ADD "WebServiceName" NOS ZERO ()
+             ADD "CpuTime" NOS ZERO ()
+             ADD "CpuUsageAvg" NOS ZERO ()
+             ADD "CpuUsageMax" NOS ZERO ()
+             ADD "CpuUsageMaxTime" NOS ZERO ()
+             ADD "CpuUsageStdDev" NOS ZERO ()
+             ADD "EstimatedQueryCost" NOS ZERO ()
+        )
+        OUTPUTLIST ("AccessInterface", "Cache", "ClientIP", "Completed", "CpuTime", "CpuUsageAvg", "CpuUsageMax", "CpuUsageMaxTime", "CpuUsageStdDev", "Database", "Duration", "Elements", "EndTime", "EstimatedQueryCost", "Host", "Id", "NotificationType", "NumRows", "Port", "Query", "RequestType", "ServerName", "SessionId", "StartTime", "State", "TransactionId", "UserAgent", "UserName", "WaitingTime", "WebServiceName"
+        )
+        WRAPPER (df querylog_old_new)
+    );
+

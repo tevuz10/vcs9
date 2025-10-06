@@ -1,0 +1,446 @@
+﻿CREATE OR REPLACE WRAPPER JSON bv_catalog_view_detail
+    FOLDER = '/api/catalog_description/2.baseview'
+    DATASOURCENAME=ds_catalog_view_detail
+    TUPLEROOT '/JSONFile'
+    OUTPUTSCHEMA ("JSONFile" = 'JSONFile' : REGISTER OF (
+        "DBNAME" = 'DBNAME' : 'java.lang.String' (OBL) (DEFAULTVALUE='test') EXTERN,
+        "VIEWNAME" = 'VIEWNAME' : 'java.lang.String' (OBL) (DEFAULTVALUE='bv_catalog_view') EXTERN,
+        id = 'id' : 'java.lang.String',
+        name = 'name' : 'java.lang.String',
+        "databaseName" = 'databaseName' : 'java.lang.String',
+        schema = 'schema' : ARRAY OF (
+            schema = 'schema' : REGISTER OF (
+                name = 'name' : 'java.lang.String',
+                type = 'type' : 'java.lang.String',
+                description = 'description' : 'java.lang.String',
+                "descriptionType" = 'descriptionType' : 'java.lang.String'
+            )
+        ),
+        "totalFields" = 'totalFields' : 'java.lang.Integer',
+        "inIndex" = 'inIndex' : 'java.lang.String',
+        "readPermission" = 'readPermission' : 'java.lang.String',
+        "inLocal" = 'inLocal' : 'java.lang.String',
+        "inVDP" = 'inVDP' : 'java.lang.String',
+        tags = 'tags' : 'java.lang.String',
+        categories = 'categories' : 'java.lang.String',
+        endorsements = 'endorsements' : 'java.lang.String',
+        warnings = 'warnings' : 'java.lang.String',
+        deprecations = 'deprecations' : 'java.lang.String',
+        description = 'description' : 'java.lang.String',
+        "descriptionType" = 'descriptionType' : 'java.lang.String',
+        "showStatistics" = 'showStatistics' : 'java.lang.String',
+        statistics = 'statistics' : ARRAY OF (
+            statistics = 'statistics' : REGISTER OF (
+                field_0 = 'field_0' : 'java.lang.String'
+            )
+        ),
+        association = 'association' : REGISTER OF (
+            associations = 'associations' : ARRAY OF (
+                associations = 'associations' : REGISTER OF (
+                    field_0 = 'field_0' : 'java.lang.String'
+                )
+            ),
+            "associationsToOne" = 'associationsToOne' : ARRAY OF (
+                "associationsToOne" = 'associationsToOne' : REGISTER OF (
+                    field_0 = 'field_0' : 'java.lang.String'
+                )
+            ),
+            "associationsToMany" = 'associationsToMany' : ARRAY OF (
+                "associationsToMany" = 'associationsToMany' : REGISTER OF (
+                    field_0 = 'field_0' : 'java.lang.String'
+                )
+            )
+        ),
+        "searchForm" = 'searchForm' : REGISTER OF (
+            "database" = 'database' : 'java.lang.String',
+            "view" = 'view' : 'java.lang.String',
+            type = 'type' : 'java.lang.String',
+            "simpleConditions" = 'simpleConditions' : ARRAY OF (
+                "simpleConditions" = 'simpleConditions' : REGISTER OF (
+                    field_0 = 'field_0' : 'java.lang.String'
+                )
+            ),
+            "groupByEnabled" = 'groupByEnabled' : 'java.lang.String',
+            "groupByFields" = 'groupByFields' : ARRAY OF (
+                "groupByFields" = 'groupByFields' : REGISTER OF (
+                    field_0 = 'field_0' : 'java.lang.String'
+                )
+            ),
+            "orderByFields" = 'orderByFields' : ARRAY OF (
+                "orderByFields" = 'orderByFields' : REGISTER OF (
+                    field_0 = 'field_0' : 'java.lang.String'
+                )
+            ),
+            "outputFields" = 'outputFields' : ARRAY OF (
+                "outputFields" = 'outputFields' : REGISTER OF (
+                    field = 'field' : 'java.lang.String',
+                    alias = 'alias' : 'java.lang.String',
+                    expression = 'expression' : 'java.lang.String',
+                    aggregated = 'aggregated' : 'java.lang.String',
+                    visible = 'visible' : 'java.lang.String',
+                    "expandFields" = 'expandFields' : ARRAY OF (
+                        "expandFields" = 'expandFields' : REGISTER OF (
+                            field_0 = 'field_0' : 'java.lang.String'
+                        )
+                    ),
+                    role = 'role' : 'java.lang.String',
+                    "dataExpandedFieldFrom" = 'dataExpandedFieldFrom' : 'java.lang.String',
+                    "dataExpandedField" = 'dataExpandedField' : 'java.lang.String',
+                    db = 'db' : 'java.lang.String',
+                    operation = 'operation' : 'java.lang.String',
+                    multiple = 'multiple' : 'java.lang.String',
+                    "rolesToExpand" = 'rolesToExpand' : ARRAY OF (
+                        "rolesToExpand" = 'rolesToExpand' : REGISTER OF (
+                            field_0 = 'field_0' : 'java.lang.String'
+                        )
+                    )
+                )
+            ),
+            id = 'id' : 'java.lang.String',
+            name = 'name' : 'java.lang.String',
+            description = 'description' : 'java.lang.String',
+            "sharedQuery" = 'sharedQuery' : 'java.lang.String',
+            path = 'path' : 'java.lang.String',
+            "allFields" = 'allFields' : 'java.lang.String'
+        ),
+        field = 'field' : REGISTER OF (
+            "allFields" = 'allFields' : ARRAY OF (
+                "allFields" = 'allFields' : REGISTER OF (
+                    role = 'role' : 'java.lang.String',
+                    name = 'name' : 'java.lang.String',
+                    "typeName" = 'typeName' : 'java.lang.String',
+                    description = 'description' : 'java.lang.String',
+                    operation = 'operation' : 'java.lang.String',
+                    type = 'type' : 'java.lang.Integer',
+                    mandatory = 'mandatory' : 'java.lang.String',
+                    "fieldCapabilities" = 'fieldCapabilities' : REGISTER OF (
+                        "fieldName" = 'fieldName' : 'java.lang.String',
+                        operators = 'operators' : 'java.lang.String',
+                        multiplicity = 'multiplicity' : 'java.lang.String'
+                    ),
+                    input = 'input' : 'java.lang.String',
+                    output = 'output' : 'java.lang.String',
+                    "matchName" = 'matchName' : 'java.lang.Integer',
+                    "matchDesc" = 'matchDesc' : 'java.lang.Integer'
+                )
+            ),
+            "mandatoryFields" = 'mandatoryFields' : ARRAY OF (
+                "mandatoryFields" = 'mandatoryFields' : REGISTER OF (
+                    field_0 = 'field_0' : 'java.lang.String'
+                )
+            ),
+            "expandedFields" = 'expandedFields' : ARRAY OF (
+                "expandedFields" = 'expandedFields' : REGISTER OF (
+                    field_0 = 'field_0' : 'java.lang.String'
+                )
+            ),
+            "mandatoryExpandedFields" = 'mandatoryExpandedFields' : ARRAY OF (
+                "mandatoryExpandedFields" = 'mandatoryExpandedFields' : REGISTER OF (
+                    field_0 = 'field_0' : 'java.lang.String'
+                )
+            ),
+            "fieldsWithPrivileges" = 'fieldsWithPrivileges' : ARRAY OF (
+                "fieldsWithPrivileges" = 'fieldsWithPrivileges' : REGISTER OF (
+                    role = 'role' : 'java.lang.String',
+                    name = 'name' : 'java.lang.String',
+                    "typeName" = 'typeName' : 'java.lang.String',
+                    description = 'description' : 'java.lang.String',
+                    operation = 'operation' : 'java.lang.String',
+                    type = 'type' : 'java.lang.Integer',
+                    mandatory = 'mandatory' : 'java.lang.String',
+                    "fieldCapabilities" = 'fieldCapabilities' : REGISTER OF (
+                        "fieldName" = 'fieldName' : 'java.lang.String',
+                        operators = 'operators' : 'java.lang.String',
+                        multiplicity = 'multiplicity' : 'java.lang.String'
+                    ),
+                    input = 'input' : 'java.lang.String',
+                    output = 'output' : 'java.lang.String',
+                    "matchName" = 'matchName' : 'java.lang.Integer',
+                    "matchDesc" = 'matchDesc' : 'java.lang.Integer'
+                )
+            )
+        ),
+        "propertyInfo" = 'propertyInfo' : 'java.lang.String',
+        "viewStatisticsInfo" = 'viewStatisticsInfo' : REGISTER OF (
+            "databaseName" = 'databaseName' : 'java.lang.String',
+            name = 'name' : 'java.lang.String',
+            "rowsNumber" = 'rowsNumber' : 'java.lang.String',
+            "lastUpdated" = 'lastUpdated' : 'java.lang.String',
+            "fieldStatisticsList" = 'fieldStatisticsList' : ARRAY OF (
+                "fieldStatisticsList" = 'fieldStatisticsList' : REGISTER OF (
+                    field_0 = 'field_0' : 'java.lang.String'
+                )
+            )
+        ),
+        "savedQuery" = 'savedQuery' : 'java.lang.String',
+        "connectionUris" = 'connectionUris' : REGISTER OF (
+            "jdbc-connection-url" = 'jdbc-connection-url' : 'java.lang.String',
+            "odbc-connection-string-32bits" = 'odbc-connection-string-32bits' : 'java.lang.String',
+            "odbc-connection-string-64bits" = 'odbc-connection-string-64bits' : 'java.lang.String',
+            "rest-connection-url" = 'rest-connection-url' : 'java.lang.String',
+            "odata-connection-url" = 'odata-connection-url' : 'java.lang.String',
+            "intro-text-connect" = 'intro-text-connect' : 'java.lang.String'
+        )
+    )
+    );
+
+CREATE OR REPLACE TYPE ds_catalog_view_detail_schema_schema AS REGISTER OF (name:text, type:text, description:text, "descriptionType":text);
+
+CREATE OR REPLACE TYPE ds_catalog_view_detail_schema AS ARRAY OF ds_catalog_view_detail_schema_schema;
+
+CREATE OR REPLACE TYPE ds_catalog_view_detail_statistics_statistics AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE ds_catalog_view_detail_statistics AS ARRAY OF ds_catalog_view_detail_statistics_statistics;
+
+CREATE OR REPLACE TYPE ds_catalog_view_detail_association_associations_associations AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE ds_catalog_view_detail_association_associations AS ARRAY OF ds_catalog_view_detail_association_associations_associations;
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_association_associationsToOne_associationsToOne" AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_association_associationsToOne" AS ARRAY OF "ds_catalog_view_detail_association_associationsToOne_associationsToOne";
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_association_associationsToMany_associationsToMany" AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_association_associationsToMany" AS ARRAY OF "ds_catalog_view_detail_association_associationsToMany_associationsToMany";
+
+CREATE OR REPLACE TYPE ds_catalog_view_detail_association AS REGISTER OF (associations:ds_catalog_view_detail_association_associations, "associationsToOne":"ds_catalog_view_detail_association_associationsToOne", "associationsToMany":"ds_catalog_view_detail_association_associationsToMany");
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_searchForm_simpleConditions_simpleConditions" AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_searchForm_simpleConditions" AS ARRAY OF "ds_catalog_view_detail_searchForm_simpleConditions_simpleConditions";
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_searchForm_groupByFields_groupByFields" AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_searchForm_groupByFields" AS ARRAY OF "ds_catalog_view_detail_searchForm_groupByFields_groupByFields";
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_searchForm_orderByFields_orderByFields" AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_searchForm_orderByFields" AS ARRAY OF "ds_catalog_view_detail_searchForm_orderByFields_orderByFields";
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_searchForm_outputFields_outputFields_expandFields_expandFields" AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_searchForm_outputFields_outputFields_expandFields" AS ARRAY OF "ds_catalog_view_detail_searchForm_outputFields_outputFields_expandFields_expandFields";
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_searchForm_outputFields_outputFields_rolesToExpand_rolesToExpand" AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_searchForm_outputFields_outputFields_rolesToExpand" AS ARRAY OF "ds_catalog_view_detail_searchForm_outputFields_outputFields_rolesToExpand_rolesToExpand";
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_searchForm_outputFields_outputFields" AS REGISTER OF (field:text, alias:text, expression:text, aggregated:text, visible:text, "expandFields":"ds_catalog_view_detail_searchForm_outputFields_outputFields_expandFields", role:text, "dataExpandedFieldFrom":text, "dataExpandedField":text, db:text, operation:text, multiple:text, "rolesToExpand":"ds_catalog_view_detail_searchForm_outputFields_outputFields_rolesToExpand");
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_searchForm_outputFields" AS ARRAY OF "ds_catalog_view_detail_searchForm_outputFields_outputFields";
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_searchForm" AS REGISTER OF ("database":text, "view":text, type:text, "simpleConditions":"ds_catalog_view_detail_searchForm_simpleConditions", "groupByEnabled":text, "groupByFields":"ds_catalog_view_detail_searchForm_groupByFields", "orderByFields":"ds_catalog_view_detail_searchForm_orderByFields", "outputFields":"ds_catalog_view_detail_searchForm_outputFields", id:text, name:text, description:text, "sharedQuery":text, path:text, "allFields":text);
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_field_allFields_allFields_fieldCapabilities" AS REGISTER OF ("fieldName":text, operators:text, multiplicity:text);
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_field_allFields_allFields" AS REGISTER OF (role:text, name:text, "typeName":text, description:text, operation:text, type:int, mandatory:text, "fieldCapabilities":"ds_catalog_view_detail_field_allFields_allFields_fieldCapabilities", input:text, output:text, "matchName":int, "matchDesc":int);
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_field_allFields" AS ARRAY OF "ds_catalog_view_detail_field_allFields_allFields";
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_field_mandatoryFields_mandatoryFields" AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_field_mandatoryFields" AS ARRAY OF "ds_catalog_view_detail_field_mandatoryFields_mandatoryFields";
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_field_expandedFields_expandedFields" AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_field_expandedFields" AS ARRAY OF "ds_catalog_view_detail_field_expandedFields_expandedFields";
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_field_mandatoryExpandedFields_mandatoryExpandedFields" AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_field_mandatoryExpandedFields" AS ARRAY OF "ds_catalog_view_detail_field_mandatoryExpandedFields_mandatoryExpandedFields";
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_field_fieldsWithPrivileges_fieldsWithPrivileges_fieldCapabilities" AS REGISTER OF ("fieldName":text, operators:text, multiplicity:text);
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_field_fieldsWithPrivileges_fieldsWithPrivileges" AS REGISTER OF (role:text, name:text, "typeName":text, description:text, operation:text, type:int, mandatory:text, "fieldCapabilities":"ds_catalog_view_detail_field_fieldsWithPrivileges_fieldsWithPrivileges_fieldCapabilities", input:text, output:text, "matchName":int, "matchDesc":int);
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_field_fieldsWithPrivileges" AS ARRAY OF "ds_catalog_view_detail_field_fieldsWithPrivileges_fieldsWithPrivileges";
+
+CREATE OR REPLACE TYPE ds_catalog_view_detail_field AS REGISTER OF ("allFields":"ds_catalog_view_detail_field_allFields", "mandatoryFields":"ds_catalog_view_detail_field_mandatoryFields", "expandedFields":"ds_catalog_view_detail_field_expandedFields", "mandatoryExpandedFields":"ds_catalog_view_detail_field_mandatoryExpandedFields", "fieldsWithPrivileges":"ds_catalog_view_detail_field_fieldsWithPrivileges");
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_viewStatisticsInfo_fieldStatisticsList_fieldStatisticsList" AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_viewStatisticsInfo_fieldStatisticsList" AS ARRAY OF "ds_catalog_view_detail_viewStatisticsInfo_fieldStatisticsList_fieldStatisticsList";
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_viewStatisticsInfo" AS REGISTER OF ("databaseName":text, name:text, "rowsNumber":text, "lastUpdated":text, "fieldStatisticsList":"ds_catalog_view_detail_viewStatisticsInfo_fieldStatisticsList");
+
+CREATE OR REPLACE TYPE "ds_catalog_view_detail_connectionUris" AS REGISTER OF ("jdbc-connection-url":text, "odbc-connection-string-32bits":text, "odbc-connection-string-64bits":text, "rest-connection-url":text, "odata-connection-url":text, "intro-text-connect":text);
+
+CREATE OR REPLACE TABLE bv_catalog_view_detail I18N jp (
+        "DBNAME":text (extern),
+        "VIEWNAME":text (extern),
+        id:text,
+        name:text,
+        "databaseName":text,
+        schema:ds_catalog_view_detail_schema,
+        "totalFields":int,
+        "inIndex":text,
+        "readPermission":text,
+        "inLocal":text,
+        "inVDP":text,
+        tags:text,
+        categories:text,
+        endorsements:text,
+        warnings:text,
+        deprecations:text,
+        description:text,
+        "descriptionType":text,
+        "showStatistics":text,
+        statistics:ds_catalog_view_detail_statistics,
+        association:ds_catalog_view_detail_association,
+        "searchForm":"ds_catalog_view_detail_searchForm",
+        field:ds_catalog_view_detail_field,
+        "propertyInfo":text,
+        "viewStatisticsInfo":"ds_catalog_view_detail_viewStatisticsInfo",
+        "savedQuery":text,
+        "connectionUris":"ds_catalog_view_detail_connectionUris"
+    )
+    FOLDER = '/api/catalog_description/2.baseview'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_catalog_view_detail(
+        I18N jp
+        CONSTRAINTS (
+             ADD "DBNAME" (=) OBL ONE
+             ADD "VIEWNAME" (=) OBL ONE
+             ADD id NOS ZERO ()
+             ADD name NOS ZERO ()
+             ADD "databaseName" NOS ZERO ()
+             ADD schema NOS ZERO ()
+             ADD schema NOS ZERO ()
+             ADD schema.name NOS ZERO ()
+             ADD schema.type NOS ZERO ()
+             ADD schema.description NOS ZERO ()
+             ADD schema."descriptionType" NOS ZERO ()
+             ADD "totalFields" NOS ZERO ()
+             ADD "inIndex" NOS ZERO ()
+             ADD "readPermission" NOS ZERO ()
+             ADD "inLocal" NOS ZERO ()
+             ADD "inVDP" NOS ZERO ()
+             ADD tags NOS ZERO ()
+             ADD categories NOS ZERO ()
+             ADD endorsements NOS ZERO ()
+             ADD warnings NOS ZERO ()
+             ADD deprecations NOS ZERO ()
+             ADD description NOS ZERO ()
+             ADD "descriptionType" NOS ZERO ()
+             ADD "showStatistics" NOS ZERO ()
+             ADD statistics NOS ZERO ()
+             ADD statistics NOS ZERO ()
+             ADD statistics.field_0 NOS ZERO ()
+             ADD association NOS ZERO ()
+             ADD association.associations NOS ZERO ()
+             ADD association.associations NOS ZERO ()
+             ADD association.associations.field_0 NOS ZERO ()
+             ADD association."associationsToOne" NOS ZERO ()
+             ADD association."associationsToOne" NOS ZERO ()
+             ADD association."associationsToOne".field_0 NOS ZERO ()
+             ADD association."associationsToMany" NOS ZERO ()
+             ADD association."associationsToMany" NOS ZERO ()
+             ADD association."associationsToMany".field_0 NOS ZERO ()
+             ADD "searchForm" NOS ZERO ()
+             ADD "searchForm"."database" NOS ZERO ()
+             ADD "searchForm"."view" NOS ZERO ()
+             ADD "searchForm".type NOS ZERO ()
+             ADD "searchForm"."simpleConditions" NOS ZERO ()
+             ADD "searchForm"."simpleConditions" NOS ZERO ()
+             ADD "searchForm"."simpleConditions".field_0 NOS ZERO ()
+             ADD "searchForm"."groupByEnabled" NOS ZERO ()
+             ADD "searchForm"."groupByFields" NOS ZERO ()
+             ADD "searchForm"."groupByFields" NOS ZERO ()
+             ADD "searchForm"."groupByFields".field_0 NOS ZERO ()
+             ADD "searchForm"."orderByFields" NOS ZERO ()
+             ADD "searchForm"."orderByFields" NOS ZERO ()
+             ADD "searchForm"."orderByFields".field_0 NOS ZERO ()
+             ADD "searchForm"."outputFields" NOS ZERO ()
+             ADD "searchForm"."outputFields" NOS ZERO ()
+             ADD "searchForm"."outputFields".field NOS ZERO ()
+             ADD "searchForm"."outputFields".alias NOS ZERO ()
+             ADD "searchForm"."outputFields".expression NOS ZERO ()
+             ADD "searchForm"."outputFields".aggregated NOS ZERO ()
+             ADD "searchForm"."outputFields".visible NOS ZERO ()
+             ADD "searchForm"."outputFields"."expandFields" NOS ZERO ()
+             ADD "searchForm"."outputFields"."expandFields" NOS ZERO ()
+             ADD "searchForm"."outputFields"."expandFields".field_0 NOS ZERO ()
+             ADD "searchForm"."outputFields".role NOS ZERO ()
+             ADD "searchForm"."outputFields"."dataExpandedFieldFrom" NOS ZERO ()
+             ADD "searchForm"."outputFields"."dataExpandedField" NOS ZERO ()
+             ADD "searchForm"."outputFields".db NOS ZERO ()
+             ADD "searchForm"."outputFields".operation NOS ZERO ()
+             ADD "searchForm"."outputFields".multiple NOS ZERO ()
+             ADD "searchForm"."outputFields"."rolesToExpand" NOS ZERO ()
+             ADD "searchForm"."outputFields"."rolesToExpand" NOS ZERO ()
+             ADD "searchForm"."outputFields"."rolesToExpand".field_0 NOS ZERO ()
+             ADD "searchForm".id NOS ZERO ()
+             ADD "searchForm".name NOS ZERO ()
+             ADD "searchForm".description NOS ZERO ()
+             ADD "searchForm"."sharedQuery" NOS ZERO ()
+             ADD "searchForm".path NOS ZERO ()
+             ADD "searchForm"."allFields" NOS ZERO ()
+             ADD field NOS ZERO ()
+             ADD field."allFields" NOS ZERO ()
+             ADD field."allFields" NOS ZERO ()
+             ADD field."allFields".role NOS ZERO ()
+             ADD field."allFields".name NOS ZERO ()
+             ADD field."allFields"."typeName" NOS ZERO ()
+             ADD field."allFields".description NOS ZERO ()
+             ADD field."allFields".operation NOS ZERO ()
+             ADD field."allFields".type NOS ZERO ()
+             ADD field."allFields".mandatory NOS ZERO ()
+             ADD field."allFields"."fieldCapabilities" NOS ZERO ()
+             ADD field."allFields"."fieldCapabilities"."fieldName" NOS ZERO ()
+             ADD field."allFields"."fieldCapabilities".operators NOS ZERO ()
+             ADD field."allFields"."fieldCapabilities".multiplicity NOS ZERO ()
+             ADD field."allFields".input NOS ZERO ()
+             ADD field."allFields".output NOS ZERO ()
+             ADD field."allFields"."matchName" NOS ZERO ()
+             ADD field."allFields"."matchDesc" NOS ZERO ()
+             ADD field."mandatoryFields" NOS ZERO ()
+             ADD field."mandatoryFields" NOS ZERO ()
+             ADD field."mandatoryFields".field_0 NOS ZERO ()
+             ADD field."expandedFields" NOS ZERO ()
+             ADD field."expandedFields" NOS ZERO ()
+             ADD field."expandedFields".field_0 NOS ZERO ()
+             ADD field."mandatoryExpandedFields" NOS ZERO ()
+             ADD field."mandatoryExpandedFields" NOS ZERO ()
+             ADD field."mandatoryExpandedFields".field_0 NOS ZERO ()
+             ADD field."fieldsWithPrivileges" NOS ZERO ()
+             ADD field."fieldsWithPrivileges" NOS ZERO ()
+             ADD field."fieldsWithPrivileges".role NOS ZERO ()
+             ADD field."fieldsWithPrivileges".name NOS ZERO ()
+             ADD field."fieldsWithPrivileges"."typeName" NOS ZERO ()
+             ADD field."fieldsWithPrivileges".description NOS ZERO ()
+             ADD field."fieldsWithPrivileges".operation NOS ZERO ()
+             ADD field."fieldsWithPrivileges".type NOS ZERO ()
+             ADD field."fieldsWithPrivileges".mandatory NOS ZERO ()
+             ADD field."fieldsWithPrivileges"."fieldCapabilities" NOS ZERO ()
+             ADD field."fieldsWithPrivileges"."fieldCapabilities"."fieldName" NOS ZERO ()
+             ADD field."fieldsWithPrivileges"."fieldCapabilities".operators NOS ZERO ()
+             ADD field."fieldsWithPrivileges"."fieldCapabilities".multiplicity NOS ZERO ()
+             ADD field."fieldsWithPrivileges".input NOS ZERO ()
+             ADD field."fieldsWithPrivileges".output NOS ZERO ()
+             ADD field."fieldsWithPrivileges"."matchName" NOS ZERO ()
+             ADD field."fieldsWithPrivileges"."matchDesc" NOS ZERO ()
+             ADD "propertyInfo" NOS ZERO ()
+             ADD "viewStatisticsInfo" NOS ZERO ()
+             ADD "viewStatisticsInfo"."databaseName" NOS ZERO ()
+             ADD "viewStatisticsInfo".name NOS ZERO ()
+             ADD "viewStatisticsInfo"."rowsNumber" NOS ZERO ()
+             ADD "viewStatisticsInfo"."lastUpdated" NOS ZERO ()
+             ADD "viewStatisticsInfo"."fieldStatisticsList" NOS ZERO ()
+             ADD "viewStatisticsInfo"."fieldStatisticsList" NOS ZERO ()
+             ADD "viewStatisticsInfo"."fieldStatisticsList".field_0 NOS ZERO ()
+             ADD "savedQuery" NOS ZERO ()
+             ADD "connectionUris" NOS ZERO ()
+             ADD "connectionUris"."jdbc-connection-url" NOS ZERO ()
+             ADD "connectionUris"."odbc-connection-string-32bits" NOS ZERO ()
+             ADD "connectionUris"."odbc-connection-string-64bits" NOS ZERO ()
+             ADD "connectionUris"."rest-connection-url" NOS ZERO ()
+             ADD "connectionUris"."odata-connection-url" NOS ZERO ()
+             ADD "connectionUris"."intro-text-connect" NOS ZERO ()
+        )
+        OUTPUTLIST (association, categories, "connectionUris", "databaseName", deprecations, description, "descriptionType", endorsements, field, id, "inIndex", "inLocal", "inVDP", name, "propertyInfo", "readPermission", "savedQuery", schema, "searchForm", "showStatistics", statistics, tags, "totalFields", "viewStatisticsInfo", warnings
+        )
+        WRAPPER (json bv_catalog_view_detail)
+    );
+

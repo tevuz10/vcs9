@@ -1,0 +1,4 @@
+﻿*/databases/admin/folder.api/api.vql
+1/databases/admin/folder.api/folder.joblist/joblist.vql
+*/databases/admin/folder.api/folder.joblist/joblist.vql
+1/databases/admin/folder.api/folder.joblist/datasources/json/ds_scheduler_jobs.vql

@@ -1,0 +1,48 @@
+﻿CREATE OR REPLACE WRAPPER DF delimbt
+    DATASOURCENAME=delimbt
+    OUTPUTSCHEMA (
+        a1 = 'a1',
+        b1 = 'b1',
+        b2 = 'b2',
+        b3 = 'b3',
+        x1 = 'x1',
+        x2 = 'x2',
+        c1 = 'c1',
+        c2 = 'c2',
+        c3 = 'c3',
+        c4 = 'c4'
+    );
+
+CREATE OR REPLACE TABLE delimbt I18N jp (
+        a1:text,
+        b1:text,
+        b2:text,
+        b3:text,
+        x1:text,
+        x2:text,
+        c1:text,
+        c2:text,
+        c3:text,
+        c4:text
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD delimbt(
+        I18N jp
+        CONSTRAINTS (
+             ADD a1 NOS ZERO ()
+             ADD b1 NOS ZERO ()
+             ADD b2 NOS ZERO ()
+             ADD b3 NOS ZERO ()
+             ADD x1 NOS ZERO ()
+             ADD x2 NOS ZERO ()
+             ADD c1 NOS ZERO ()
+             ADD c2 NOS ZERO ()
+             ADD c3 NOS ZERO ()
+             ADD c4 NOS ZERO ()
+        )
+        OUTPUTLIST (a1, b1, b2, b3, c1, c2, c3, c4, x1, x2
+        )
+        WRAPPER (df delimbt)
+    );
+

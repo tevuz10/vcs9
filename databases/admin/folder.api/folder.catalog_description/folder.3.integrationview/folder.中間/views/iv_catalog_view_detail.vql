@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_catalog_view_detail FOLDER = '/api/catalog_description/3.integrationview/中間' AS SELECT bv_catalog_view_detail."DBNAME" AS "DBNAME", bv_catalog_view_detail."VIEWNAME" AS "VIEWNAME", bv_catalog_view_detail.tags AS tags, bv_catalog_view_detail.categories AS categories, bv_catalog_view_detail.description AS description, bv_catalog_view_detail.id AS view_id FROM bv_catalog_view_detail;
+
+ALTER VIEW iv_catalog_view_detail
+ LAYOUT (bv_catalog_view_detail = [20, 20, 405, 565]);
+

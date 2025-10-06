@@ -1,0 +1,8 @@
+﻿CREATE OR REPLACE VIEW p_ds_pdf (
+    binarycontents (sourcetypeid = '2004')
+ )
+ AS SELECT ds_pdf.filename AS filename, enrich_ai_binary('要約して', binarycontents, 'application/pdf') AS binarycontents FROM ds_pdf WHERE (parentfolder = 'C:\Users\TatsuyaZenbutsu\Downloads\PDF' AND recursive = false);
+
+ALTER VIEW p_ds_pdf
+ LAYOUT (ds_pdf = [20, 20, 200, 200]);
+

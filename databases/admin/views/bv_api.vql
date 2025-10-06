@@ -1,0 +1,21 @@
+﻿CREATE OR REPLACE WRAPPER DF bv_api
+    DATASOURCENAME=bv_api
+    OUTPUTSCHEMA (
+        "Column0" = 'Column0'
+    );
+
+CREATE OR REPLACE TABLE bv_api I18N jp (
+        "Column0":text
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_api(
+        I18N jp
+        CONSTRAINTS (
+             ADD "Column0" NOS ZERO ()
+        )
+        OUTPUTLIST ("Column0"
+        )
+        WRAPPER (df bv_api)
+    );
+

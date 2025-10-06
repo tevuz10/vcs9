@@ -1,0 +1,31 @@
+﻿CREATE OR REPLACE TABLE excel_zip2 I18N jp (
+        "項目No":int (sourcetypeid = '4'),
+        "分類":text (sourcetypeid = '12'),
+        "項目":text (sourcetypeid = '12'),
+        "区分":text (sourcetypeid = '12'),
+        "形式":text (sourcetypeid = '12'),
+        "複数可否":text (sourcetypeid = '12'),
+        "説明":text (sourcetypeid = '12'),
+        "入力制限":text (sourcetypeid = '12'),
+        "備考":text (sourcetypeid = '12')
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD excel_zip2(
+        I18N jp
+        CONSTRAINTS (
+             ADD "項目No" (any) OPT ANY
+             ADD "分類" (any) OPT ANY
+             ADD "項目" (any) OPT ANY
+             ADD "区分" (any) OPT ANY
+             ADD "形式" (any) OPT ANY
+             ADD "複数可否" (any) OPT ANY
+             ADD "説明" (any) OPT ANY
+             ADD "入力制限" (any) OPT ANY
+             ADD "備考" (any) OPT ANY
+        )
+        OUTPUTLIST ("備考", "入力制限", "分類", "区分", "形式", "複数可否", "説明", "項目", "項目No"
+        )
+        WRAPPER (custom excel_zip2)
+    );
+

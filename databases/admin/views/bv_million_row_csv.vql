@@ -1,0 +1,61 @@
+﻿CREATE OR REPLACE WRAPPER JDBC bv_million_row_csv
+    DATASOURCENAME=customvdpcachedatasource_copy
+    SQLSENTENCE='SELECT t0.REGION, t0.COUNTRY_0, t0.ITEMTYPE_0, t0.SALESCHANNEL_0, t0.ORDERPRIORITY_0, t0.ORDERDATE_0, t0.ORDERID_0, t0.SHIPDATE_0, t0.UNITSSOLD_0, t0.UNITPRICE_0, t0.UNITCOST_0, t0.TOTALREVENUE_0, t0.TOTALCOST_0, t0.TOTALPROFIT_0 FROM C_BV_MILLION_ROW_CSV949633132126165597744627972952942262670202 t0 WHERE t0.ROWSTATUS = ''V'' AND (t0.EXPIRATIONDATE = 0 OR t0.EXPIRATIONDATE > 1714031198849)'   
+    OUTPUTSCHEMA (
+        "REGION" = 'REGION' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='32672', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE NOT UPDATEABLE,
+        "COUNTRY_0" = 'COUNTRY_0' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='32672', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE NOT UPDATEABLE,
+        "ITEMTYPE_0" = 'ITEMTYPE_0' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='32672', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE NOT UPDATEABLE,
+        "SALESCHANNEL_0" = 'SALESCHANNEL_0' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='32672', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE NOT UPDATEABLE,
+        "ORDERPRIORITY_0" = 'ORDERPRIORITY_0' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='32672', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE NOT UPDATEABLE,
+        "ORDERDATE_0" = 'ORDERDATE_0' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='32672', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE NOT UPDATEABLE,
+        "ORDERID_0" = 'ORDERID_0' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='32672', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE NOT UPDATEABLE,
+        "SHIPDATE_0" = 'SHIPDATE_0' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='32672', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE NOT UPDATEABLE,
+        "UNITSSOLD_0" = 'UNITSSOLD_0' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='32672', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE NOT UPDATEABLE,
+        "UNITPRICE_0" = 'UNITPRICE_0' :'java.math.BigDecimal' (sourcetypedecimals='16', sourcetypesize='31', sourcetypeid='3', sourcetypename='DECIMAL')  SORTABLE NOT UPDATEABLE,
+        "UNITCOST_0" = 'UNITCOST_0' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='32672', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE NOT UPDATEABLE,
+        "TOTALREVENUE_0" = 'TOTALREVENUE_0' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='32672', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE NOT UPDATEABLE,
+        "TOTALCOST_0" = 'TOTALCOST_0' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='32672', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE NOT UPDATEABLE,
+        "TOTALPROFIT_0" = 'TOTALPROFIT_0' :'java.lang.String' (sourcetypedecimals='0', sourcetypesize='32672', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE NOT UPDATEABLE
+    );
+
+CREATE OR REPLACE TABLE bv_million_row_csv I18N jp (
+        "REGION":text (sourcetypeid = '12', sourcetypedecimals = '0', sourcetypesize = '32672'),
+        "COUNTRY_0":text (sourcetypeid = '12', sourcetypedecimals = '0', sourcetypesize = '32672'),
+        "ITEMTYPE_0":text (sourcetypeid = '12', sourcetypedecimals = '0', sourcetypesize = '32672'),
+        "SALESCHANNEL_0":text (sourcetypeid = '12', sourcetypedecimals = '0', sourcetypesize = '32672'),
+        "ORDERPRIORITY_0":text (sourcetypeid = '12', sourcetypedecimals = '0', sourcetypesize = '32672'),
+        "ORDERDATE_0":text (sourcetypeid = '12', sourcetypedecimals = '0', sourcetypesize = '32672'),
+        "ORDERID_0":text (sourcetypeid = '12', sourcetypedecimals = '0', sourcetypesize = '32672'),
+        "SHIPDATE_0":text (sourcetypeid = '12', sourcetypedecimals = '0', sourcetypesize = '32672'),
+        "UNITSSOLD_0":text (sourcetypeid = '12', sourcetypedecimals = '0', sourcetypesize = '32672'),
+        "UNITPRICE_0":decimal (sourcetypeid = '3', sourcetypedecimals = '16', sourcetypesize = '31'),
+        "UNITCOST_0":text (sourcetypeid = '12', sourcetypedecimals = '0', sourcetypesize = '32672'),
+        "TOTALREVENUE_0":text (sourcetypeid = '12', sourcetypedecimals = '0', sourcetypesize = '32672'),
+        "TOTALCOST_0":text (sourcetypeid = '12', sourcetypedecimals = '0', sourcetypesize = '32672'),
+        "TOTALPROFIT_0":text (sourcetypeid = '12', sourcetypedecimals = '0', sourcetypesize = '32672')
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_million_row_csv(
+        I18N jp
+        CONSTRAINTS (
+             ADD "REGION" NOS ZERO ()
+             ADD "COUNTRY_0" NOS ZERO ()
+             ADD "ITEMTYPE_0" NOS ZERO ()
+             ADD "SALESCHANNEL_0" NOS ZERO ()
+             ADD "ORDERPRIORITY_0" NOS ZERO ()
+             ADD "ORDERDATE_0" NOS ZERO ()
+             ADD "ORDERID_0" NOS ZERO ()
+             ADD "SHIPDATE_0" NOS ZERO ()
+             ADD "UNITSSOLD_0" NOS ZERO ()
+             ADD "UNITPRICE_0" NOS ZERO ()
+             ADD "UNITCOST_0" NOS ZERO ()
+             ADD "TOTALREVENUE_0" NOS ZERO ()
+             ADD "TOTALCOST_0" NOS ZERO ()
+             ADD "TOTALPROFIT_0" NOS ZERO ()
+        )
+        OUTPUTLIST ("COUNTRY_0", "ITEMTYPE_0", "ORDERDATE_0", "ORDERID_0", "ORDERPRIORITY_0", "REGION", "SALESCHANNEL_0", "SHIPDATE_0", "TOTALCOST_0", "TOTALPROFIT_0", "TOTALREVENUE_0", "UNITCOST_0", "UNITPRICE_0", "UNITSSOLD_0"
+        )
+        WRAPPER (jdbc bv_million_row_csv)
+    );
+

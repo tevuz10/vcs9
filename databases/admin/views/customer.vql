@@ -1,0 +1,48 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC "CUSTOMER"
+    DESCRIPTION='Customer data as defined by TPC-H' 
+    DATASOURCENAME=snow
+    CATALOGNAME='${databases.admin.views.jdbc.customer.CATALOGNAME}' 
+    SCHEMANAME='${databases.admin.views.jdbc.customer.SCHEMANAME}' 
+    RELATIONNAME='CUSTOMER' 
+    OUTPUTSCHEMA (
+        "C_CUSTKEY" = 'C_CUSTKEY' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetypesize='38', description='', sourcetypeid='-5', sourcetypename='NUMBER')  NOT NULL SORTABLE,
+        "C_NAME" = 'C_NAME' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetypesize='25', description='', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        "C_ADDRESS" = 'C_ADDRESS' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetypesize='40', description='', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        "C_NATIONKEY" = 'C_NATIONKEY' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetypesize='38', description='', sourcetypeid='-5', sourcetypename='NUMBER')  NOT NULL SORTABLE,
+        "C_PHONE" = 'C_PHONE' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetypesize='15', description='', sourcetypeid='12', sourcetypename='VARCHAR')  NOT NULL SORTABLE,
+        "C_ACCTBAL" = 'C_ACCTBAL' :'java.math.BigDecimal' (OPT) (sourcetypedecimals='2', sourcetypesize='12', description='', sourcetypeid='3', sourcetypename='NUMBER')  NOT NULL SORTABLE,
+        "C_MKTSEGMENT" = 'C_MKTSEGMENT' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetypesize='10', description='', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE,
+        "C_COMMENT" = 'C_COMMENT' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetypesize='117', description='', sourcetypeid='12', sourcetypename='VARCHAR')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE "CUSTOMER" I18N jp (
+        "C_CUSTKEY":long (notnull, sourcetypeid = '-5', sourcetypedecimals = '0', sourcetypesize = '38', description = ''),
+        "C_NAME":text (notnull, sourcetypeid = '-9', sourcetypedecimals = '0', sourcetypesize = '25', description = ''),
+        "C_ADDRESS":text (notnull, sourcetypeid = '-9', sourcetypedecimals = '0', sourcetypesize = '40', description = ''),
+        "C_NATIONKEY":long (notnull, sourcetypeid = '-5', sourcetypedecimals = '0', sourcetypesize = '38', description = ''),
+        "C_PHONE":text (notnull, sourcetypeid = '-9', sourcetypedecimals = '0', sourcetypesize = '15', description = ''),
+        "C_ACCTBAL":decimal (notnull, sourcetypeid = '2', sourcetypedecimals = '2', sourcetypesize = '12', description = ''),
+        "C_MKTSEGMENT":text (sourcetypeid = '-9', sourcetypedecimals = '0', sourcetypesize = '10', description = ''),
+        "C_COMMENT":text (sourcetypeid = '-9', sourcetypedecimals = '0', sourcetypesize = '117', description = '')
+    )
+    DESCRIPTION = 'Customer data as defined by TPC-H'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD "CUSTOMER"(
+        I18N jp
+        CONSTRAINTS (
+             ADD "C_CUSTKEY" (any) OPT ANY
+             ADD "C_NAME" (any) OPT ANY
+             ADD "C_ADDRESS" (any) OPT ANY
+             ADD "C_NATIONKEY" (any) OPT ANY
+             ADD "C_PHONE" (any) OPT ANY
+             ADD "C_ACCTBAL" (any) OPT ANY
+             ADD "C_MKTSEGMENT" (any) OPT ANY
+             ADD "C_COMMENT" (any) OPT ANY
+        )
+        OUTPUTLIST ("C_ACCTBAL", "C_ADDRESS", "C_COMMENT", "C_CUSTKEY", "C_MKTSEGMENT", "C_NAME", "C_NATIONKEY", "C_PHONE"
+        )
+        WRAPPER (jdbc "CUSTOMER")
+    );
+

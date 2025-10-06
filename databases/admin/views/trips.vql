@@ -1,0 +1,40 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC trips
+    DATASOURCENAME=denodobricks
+    CATALOGNAME='${databases.admin.views.jdbc.trips.CATALOGNAME}' 
+    SCHEMANAME='${databases.admin.views.jdbc.trips.SCHEMANAME}' 
+    RELATIONNAME='trips' 
+    OUTPUTSCHEMA (
+        tpep_pickup_datetime = 'tpep_pickup_datetime' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='9', sourcetyperadix='0', sourcetypesize='29', description='', sourcetypeid='93', sourcetypename='TIMESTAMP')  SORTABLE,
+        tpep_dropoff_datetime = 'tpep_dropoff_datetime' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='9', sourcetyperadix='0', sourcetypesize='29', description='', sourcetypeid='93', sourcetypename='TIMESTAMP')  SORTABLE,
+        trip_distance = 'trip_distance' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='15', description='', sourcetypeid='8', sourcetypename='DOUBLE')  SORTABLE,
+        fare_amount = 'fare_amount' :'java.lang.Double' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='15', description='', sourcetypeid='8', sourcetypename='DOUBLE')  SORTABLE,
+        pickup_zip = 'pickup_zip' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='', sourcetypeid='4', sourcetypename='INT')  SORTABLE,
+        dropoff_zip = 'dropoff_zip' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', description='', sourcetypeid='4', sourcetypename='INT')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE trips I18N jp (
+        tpep_pickup_datetime:timestamp (sourcetypeid = '93', sourcetyperadix = '0', sourcetypedecimals = '9', sourcetypesize = '29', description = ''),
+        tpep_dropoff_datetime:timestamp (sourcetypeid = '93', sourcetyperadix = '0', sourcetypedecimals = '9', sourcetypesize = '29', description = ''),
+        trip_distance:double (sourcetypeid = '8', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '15', description = ''),
+        fare_amount:double (sourcetypeid = '8', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '15', description = ''),
+        pickup_zip:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = ''),
+        dropoff_zip:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10', description = '')
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD trips(
+        I18N jp
+        CONSTRAINTS (
+             ADD tpep_pickup_datetime (any) OPT ANY
+             ADD tpep_dropoff_datetime (any) OPT ANY
+             ADD trip_distance (any) OPT ANY
+             ADD fare_amount (any) OPT ANY
+             ADD pickup_zip (any) OPT ANY
+             ADD dropoff_zip (any) OPT ANY
+        )
+        OUTPUTLIST (dropoff_zip, fare_amount, pickup_zip, tpep_dropoff_datetime, tpep_pickup_datetime, trip_distance
+        )
+        WRAPPER (jdbc trips)
+    );
+

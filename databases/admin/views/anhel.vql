@@ -1,0 +1,2 @@
+﻿CREATE OR REPLACE VIEW anhel AS SELECT 1 FROM dual();
+

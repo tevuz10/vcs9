@@ -1,0 +1,19 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE SAPBWBAPI ds_sapbw_prod
+    FOLDER = '/test'
+    DATABASENAME = 'sap_bi_bapi'
+    DATABASEVERSION = '7x'
+    SYSTEMNAME = '${databases.admin.folder.test.datasources.sapbwbapi.ds_sapbw_prod.SYSTEMNAME}'
+    LANGUAGE = '${databases.admin.folder.test.datasources.sapbwbapi.ds_sapbw_prod.LANGUAGE}'
+    HOSTNAME = '${databases.admin.folder.test.datasources.sapbwbapi.ds_sapbw_prod.HOSTNAME}'
+    CLIENTID = '${databases.admin.folder.test.datasources.sapbwbapi.ds_sapbw_prod.CLIENTID}'
+    SYSTEMNUMBER = '${databases.admin.folder.test.datasources.sapbwbapi.ds_sapbw_prod.SYSTEMNUMBER}'
+    USERNAME = '${databases.admin.folder.test.datasources.sapbwbapi.ds_sapbw_prod.USERNAME}'
+    USERPASSWORD = '${databases.admin.folder.test.datasources.sapbwbapi.ds_sapbw_prod.USERPASSWORD}' ${databases.admin.folder.test.datasources.sapbwbapi.ds_sapbw_prod.USERPASSWORD.ENCRYPTED}
+    READBLOCKSIZE = 20000
+    MAXACTIVE = 20
+    MAXIDLE = 4
+    MAXWAIT = 60000
+    MINEVICTABLEIDLETIME = 100000
+    TIMEBETWEENEVICTION = 150000;
+

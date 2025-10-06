@@ -1,0 +1,9 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE JSON ds_scheduler_jobs
+    FOLDER = '/api/joblist'
+    ROUTE HTTP 'http.ApacheHttpClientConnection,120000' GET '${databases.admin.folder.api.folder.joblist.datasources.json.ds_scheduler_jobs.ROUTE.HTTP.URL}'
+ AUTHENTICATION BASIC ( 
+      USER '${databases.admin.folder.api.folder.joblist.datasources.json.ds_scheduler_jobs.ROUTE.HTTP.USER}'
+      PASSWORD '${databases.admin.folder.api.folder.joblist.datasources.json.ds_scheduler_jobs.ROUTE.HTTP.PASSWORD}' ${databases.admin.folder.api.folder.joblist.datasources.json.ds_scheduler_jobs.ROUTE.HTTP.PASSWORD.ENCRYPTED} )
+    PROXY OFF;
+

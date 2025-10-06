@@ -1,0 +1,284 @@
+﻿CREATE OR REPLACE WRAPPER SAPBWBAPI "bv_販売予実績時系列(化成品)"
+    FOLDER = '/test'
+    DATASOURCENAME = ds_sapbw_prod
+    SCHEMANAME = ''
+    CUBENAME = 'JAPABC004/Z029928007_1'
+    QUERYNAME = 'Z029928007_1'
+    DIMENSIONKEYFIELDS = FALSE
+    LEAFLEVELMEMBERSONLY = TRUE
+    INCLUDEEMPTYROWS = FALSE
+    OUTPUTSCHEMA (
+        "キー数値" = '[ESBNY2220B19KF1VD97X37CB8]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[ESBNY2220B19KF1VD97X37CB8]' DIMENSIONNAME = '[ESBNY2220B19KF1VD97X37CB8]' LEVELPOSITION=0,
+        "品目コード(一般) レベル 01" = '[JLOCH0020].[LEVEL01]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' LEVELPOSITION=1,
+        "品目コード(一般)_EAN/UPC (キー)" = '[JLOCH0020].[20EANUPC]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_TS（全固形分）濃度 (キー)" = '[JLOCH0020].[2JLOKF0010]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_Un 正味重量 (キー)" = '[JLOCH0020].[2JPAUN0010]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_Un 正味重量 (テキスト（中）)" = '[JLOCH0020].[5JPAUN0010]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_Un 正味重量 (名称)" = '[JLOCH0020].[1JPAUN0010]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_キー" = '[JLOCH0020].[2JLOCH0020]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_クラス (キー)" = '[JLOCH0020].[20CLASS_NUM]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_クラス (テキスト（中）)" = '[JLOCH0020].[50CLASS_NUM]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_クラスタイプ (キー)" = '[JLOCH0020].[20CLASS_TYPE]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_ステータス有効開始月 (キー)" = '[JLOCH0020].[2JLOCH0170]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_テキスト(EN) (キー)" = '[JLOCH0020].[2JLOCH0350]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_テキスト(KO) (キー)" = '[JLOCH0020].[2JLOCH0380]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_テキスト(LT) (キー)" = '[JLOCH0020].[2JLOCH0360]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_テキスト(Z1) (キー)" = '[JLOCH0020].[2JLOCH0370]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_テキスト（中）" = '[JLOCH0020].[5JLOCH0020]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_ページ書式 (キー)" = '[JLOCH0020].[2JLOCH0250]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_一般明細CatGrp (キー)" = '[JLOCH0020].[2JLOCH0140]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_出荷単位 (キー)" = '[JLOCH0020].[2ZLOKF0010]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_削除フラグ (キー)" = '[JLOCH0020].[20DEL_FLAG]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_単位換算係数分子 (キー)" = '[JLOCH0020].[2JLOKF0030]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_単位換算係数分母 (キー)" = '[JLOCH0020].[2JLOKF0020]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目グループ (キー)" = '[JLOCH0020].[20MATL_GROUP]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目グループ (名称)" = '[JLOCH0020].[10MATL_GROUP]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目グループ 1 (キー)" = '[JLOCH0020].[20MATL_GRP_1]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目グループ 1 (テキスト（中）)" = '[JLOCH0020].[50MATL_GRP_1]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目グループ 2 (キー)" = '[JLOCH0020].[20MATL_GRP_2]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目グループ 2 (テキスト（中）)" = '[JLOCH0020].[50MATL_GRP_2]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目グループ 4 (キー)" = '[JLOCH0020].[20MATL_GRP_4]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目グループ 4 (テキスト（中）)" = '[JLOCH0020].[50MATL_GRP_4]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目ステータス (キー)" = '[JLOCH0020].[2JLOCH0150]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目ステータス (テキスト（中）)" = '[JLOCH0020].[5JLOCH0150]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目タイプ (キー)" = '[JLOCH0020].[2JPACH0010]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目タイプ (テキスト（中）)" = '[JLOCH0020].[5JPACH0010]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目タイプ（使用禁止 (キー)" = '[JLOCH0020].[20MATL_TYPE]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目タイプ（使用禁止 (テキスト（中）)" = '[JLOCH0020].[50MATL_TYPE]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目別取引先 (キー)" = '[JLOCH0020].[2JLOCH0047]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目別取引先 (テキスト (長))" = '[JLOCH0020].[4JLOCH0047]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目別取引先 (テキスト（中）)" = '[JLOCH0020].[5JLOCH0047]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目別取引先(禁止) (キー)" = '[JLOCH0020].[2JLOCH1060]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目別取引先(禁止) (テキスト (長))" = '[JLOCH0020].[4JLOCH1060]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目別取引先(禁止) (テキスト（中）)" = '[JLOCH0020].[5JLOCH1060]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目階層レベル 1 (キー)" = '[JLOCH0020].[20PRODH1]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目階層レベル 1 (テキスト（中）)" = '[JLOCH0020].[50PRODH1]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目階層レベル 2 (キー)" = '[JLOCH0020].[20PRODH2]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目階層レベル 2 (テキスト（中）)" = '[JLOCH0020].[50PRODH2]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目階層レベル 3 (キー)" = '[JLOCH0020].[20PRODH3]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目階層レベル 3 (テキスト（中）)" = '[JLOCH0020].[50PRODH3]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目階層レベル 4 (キー)" = '[JLOCH0020].[20PRODH4]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目階層レベル 4 (テキスト（中）)" = '[JLOCH0020].[50PRODH4]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目階層レベル 5 (キー)" = '[JLOCH0020].[20PRODH5]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目階層レベル 5 (テキスト（中）)" = '[JLOCH0020].[50PRODH5]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目階層レベル 6 (キー)" = '[JLOCH0020].[20PRODH6]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_品目階層レベル 6 (テキスト（中）)" = '[JLOCH0020].[50PRODH6]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_基本単位 (キー)" = '[JLOCH0020].[20BASE_UOM]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_基本単位 (テキスト（中）)" = '[JLOCH0020].[50BASE_UOM]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_基本単位 (名称)" = '[JLOCH0020].[10BASE_UOM]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_外部品目 Group (キー)" = '[JLOCH0020].[20EXTMATLGRP]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_外部品目 Group (テキスト（中）)" = '[JLOCH0020].[50EXTMATLGRP]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_文書 (キー)" = '[JLOCH0020].[2JLOCH0340]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_旧品目コード (キー)" = '[JLOCH0020].[2JSDCH0010]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_正味重量 (キー)" = '[JLOCH0020].[2JPAKF0090]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_総有効期間 (キー)" = '[JLOCH0020].[2JLOKF0040]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_総重量 (キー)" = '[JLOCH0020].[20GROSS_WT]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_製品部門 (キー)" = '[JLOCH0020].[20DIVISION]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_製品部門 (名称)" = '[JLOCH0020].[10DIVISION]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_製品階層 (キー)" = '[JLOCH0020].[20PROD_HIER]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_製品階層 (テキスト（中）)" = '[JLOCH0020].[50PROD_HIER]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_製造業者 (キー)" = '[JLOCH0020].[2JLOCH1070]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_製造業者 (テキスト（中）)" = '[JLOCH0020].[5JLOCH1070]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_販売グループ (キー)" = '[JLOCH0020].[20SALES_GRP]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_販売グループ (名称)" = '[JLOCH0020].[10SALES_GRP]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_販売数量単位 (キー)" = '[JLOCH0020].[2JSDUN0050]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_販売数量単位 (テキスト（中）)" = '[JLOCH0020].[5JSDUN0050]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_販売数量単位 (名称)" = '[JLOCH0020].[1JSDUN0050]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_重量単位 (キー)" = '[JLOCH0020].[20UNIT_OF_WT]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_重量単位 (テキスト（中）)" = '[JLOCH0020].[50UNIT_OF_WT]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "品目コード(一般)_重量単位 (名称)" = '[JLOCH0020].[10UNIT_OF_WT]' : 'java.lang.String' (OPT) HIERARCHYNAME = '[JLOCH0020]' DIMENSIONNAME = '[JLOCH0020]' ATTRIBUTE,
+        "予算 ネット販売金額" = '[Measures].[A67MEOJMBQJIDY7P5Q8R340O886HQMUWV8AUH3VP34KULG7LTM]' : 'java.lang.Double' (OPT) MEASURE,
+        "予算 販売利益" = '[Measures].[A67MEOJMBQJIDY7P5Q8R340O86NP04S11XYY0L7RMGUFVOC31B]' : 'java.lang.Double' (OPT) MEASURE,
+        "予算 販売数量（在庫単位）" = '[Measures].[A67MEOJMBQJIDY7P5Q8R340O895XA732HLD1V27N98DVI5VLGR]' : 'java.lang.Double' (OPT) MEASURE,
+        "予算 限界利益" = '[Measures].[A67MEOJMBQJIDY7P5Q8R340O83Q52EJO70AKMJAGYFBQ12RRY9]' : 'java.lang.Double' (OPT) MEASURE,
+        "カレンダ年/月（当月）" = '[JBWVA025]' : 'java.lang.String' (OPT) VARIABLE VAR_TYPE = 'P' REF_DIM = '[0CALMONTH]' REF_HRY = '[0CALMONTH]',
+        "製品部門" = '[JBWVA211]' : 'java.lang.String' (OPT) VARIABLE VAR_TYPE = 'S' REF_DIM = '[0DIVISION]' REF_HRY = '[0DIVISION]',
+        "通常加工区分" = '[JBWVA491]' : 'java.lang.String' (OPT) VARIABLE VAR_TYPE = 'S' REF_DIM = '[JSDCH0020]' REF_HRY = '[JSDCH0020]'
+    );
+
+CREATE OR REPLACE TABLE "bv_販売予実績時系列(化成品)" I18N jp (
+        "キー数値":text,
+        "品目コード(一般) レベル 01":text,
+        "品目コード(一般)_EAN/UPC (キー)":text,
+        "品目コード(一般)_TS（全固形分）濃度 (キー)":text,
+        "品目コード(一般)_Un 正味重量 (キー)":text,
+        "品目コード(一般)_Un 正味重量 (テキスト（中）)":text,
+        "品目コード(一般)_Un 正味重量 (名称)":text,
+        "品目コード(一般)_キー":text,
+        "品目コード(一般)_クラス (キー)":text,
+        "品目コード(一般)_クラス (テキスト（中）)":text,
+        "品目コード(一般)_クラスタイプ (キー)":text,
+        "品目コード(一般)_ステータス有効開始月 (キー)":text,
+        "品目コード(一般)_テキスト(EN) (キー)":text,
+        "品目コード(一般)_テキスト(KO) (キー)":text,
+        "品目コード(一般)_テキスト(LT) (キー)":text,
+        "品目コード(一般)_テキスト(Z1) (キー)":text,
+        "品目コード(一般)_テキスト（中）":text,
+        "品目コード(一般)_ページ書式 (キー)":text,
+        "品目コード(一般)_一般明細CatGrp (キー)":text,
+        "品目コード(一般)_出荷単位 (キー)":text,
+        "品目コード(一般)_削除フラグ (キー)":text,
+        "品目コード(一般)_単位換算係数分子 (キー)":text,
+        "品目コード(一般)_単位換算係数分母 (キー)":text,
+        "品目コード(一般)_品目グループ (キー)":text,
+        "品目コード(一般)_品目グループ (名称)":text,
+        "品目コード(一般)_品目グループ 1 (キー)":text,
+        "品目コード(一般)_品目グループ 1 (テキスト（中）)":text,
+        "品目コード(一般)_品目グループ 2 (キー)":text,
+        "品目コード(一般)_品目グループ 2 (テキスト（中）)":text,
+        "品目コード(一般)_品目グループ 4 (キー)":text,
+        "品目コード(一般)_品目グループ 4 (テキスト（中）)":text,
+        "品目コード(一般)_品目ステータス (キー)":text,
+        "品目コード(一般)_品目ステータス (テキスト（中）)":text,
+        "品目コード(一般)_品目タイプ (キー)":text,
+        "品目コード(一般)_品目タイプ (テキスト（中）)":text,
+        "品目コード(一般)_品目タイプ（使用禁止 (キー)":text,
+        "品目コード(一般)_品目タイプ（使用禁止 (テキスト（中）)":text,
+        "品目コード(一般)_品目別取引先 (キー)":text,
+        "品目コード(一般)_品目別取引先 (テキスト (長))":text,
+        "品目コード(一般)_品目別取引先 (テキスト（中）)":text,
+        "品目コード(一般)_品目別取引先(禁止) (キー)":text,
+        "品目コード(一般)_品目別取引先(禁止) (テキスト (長))":text,
+        "品目コード(一般)_品目別取引先(禁止) (テキスト（中）)":text,
+        "品目コード(一般)_品目階層レベル 1 (キー)":text,
+        "品目コード(一般)_品目階層レベル 1 (テキスト（中）)":text,
+        "品目コード(一般)_品目階層レベル 2 (キー)":text,
+        "品目コード(一般)_品目階層レベル 2 (テキスト（中）)":text,
+        "品目コード(一般)_品目階層レベル 3 (キー)":text,
+        "品目コード(一般)_品目階層レベル 3 (テキスト（中）)":text,
+        "品目コード(一般)_品目階層レベル 4 (キー)":text,
+        "品目コード(一般)_品目階層レベル 4 (テキスト（中）)":text,
+        "品目コード(一般)_品目階層レベル 5 (キー)":text,
+        "品目コード(一般)_品目階層レベル 5 (テキスト（中）)":text,
+        "品目コード(一般)_品目階層レベル 6 (キー)":text,
+        "品目コード(一般)_品目階層レベル 6 (テキスト（中）)":text,
+        "品目コード(一般)_基本単位 (キー)":text,
+        "品目コード(一般)_基本単位 (テキスト（中）)":text,
+        "品目コード(一般)_基本単位 (名称)":text,
+        "品目コード(一般)_外部品目 Group (キー)":text,
+        "品目コード(一般)_外部品目 Group (テキスト（中）)":text,
+        "品目コード(一般)_文書 (キー)":text,
+        "品目コード(一般)_旧品目コード (キー)":text,
+        "品目コード(一般)_正味重量 (キー)":text,
+        "品目コード(一般)_総有効期間 (キー)":text,
+        "品目コード(一般)_総重量 (キー)":text,
+        "品目コード(一般)_製品部門 (キー)":text,
+        "品目コード(一般)_製品部門 (名称)":text,
+        "品目コード(一般)_製品階層 (キー)":text,
+        "品目コード(一般)_製品階層 (テキスト（中）)":text,
+        "品目コード(一般)_製造業者 (キー)":text,
+        "品目コード(一般)_製造業者 (テキスト（中）)":text,
+        "品目コード(一般)_販売グループ (キー)":text,
+        "品目コード(一般)_販売グループ (名称)":text,
+        "品目コード(一般)_販売数量単位 (キー)":text,
+        "品目コード(一般)_販売数量単位 (テキスト（中）)":text,
+        "品目コード(一般)_販売数量単位 (名称)":text,
+        "品目コード(一般)_重量単位 (キー)":text,
+        "品目コード(一般)_重量単位 (テキスト（中）)":text,
+        "品目コード(一般)_重量単位 (名称)":text,
+        "予算 ネット販売金額":double,
+        "予算 販売利益":double,
+        "予算 販売数量（在庫単位）":double,
+        "予算 限界利益":double,
+        "カレンダ年/月（当月）":text,
+        "製品部門":text,
+        "通常加工区分":text
+    )
+    FOLDER = '/test'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD "bv_販売予実績時系列(化成品)"(
+        I18N jp
+        CONSTRAINTS (
+             ADD "キー数値" (any) OPT ANY
+             ADD "品目コード(一般) レベル 01" (any) OPT ANY
+             ADD "品目コード(一般)_EAN/UPC (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_TS（全固形分）濃度 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_Un 正味重量 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_Un 正味重量 (テキスト（中）)" (any) OPT ANY
+             ADD "品目コード(一般)_Un 正味重量 (名称)" (any) OPT ANY
+             ADD "品目コード(一般)_キー" (any) OPT ANY
+             ADD "品目コード(一般)_クラス (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_クラス (テキスト（中）)" (any) OPT ANY
+             ADD "品目コード(一般)_クラスタイプ (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_ステータス有効開始月 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_テキスト(EN) (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_テキスト(KO) (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_テキスト(LT) (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_テキスト(Z1) (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_テキスト（中）" (any) OPT ANY
+             ADD "品目コード(一般)_ページ書式 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_一般明細CatGrp (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_出荷単位 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_削除フラグ (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_単位換算係数分子 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_単位換算係数分母 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_品目グループ (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_品目グループ (名称)" (any) OPT ANY
+             ADD "品目コード(一般)_品目グループ 1 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_品目グループ 1 (テキスト（中）)" (any) OPT ANY
+             ADD "品目コード(一般)_品目グループ 2 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_品目グループ 2 (テキスト（中）)" (any) OPT ANY
+             ADD "品目コード(一般)_品目グループ 4 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_品目グループ 4 (テキスト（中）)" (any) OPT ANY
+             ADD "品目コード(一般)_品目ステータス (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_品目ステータス (テキスト（中）)" (any) OPT ANY
+             ADD "品目コード(一般)_品目タイプ (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_品目タイプ (テキスト（中）)" (any) OPT ANY
+             ADD "品目コード(一般)_品目タイプ（使用禁止 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_品目タイプ（使用禁止 (テキスト（中）)" (any) OPT ANY
+             ADD "品目コード(一般)_品目別取引先 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_品目別取引先 (テキスト (長))" (any) OPT ANY
+             ADD "品目コード(一般)_品目別取引先 (テキスト（中）)" (any) OPT ANY
+             ADD "品目コード(一般)_品目別取引先(禁止) (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_品目別取引先(禁止) (テキスト (長))" (any) OPT ANY
+             ADD "品目コード(一般)_品目別取引先(禁止) (テキスト（中）)" (any) OPT ANY
+             ADD "品目コード(一般)_品目階層レベル 1 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_品目階層レベル 1 (テキスト（中）)" (any) OPT ANY
+             ADD "品目コード(一般)_品目階層レベル 2 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_品目階層レベル 2 (テキスト（中）)" (any) OPT ANY
+             ADD "品目コード(一般)_品目階層レベル 3 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_品目階層レベル 3 (テキスト（中）)" (any) OPT ANY
+             ADD "品目コード(一般)_品目階層レベル 4 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_品目階層レベル 4 (テキスト（中）)" (any) OPT ANY
+             ADD "品目コード(一般)_品目階層レベル 5 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_品目階層レベル 5 (テキスト（中）)" (any) OPT ANY
+             ADD "品目コード(一般)_品目階層レベル 6 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_品目階層レベル 6 (テキスト（中）)" (any) OPT ANY
+             ADD "品目コード(一般)_基本単位 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_基本単位 (テキスト（中）)" (any) OPT ANY
+             ADD "品目コード(一般)_基本単位 (名称)" (any) OPT ANY
+             ADD "品目コード(一般)_外部品目 Group (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_外部品目 Group (テキスト（中）)" (any) OPT ANY
+             ADD "品目コード(一般)_文書 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_旧品目コード (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_正味重量 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_総有効期間 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_総重量 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_製品部門 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_製品部門 (名称)" (any) OPT ANY
+             ADD "品目コード(一般)_製品階層 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_製品階層 (テキスト（中）)" (any) OPT ANY
+             ADD "品目コード(一般)_製造業者 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_製造業者 (テキスト（中）)" (any) OPT ANY
+             ADD "品目コード(一般)_販売グループ (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_販売グループ (名称)" (any) OPT ANY
+             ADD "品目コード(一般)_販売数量単位 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_販売数量単位 (テキスト（中）)" (any) OPT ANY
+             ADD "品目コード(一般)_販売数量単位 (名称)" (any) OPT ANY
+             ADD "品目コード(一般)_重量単位 (キー)" (any) OPT ANY
+             ADD "品目コード(一般)_重量単位 (テキスト（中）)" (any) OPT ANY
+             ADD "品目コード(一般)_重量単位 (名称)" (any) OPT ANY
+             ADD "予算 ネット販売金額" (any) OPT ANY
+             ADD "予算 販売利益" (any) OPT ANY
+             ADD "予算 販売数量（在庫単位）" (any) OPT ANY
+             ADD "予算 限界利益" (any) OPT ANY
+             ADD "カレンダ年/月（当月）" (=) OPT ANY
+             ADD "製品部門" (between,=,in) OPT ANY
+             ADD "通常加工区分" (between,=,in) OPT ANY
+        )
+        OUTPUTLIST ("キー数値", "予算 ネット販売金額", "予算 販売利益", "予算 販売数量（在庫単位）", "予算 限界利益", "品目コード(一般) レベル 01", "品目コード(一般)_EAN/UPC (キー)", "品目コード(一般)_TS（全固形分）濃度 (キー)", "品目コード(一般)_Un 正味重量 (キー)", "品目コード(一般)_Un 正味重量 (テキスト（中）)", "品目コード(一般)_Un 正味重量 (名称)", "品目コード(一般)_キー", "品目コード(一般)_クラス (キー)", "品目コード(一般)_クラス (テキスト（中）)", "品目コード(一般)_クラスタイプ (キー)", "品目コード(一般)_ステータス有効開始月 (キー)", "品目コード(一般)_テキスト(EN) (キー)", "品目コード(一般)_テキスト(KO) (キー)", "品目コード(一般)_テキスト(LT) (キー)", "品目コード(一般)_テキスト(Z1) (キー)", "品目コード(一般)_テキスト（中）", "品目コード(一般)_ページ書式 (キー)", "品目コード(一般)_一般明細CatGrp (キー)", "品目コード(一般)_出荷単位 (キー)", "品目コード(一般)_削除フラグ (キー)", "品目コード(一般)_単位換算係数分子 (キー)", "品目コード(一般)_単位換算係数分母 (キー)", "品目コード(一般)_品目グループ (キー)", "品目コード(一般)_品目グループ (名称)", "品目コード(一般)_品目グループ 1 (キー)", "品目コード(一般)_品目グループ 1 (テキスト（中）)", "品目コード(一般)_品目グループ 2 (キー)", "品目コード(一般)_品目グループ 2 (テキスト（中）)", "品目コード(一般)_品目グループ 4 (キー)", "品目コード(一般)_品目グループ 4 (テキスト（中）)", "品目コード(一般)_品目ステータス (キー)", "品目コード(一般)_品目ステータス (テキスト（中）)", "品目コード(一般)_品目タイプ (キー)", "品目コード(一般)_品目タイプ (テキスト（中）)", "品目コード(一般)_品目タイプ（使用禁止 (キー)", "品目コード(一般)_品目タイプ（使用禁止 (テキスト（中）)", "品目コード(一般)_品目別取引先 (キー)", "品目コード(一般)_品目別取引先 (テキスト (長))", "品目コード(一般)_品目別取引先 (テキスト（中）)", "品目コード(一般)_品目別取引先(禁止) (キー)", "品目コード(一般)_品目別取引先(禁止) (テキスト (長))", "品目コード(一般)_品目別取引先(禁止) (テキスト（中）)", "品目コード(一般)_品目階層レベル 1 (キー)", "品目コード(一般)_品目階層レベル 1 (テキスト（中）)", "品目コード(一般)_品目階層レベル 2 (キー)", "品目コード(一般)_品目階層レベル 2 (テキスト（中）)", "品目コード(一般)_品目階層レベル 3 (キー)", "品目コード(一般)_品目階層レベル 3 (テキスト（中）)", "品目コード(一般)_品目階層レベル 4 (キー)", "品目コード(一般)_品目階層レベル 4 (テキスト（中）)", "品目コード(一般)_品目階層レベル 5 (キー)", "品目コード(一般)_品目階層レベル 5 (テキスト（中）)", "品目コード(一般)_品目階層レベル 6 (キー)", "品目コード(一般)_品目階層レベル 6 (テキスト（中）)", "品目コード(一般)_基本単位 (キー)", "品目コード(一般)_基本単位 (テキスト（中）)", "品目コード(一般)_基本単位 (名称)", "品目コード(一般)_外部品目 Group (キー)", "品目コード(一般)_外部品目 Group (テキスト（中）)", "品目コード(一般)_文書 (キー)", "品目コード(一般)_旧品目コード (キー)", "品目コード(一般)_正味重量 (キー)", "品目コード(一般)_総有効期間 (キー)", "品目コード(一般)_総重量 (キー)", "品目コード(一般)_製品部門 (キー)", "品目コード(一般)_製品部門 (名称)", "品目コード(一般)_製品階層 (キー)", "品目コード(一般)_製品階層 (テキスト（中）)", "品目コード(一般)_製造業者 (キー)", "品目コード(一般)_製造業者 (テキスト（中）)", "品目コード(一般)_販売グループ (キー)", "品目コード(一般)_販売グループ (名称)", "品目コード(一般)_販売数量単位 (キー)", "品目コード(一般)_販売数量単位 (テキスト（中）)", "品目コード(一般)_販売数量単位 (名称)", "品目コード(一般)_重量単位 (キー)", "品目コード(一般)_重量単位 (テキスト（中）)", "品目コード(一般)_重量単位 (名称)"
+        )
+        WRAPPER (sapbwbapi "bv_販売予実績時系列(化成品)")
+    );
+

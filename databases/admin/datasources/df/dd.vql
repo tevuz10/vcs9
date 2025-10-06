@@ -1,0 +1,8 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE DF dd
+    ROUTE FTP 'ftp.FtpClientConnectionAdapter' '${databases.admin.datasources.df.dd.ROUTE.FTP.URL}' '${databases.admin.datasources.df.dd.ROUTE.FTP.LOGIN}' '${databases.admin.datasources.df.dd.ROUTE.FTP.PASSWORD}' ${databases.admin.datasources.df.dd.ROUTE.FTP.PASSWORD.ENCRYPTED} FILENAMEPATTERN = ''
+    CHARSET = 'UTF-8' FILTER (GUNZIP )
+    COLUMNDELIMITER = ','
+    ENDOFLINEDELIMITER = '\n'
+    HEADER = FALSE;
+

@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_datacalog_categori_flt FOLDER = '/api/catalog_categori/3.integrationview' AS SELECT id AS id, name AS name, description AS description, "descriptionType" AS "descriptionType", "parentId" AS "parentId" FROM FLATTEN bv_datacalog_categori AS v ( v.path);
+
+ALTER VIEW iv_datacalog_categori_flt
+ LAYOUT (bv_datacalog_categori = [20, 20, 200, 105]);
+

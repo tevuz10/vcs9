@@ -1,0 +1,33 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE JDBC bq3
+    DRIVERCLASSNAME = 'com.simba.googlebigquery.jdbc.Driver'
+    DATABASEURI = '${databases.admin.datasources.jdbc.bq3.DATABASEURI}'
+    GCP (
+        OAUTH_TYPE = '${databases.admin.datasources.jdbc.bq3.GCP_OAUTH_TYPE}'
+        PRIVATE_KEY = '${databases.admin.datasources.jdbc.bq3.GCP_PRIVATE_KEY}' ${databases.admin.datasources.jdbc.bq3.GCP_PRIVATE_KEY.ENCRYPTED}
+        PROJECT_ID = '${databases.admin.datasources.jdbc.bq3.GCP_PROJECT_ID}'
+        SERVICE_ACCOUNT_EMAIL = '${databases.admin.datasources.jdbc.bq3.GCP_SERVICE_ACCOUNT_EMAIL}'
+    )
+    CLASSPATH = 'bigquery'
+    DATABASENAME = 'bigquery'
+    DATABASEVERSION = '2_0'
+    FETCHSIZE = 1000
+    VALIDATIONQUERY = 'Select 1'
+    INITIALSIZE = 4
+    MAXIDLE = -1
+    MINIDLE = 0
+    MAXACTIVE = 10
+    EXHAUSTEDACTION = 1
+    TESTONBORROW = true
+    TESTONRETURN = false
+    TESTWHILEIDLE = false
+    TIMEBETWEENEVICTION = -1
+    NUMTESTPEREVICTION = 3
+    MINEVICTABLETIME = 400000
+    POOLPREPAREDSTATEMENTS = false
+    MAXOPENPREPAREDSTATEMENTS = -1
+    OAUTHPROPERTIES ('OAuthType'='2')
+    DATA_LOAD_CONFIGURATION (
+        BATCHINSERTSIZE = 200
+    );
+

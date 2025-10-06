@@ -1,0 +1,4 @@
+﻿1/databases/admin/folder.test/test.vql
+*/extensions/jars/denodo-filesystem-customwrapper.vql
+*/databases/admin/folder.test/test.vql
+1/databases/admin/folder.test/datasources/custom/20250424_customwrapper.vql

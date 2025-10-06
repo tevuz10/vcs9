@@ -1,0 +1,12 @@
+﻿CREATE OR REPLACE VIEW denodo2 (
+    id (description = 'それぞれのレコードを一意に識別します。'),
+    customer_code (description = '顧客を識別するコード。データの例としては、「Y51VMXkM」、「bG1szyoXbQ」、「VGbBeB」、「lN0hsAsB...」等があります。'),
+    status (description = '注文の状態を示します。データの例としては、「Closed」、「Accepted」、「Pending」、「Delivered」等があります。'),
+    date_placed (description = '注文が配置された日時を示します。'),
+    date_delivered (description = '注文が配送された日時を示します。データの例としては、「11-Feb-2014 15:38:30」、「NULL」、「25-May-2012 14:24:12」、「NULL」等があります。'),
+    date_closed (description = '注文が完了した日時を示します。データの例としては、「14-Feb-2014 15:38:30」、「NULL」、「27-May-2012 14:24:12」、「NULL」等があります。'),
+    order_id (description = '注文を一意に識別するID。'),
+    product_id (description = '製品を一意に識別するID。')
+ )
+ AS SELECT denodo_training.iv_orders.id AS id, denodo_training.iv_orders.customer_code AS customer_code, denodo_training.iv_orders.status AS status, denodo_training.iv_orders.date_placed AS date_placed, denodo_training.iv_orders.date_delivered AS date_delivered, denodo_training.iv_orders.date_closed AS date_closed, denodo_training.iv_orders.order_id AS order_id, denodo_training.iv_orders.product_id AS product_id FROM denodo_training.iv_orders;
+

@@ -1,0 +1,28 @@
+﻿CREATE OR REPLACE VQL PROCEDURE grant_missing_roles2
+(dummy IN VARCHAR)
+AS (
+    p1 VARCHAR;
+    p2 VARCHAR;
+    CURSOR cur IS 'SELECT mail_address, target_role
+    FROM dv_user_role u
+    WHERE target_role NOT IN (
+    SELECT rolename
+    FROM catalog_permissions()
+    GROUP BY username, rolename
+    HAVING username = u.mail_address AND rolename != '');';
+    rec cur%ROWTYPE;
+)
+BEGIN
+    OPEN cur;
+    LOOP 
+        FETCH cur INTO rec;
+        p1:=rec.usern;
+        p2:=rec.rolen;
+        EXECUTE 'CREATE ROLE :param2' PARAMETERS ( param2 ) VALUES ( p2 );
+        EXECUTE 'ALTER USER :param1 GRANT ROLE :param2' PARAMETERS ( param1, param2 ) VALUES ( p1, p2 );
+        EXIT WHEN cur%NOTFOUND;
+    END LOOP;
+    CLOSE cur;
+
+END;
+

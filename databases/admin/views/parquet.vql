@@ -1,0 +1,38 @@
+﻿CREATE OR REPLACE WRAPPER CUSTOM parquet
+    DATASOURCENAME=parquet
+    PARAMETERS (
+      'Parquet File path' = '/',
+      'Include full path column' = false,
+      'Parallelism type' = 'Automatic',
+      'Parallelism level' = 3,
+      'Ignore route errors' = false,
+      'Ignore file errors' = false
+    )
+    OUTPUTSCHEMA (
+        id = 'id' : 'java.lang.Long' (OPT) (sourcetypeid='-5')  NOT SORTABLE NOT UPDATEABLE,
+        name = 'name' : 'java.lang.String' (OPT) (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE,
+        age = 'age' : 'java.lang.Long' (OPT) (sourcetypeid='-5')  NOT SORTABLE NOT UPDATEABLE,
+        city = 'city' : 'java.lang.String' (OPT) (sourcetypeid='12')  NOT SORTABLE NOT UPDATEABLE
+    );
+
+CREATE OR REPLACE TABLE parquet I18N jp (
+        id:long (sourcetypeid = '-5'),
+        name:text (sourcetypeid = '12'),
+        age:long (sourcetypeid = '-5'),
+        city:text (sourcetypeid = '12')
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD parquet(
+        I18N jp
+        CONSTRAINTS (
+             ADD id (any) OPT ANY
+             ADD name (any) OPT ANY
+             ADD age (any) OPT ANY
+             ADD city (any) OPT ANY
+        )
+        OUTPUTLIST (age, city, id, name
+        )
+        WRAPPER (custom parquet)
+    );
+

@@ -1,0 +1,29 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE DF box
+    ROUTE HTTP 'http.ApacheHttpClientConnection,120000' GET '${databases.admin.datasources.df.box.ROUTE.HTTP.URL}'
+    CHECKCERTIFICATES
+    GENERATE_OUTPUT_ON_EMPTY_CONTENT
+ AUTHENTICATION OAUTH20 ( 
+      TOKEN_TYPE = ACCESS_TOKEN
+      ACCESSTOKEN = '${databases.admin.datasources.df.box.ROUTE.HTTP.ACCESSTOKEN}' ${databases.admin.datasources.df.box.ROUTE.HTTP.ACCESSTOKEN.ENCRYPTED}
+      REQUESTSIGNINGMETHOD = ${databases.admin.datasources.df.box.ROUTE.HTTP.REQUESTSIGNINGMETHOD}
+      AUTHENTICATION_GRANT = ${databases.admin.datasources.df.box.ROUTE.AUTHENTICATION.GRANT}
+      TOKENENDPOINTURL = '${databases.admin.datasources.df.box.ROUTE.HTTP.TOKENENDPOINTURL}'
+      EXTRA_PARAMETERS_OF_REFRESH_TOKEN_REQUEST (
+          'box_subject_type' = 'enterprise', 
+          'box_subject_id' = '0', 
+          'grant_type' = 'client_credentials'
+      )
+      CLIENTIDENTIFIER = '${databases.admin.datasources.df.box.ROUTE.HTTP.CLIENTIDENTIFIER}'
+      CLIENTSECRET = '${databases.admin.datasources.df.box.ROUTE.HTTP.CLIENTSECRET}' ${databases.admin.datasources.df.box.ROUTE.HTTP.CLIENTSECRET.ENCRYPTED}
+      ACCESSTOKENEXPIRESIN = ${databases.admin.datasources.df.box.ROUTE.HTTP.ACCESSTOKENEXPIRESIN}
+      AUTHORIZATIONSERVERURL = '${databases.admin.datasources.df.box.ROUTE.HTTP.AUTHORIZATIONSERVERURL}'
+      REDIRECTIONENDPOINTURL = ${databases.admin.datasources.df.box.ROUTE.HTTP.REDIRECTIONENDPOINTURL}
+      SETSTATEPARAMETER = ${databases.admin.datasources.df.box.ROUTE.HTTP.SETSTATEPARAMETER}
+    )
+    PROXY OFF
+    CHARSET = 'UTF-8'
+    COLUMNDELIMITER = ','
+    ENDOFLINEDELIMITER = '\n'
+    HEADER = TRUE;
+

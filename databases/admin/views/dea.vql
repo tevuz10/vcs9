@@ -1,0 +1,27 @@
+﻿CREATE OR REPLACE WRAPPER DF dea
+    DATASOURCENAME=dea
+    OUTPUTSCHEMA (
+        a1 = 'a1',
+        b1 = 'b1',
+        c1 = 'c1'
+    );
+
+CREATE OR REPLACE TABLE dea I18N jp (
+        a1:text,
+        b1:text,
+        c1:text
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD dea(
+        I18N jp
+        CONSTRAINTS (
+             ADD a1 NOS ZERO ()
+             ADD b1 NOS ZERO ()
+             ADD c1 NOS ZERO ()
+        )
+        OUTPUTLIST (a1, b1, c1
+        )
+        WRAPPER (df dea)
+    );
+

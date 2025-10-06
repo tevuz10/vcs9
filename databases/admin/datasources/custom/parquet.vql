@@ -1,0 +1,10 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE CUSTOM parquet
+    CLASSNAME='com.denodo.connect.dfs.wrapper.DFSParquetFileWrapper'
+    JARS 'denodo-dfs-customwrapper'
+    PARAMETERS (
+      'File system URI' = '${databases.admin.datasources.custom.parquet.File system URI}',
+      'Custom core-site.xml file' = ROUTE LOCAL 'LocalConnection' '${databases.admin.datasources.custom.parquet.Custom core-site.xml file.ROUTE.LOCAL.PATH}',
+      'Kerberos enabled' = ${databases.admin.datasources.custom.parquet.Kerberos enabled}
+    );
+

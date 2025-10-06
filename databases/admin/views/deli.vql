@@ -1,0 +1,24 @@
+﻿CREATE OR REPLACE WRAPPER DF deli
+    DATASOURCENAME=deli
+    OUTPUTSCHEMA (
+        """country""" = '"country"',
+        """rental_count""" = '"rental_count"'
+    );
+
+CREATE OR REPLACE TABLE deli I18N jp (
+        """country""":text,
+        """rental_count""":text
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD deli(
+        I18N jp
+        CONSTRAINTS (
+             ADD """country""" NOS ZERO ()
+             ADD """rental_count""" NOS ZERO ()
+        )
+        OUTPUTLIST ("""country""", """rental_count"""
+        )
+        WRAPPER (df deli)
+    );
+

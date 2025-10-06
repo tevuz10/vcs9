@@ -1,0 +1,8 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE DF local_sp500
+    FOLDER = '/01_datasources'
+    ROUTE LOCAL 'LocalConnection' '${databases.admin.folder.01_datasources.datasources.df.local_sp500.ROUTE.LOCAL.PATH}' FILENAMEPATTERN = ''
+    COLUMNDELIMITER = ','
+    ENDOFLINEDELIMITER = '\n'
+    HEADER = TRUE;
+

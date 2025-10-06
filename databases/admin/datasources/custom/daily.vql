@@ -1,0 +1,21 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE CUSTOM daily
+    CLASSNAME='com.denodo.vdb.contrib.wrapper.xls.ExcelWrapper';
+
+CREATE OR REPLACE WRAPPER CUSTOM daily
+    DATASOURCENAME=daily
+    PARAMETERS (
+      'Type of file' = 'Excel 2007 or later (*.xlsx)',
+      'File location' = ROUTE LOCAL 'LocalConnection' '${databases.admin.views.custom.daily.File location.ROUTE.LOCAL.PATH}',
+      'Extract data from all sheets' = false,
+      'Extract sheet name as a new column' = false,
+      'Has headers' = true,
+      'Stream tuples' = true
+    )
+    OUTPUTSCHEMA (
+        "DT" = 'DT' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+        "CD" = 'CD' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+        "KEY_YM" = 'KEY_YM' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+        "YAKKA" = 'YAKKA' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE
+    );
+

@@ -1,0 +1,35 @@
+﻿CREATE OR REPLACE WRAPPER JSON json
+    DATASOURCENAME=json
+    TUPLEROOT '/JSONFile/JSONArray'
+    OUTPUTSCHEMA ("JSONFile" = 'JSONFile' : REGISTER OF (
+        name = 'JSONFile.JSONArray.name' : 'java.lang.String',
+        language = 'JSONFile.JSONArray.language' : 'java.lang.String',
+        id = 'JSONFile.JSONArray.id' : 'java.lang.String',
+        bio = 'JSONFile.JSONArray.bio' : 'java.lang.String',
+        version = 'JSONFile.JSONArray.version' : 'java.lang.Double'
+    )
+    );
+
+CREATE OR REPLACE TABLE json I18N jp (
+        name:text,
+        language:text,
+        id:text,
+        bio:text,
+        version:double
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD json(
+        I18N jp
+        CONSTRAINTS (
+             ADD name NOS ZERO ()
+             ADD language NOS ZERO ()
+             ADD id NOS ZERO ()
+             ADD bio NOS ZERO ()
+             ADD version NOS ZERO ()
+        )
+        OUTPUTLIST (bio, id, language, name, version
+        )
+        WRAPPER (json json)
+    );
+

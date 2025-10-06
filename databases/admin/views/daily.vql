@@ -1,0 +1,21 @@
+﻿CREATE OR REPLACE TABLE daily I18N jp (
+        "DT":int (sourcetypeid = '4'),
+        "CD":int (sourcetypeid = '4'),
+        "KEY_YM":int (sourcetypeid = '4'),
+        "YAKKA":int (sourcetypeid = '4')
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD daily(
+        I18N jp
+        CONSTRAINTS (
+             ADD "DT" (any) OPT ANY
+             ADD "CD" (any) OPT ANY
+             ADD "KEY_YM" (any) OPT ANY
+             ADD "YAKKA" (any) OPT ANY
+        )
+        OUTPUTLIST ("CD", "DT", "KEY_YM", "YAKKA"
+        )
+        WRAPPER (custom daily)
+    );
+

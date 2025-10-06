@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW "iv_雉ｼ雋ｷ邂｡逅�_譏守ｴｰ_讀懷庶莠亥ｮ�" FOLDER = '/2-integration/2-1-derrived views/雉ｼ雋ｷ邂｡逅��ｼ域�守ｴｰ�ｼ�'
+    PRIMARY KEY ( 'kaishacd' , 'hatchbg' , 'hatchhans' , 'hatchmeisrban' , 'knshyoteirban' ) AS SELECT iv_v_knshyotei.kaishacd, iv_v_knshyotei.hatchbg, iv_v_knshyotei.hatchhans, iv_v_knshyotei.hatchmeisrban, iv_v_knshyotei.knshyoteirban, iv_v_knshyotei.noki, iv_v_knshyotei.knshyoteibi, iv_v_knshyotei.knshsury, iv_v_knshyotei.knshtani, iv_v_knshyotei.knshtank, iv_v_knshyotei.knshgaku, iv_v_knshyotei.knshyoteibiko, iv_v_knshyotei.sakjflg FROM iv_v_knshyotei;
+
+ALTER VIEW "iv_雉ｼ雋ｷ邂｡逅�_譏守ｴｰ_讀懷庶莠亥ｮ�"
+ LAYOUT (iv_v_knshyotei = [219, 153, 200, 200]);
+

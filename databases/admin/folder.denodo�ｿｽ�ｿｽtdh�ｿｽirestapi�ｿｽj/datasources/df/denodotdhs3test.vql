@@ -1,0 +1,13 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE DF "DenodoTDHS3test"
+    FOLDER = '/denodo�ｿｽ�ｿｽtdh�ｿｽirestapi�ｿｽj'
+    ROUTE S3 'hdfs.S3Connection' '${databases.admin.folder.denodo�ｿｽ�ｿｽtdh�ｿｽirestapi�ｿｽj.datasources.df.denodotdhs3test.ROUTE.S3.URI}' FILENAMEPATTERN = ''
+    AUTHENTICATION (
+      AWS_ACCESS_KEY_ID = '${databases.admin.folder.denodo�ｿｽ�ｿｽtdh�ｿｽirestapi�ｿｽj.datasources.df.denodotdhs3test.ROUTE.S3.AWS_ACCESS_KEY_ID}'
+      AWS_SECRET_ACCESS_KEY = '${databases.admin.folder.denodo�ｿｽ�ｿｽtdh�ｿｽirestapi�ｿｽj.datasources.df.denodotdhs3test.ROUTE.S3.AWS_SECRET_ACCESS_KEY}' ${databases.admin.folder.denodo�ｿｽ�ｿｽtdh�ｿｽirestapi�ｿｽj.datasources.df.denodotdhs3test.ROUTE.S3.AWS_SECRET_ACCESS_KEY.ENCRYPTED}
+    )
+    CUSTOM_PROPERTIES = ('fs.s3a.connection.ssl.enabled'='false', 'f3.s3a.endpoint'='https://10.191.30.22:9000')
+    COLUMNDELIMITER = ','
+    ENDOFLINEDELIMITER = '\n'
+    HEADER = TRUE;
+

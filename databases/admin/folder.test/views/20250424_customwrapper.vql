@@ -1,0 +1,59 @@
+﻿CREATE OR REPLACE WRAPPER CUSTOM "20250424_customwrapper"
+    FOLDER = '/test'
+    DATASOURCENAME="20250424_customwrapper"
+    OUTPUTSCHEMA (
+        parentfolder = 'parentfolder' : 'java.lang.String' (OBL) (sourcetypeid='12')  NOT NULL NOT SORTABLE NOT UPDATEABLE,
+        "relativePath" = 'relativePath' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        filename = 'filename' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        extension = 'extension' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        fullpath = 'fullpath' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        filetype = 'filetype' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        hidden = 'hidden' : 'java.lang.Boolean' (OPT) (sourcetypeid='16')  SORTABLE,
+        datemodified = 'datemodified' : 'java.time.LocalDateTime' (OPT) (sourcetypeid='93')  SORTABLE,
+        canread = 'canread' : 'java.lang.Boolean' (OPT) (sourcetypeid='16')  SORTABLE,
+        canwrite = 'canwrite' : 'java.lang.Boolean' (OPT) (sourcetypeid='16')  SORTABLE,
+        canexecute = 'canexecute' : 'java.lang.Boolean' (OPT) (sourcetypeid='16')  SORTABLE,
+        size = 'size' : 'java.lang.Long' (OPT) (sourcetypeid='-5')  SORTABLE,
+        recursive = 'recursive' : 'java.lang.Boolean' (OBL) (sourcetypeid='16')  NOT SORTABLE NOT UPDATEABLE
+    );
+
+CREATE OR REPLACE TABLE "20250424_customwrapper" I18N jp (
+        parentfolder:text (notnull, sourcetypeid = '12'),
+        "relativePath":text (sourcetypeid = '12'),
+        filename:text (sourcetypeid = '12'),
+        extension:text (sourcetypeid = '12'),
+        fullpath:text (sourcetypeid = '12'),
+        filetype:text (sourcetypeid = '12'),
+        hidden:boolean (sourcetypeid = '16'),
+        datemodified:timestamp (sourcetypeid = '93'),
+        canread:boolean (sourcetypeid = '16'),
+        canwrite:boolean (sourcetypeid = '16'),
+        canexecute:boolean (sourcetypeid = '16'),
+        size:long (sourcetypeid = '-5'),
+        recursive:boolean (sourcetypeid = '16')
+    )
+    FOLDER = '/test'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD "20250424_customwrapper"(
+        I18N jp
+        CONSTRAINTS (
+             ADD "relativePath" (any) OPT ANY
+             ADD filename (any) OPT ANY
+             ADD extension (any) OPT ANY
+             ADD fullpath (any) OPT ANY
+             ADD filetype (any) OPT ANY
+             ADD hidden (any) OPT ANY
+             ADD datemodified (any) OPT ANY
+             ADD canread (any) OPT ANY
+             ADD canwrite (any) OPT ANY
+             ADD canexecute (any) OPT ANY
+             ADD size (any) OPT ANY
+             ADD parentfolder (=) OBL ONE
+             ADD recursive (=) OBL ONE
+        )
+        OUTPUTLIST (canexecute, canread, canwrite, datemodified, extension, filename, filetype, fullpath, hidden, parentfolder, recursive, "relativePath", size
+        )
+        WRAPPER (custom "20250424_customwrapper")
+    );
+

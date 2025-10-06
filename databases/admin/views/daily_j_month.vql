@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW daily_j_month AS SELECT coalesce(daily."DT", month."YM", 0) AS "DT", coalesce(daily."CD", month."CD", 0) AS "CD", coalesce(daily."YAKKA", month."YAKKA", 0) AS "YAKKA", coalesce(month."YAKKA_ZEN", 0) AS "YAKKA_ZEN" FROM daily AS daily FULL OUTER JOIN month AS month ON (daily."KEY_YM" = month."YM" AND daily."CD" = month."CD") ;
+
+ALTER VIEW daily_j_month
+ LAYOUT (daily = [20, 20, 200, 200], month = [268, 16, 200, 200]);
+

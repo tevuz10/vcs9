@@ -1,0 +1,36 @@
+﻿CREATE OR REPLACE WRAPPER DF deli2
+    DATASOURCENAME=deli2
+    OUTPUTSCHEMA (
+        "Column0" = 'Column0',
+        "Column1" = 'Column1',
+        "Column2" = 'Column2',
+        "Column3" = 'Column3',
+        "Column4" = 'Column4',
+        "Column5" = 'Column5'
+    );
+
+CREATE OR REPLACE TABLE deli2 I18N jp (
+        "Column0":text,
+        "Column1":text,
+        "Column2":text,
+        "Column3":text,
+        "Column4":text,
+        "Column5":text
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD deli2(
+        I18N jp
+        CONSTRAINTS (
+             ADD "Column0" NOS ZERO ()
+             ADD "Column1" NOS ZERO ()
+             ADD "Column2" NOS ZERO ()
+             ADD "Column3" NOS ZERO ()
+             ADD "Column4" NOS ZERO ()
+             ADD "Column5" NOS ZERO ()
+        )
+        OUTPUTLIST ("Column0", "Column1", "Column2", "Column3", "Column4", "Column5"
+        )
+        WRAPPER (df deli2)
+    );
+

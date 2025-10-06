@@ -1,0 +1,10 @@
+﻿CREATE OR REPLACE VIEW iv_v_nokikait_rownum FOLDER = '/2-integration/2-1-derrived views/2-1-1-rownum views'
+    PRIMARY KEY ( 'kaishacd' , 'hatchbg' , 'hatchhans' , 'hatchmeisrban' , 'knshyoteirban' , 'nokikairban' , 'nohnsury' ) AS SELECT iv_v_nokikait.kaishacd AS kaishacd, iv_v_nokikait.hatchbg AS hatchbg, iv_v_nokikait.hatchhans AS hatchhans, iv_v_nokikait.hatchmeisrban AS hatchmeisrban, iv_v_nokikait.knshyoteirban AS knshyoteirban, iv_v_nokikait.nokikairban AS nokikairban, iv_v_nokikait.nohnsury AS nohnsury, iv_v_nokikait.nohntani AS nohntani, iv_v_nokikait.noki AS noki, iv_v_nokikait.nokikaitnaiy AS nokikaitnaiy, iv_v_nokikait.nokikaithenkonaiy AS nokikaithenkonaiy, iv_v_nokikait.nokikaitcomnt AS nokikaitcomnt, iv_v_nokikait.koshnnichj_edi AS koshnnichj_edi, iv_v_nokikait.saprnkeijtaikb AS saprnkeijtaikb, iv_v_nokikait.sakjflg AS sakjflg, iv_v_nokikait.skseibi AS skseibi, iv_v_nokikait.skseishabumncd AS skseishabumncd, iv_v_nokikait.skseishashaincd AS skseishashaincd, iv_v_nokikait.skseipgid AS skseipgid, iv_v_nokikait.kshinbi AS kshinbi, iv_v_nokikait.kshinshabumncd AS kshinshabumncd, iv_v_nokikait.kshinshashaincd AS kshinshashaincd, iv_v_nokikait.kshinpgid AS kshinpgid, iv_v_nokikait.rvs AS rvs, row_number() OVER ( PARTITION BY iv_v_nokikait.kaishacd, iv_v_nokikait.hatchbg, iv_v_nokikait.hatchhans, iv_v_nokikait.hatchmeisrban, iv_v_nokikait.knshyoteirban ORDER BY iv_v_nokikait.nokikairban DESC ) AS rownum FROM iv_v_nokikait;
+
+ALTER VIEW iv_v_nokikait_rownum
+ LAYOUT (iv_v_nokikait = [79, 267, 200, 200]);
+
+ALTER VIEW iv_v_nokikait_rownum
+ CACHE FULL
+    BATCHSIZEINCACHE DEFAULT TIMETOLIVEINCACHE NOEXPIRE;
+

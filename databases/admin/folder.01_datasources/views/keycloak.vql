@@ -1,0 +1,48 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JSON keycloak
+    FOLDER = '/01_datasources'
+    DATASOURCENAME=test
+    TUPLEROOT '/JSONFile'
+    ROUTE HTTP 'http.ApacheHttpClientConnection,120000' POST '${databases.admin.folder.01_datasources.views.json.keycloak.ROUTE.HTTP.URL}'
+    OUTPUTSCHEMA ("JSONFile" = 'JSONFile' : REGISTER OF (
+        access_token = 'access_token' : 'java.lang.String',
+        expires_in = 'expires_in' : 'java.lang.Integer',
+        refresh_expires_in = 'refresh_expires_in' : 'java.lang.Integer',
+        refresh_token = 'refresh_token' : 'java.lang.String',
+        token_type = 'token_type' : 'java.lang.String',
+        "not-before-policy" = 'not-before-policy' : 'java.lang.Integer',
+        session_state = 'session_state' : 'java.lang.String',
+        scope = 'scope' : 'java.lang.String'
+    )
+    );
+
+CREATE OR REPLACE TABLE keycloak I18N jp (
+        access_token:text,
+        expires_in:int,
+        refresh_expires_in:int,
+        refresh_token:text,
+        token_type:text,
+        "not-before-policy":int,
+        session_state:text,
+        scope:text
+    )
+    FOLDER = '/01_datasources'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD keycloak(
+        I18N jp
+        CONSTRAINTS (
+             ADD access_token NOS ZERO ()
+             ADD expires_in NOS ZERO ()
+             ADD refresh_expires_in NOS ZERO ()
+             ADD refresh_token NOS ZERO ()
+             ADD token_type NOS ZERO ()
+             ADD "not-before-policy" NOS ZERO ()
+             ADD session_state NOS ZERO ()
+             ADD scope NOS ZERO ()
+        )
+        OUTPUTLIST (access_token, expires_in, "not-before-policy", refresh_expires_in, refresh_token, scope, session_state, token_type
+        )
+        WRAPPER (json keycloak)
+    );
+

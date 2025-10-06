@@ -1,0 +1,6 @@
+﻿*/databases/admin/datasources/custom/daily.vql
+1/databases/admin/views/daily.vql
+*/databases/admin/datasources/custom/month.vql
+1/databases/admin/views/month.vql
+*/databases/admin/views/daily.vql
+*/databases/admin/views/month.vql

@@ -1,0 +1,50 @@
+﻿CREATE OR REPLACE WRAPPER JSON bv_datacalog_categori
+    FOLDER = '/api/catalog_categori/2.baseview'
+    DATASOURCENAME=ds_datacalog_categori
+    TUPLEROOT '/JSONFile/JSONArray'
+    OUTPUTSCHEMA ("JSONFile" = 'JSONFile' : REGISTER OF (
+        id = 'JSONFile.JSONArray.id' : 'java.lang.Integer',
+        name = 'JSONFile.JSONArray.name' : 'java.lang.String',
+        description = 'JSONFile.JSONArray.description' : 'java.lang.String',
+        "descriptionType" = 'JSONFile.JSONArray.descriptionType' : 'java.lang.String',
+        path = 'JSONFile.JSONArray.path' : ARRAY OF (
+            path = 'path' : REGISTER OF (
+                field_0 = 'field_0' : 'java.lang.String'
+            )
+        ),
+        "parentId" = 'JSONFile.JSONArray.parentId' : 'java.lang.String'
+    )
+    );
+
+CREATE OR REPLACE TYPE ds_datacalog_categori_path_path AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE ds_datacalog_categori_path AS ARRAY OF ds_datacalog_categori_path_path;
+
+CREATE OR REPLACE TABLE bv_datacalog_categori I18N jp (
+        id:int,
+        name:text,
+        description:text,
+        "descriptionType":text,
+        path:ds_datacalog_categori_path,
+        "parentId":text
+    )
+    FOLDER = '/api/catalog_categori/2.baseview'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_datacalog_categori(
+        I18N jp
+        CONSTRAINTS (
+             ADD id NOS ZERO ()
+             ADD name NOS ZERO ()
+             ADD description NOS ZERO ()
+             ADD "descriptionType" NOS ZERO ()
+             ADD path NOS ZERO ()
+             ADD path NOS ZERO ()
+             ADD path.field_0 NOS ZERO ()
+             ADD "parentId" NOS ZERO ()
+        )
+        OUTPUTLIST (description, "descriptionType", id, name, "parentId", path
+        )
+        WRAPPER (json bv_datacalog_categori)
+    );
+

@@ -1,0 +1,29 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE JDBC ds_gloviasmart_dev
+    FOLDER = '/1-connectivity/1-1-data sources'
+    DRIVERCLASSNAME = 'org.postgresql.Driver'
+    DATABASEURI = '${databases.admin.folder.1-connectivity.folder.1-1-data sources.datasources.jdbc.ds_gloviasmart_dev.DATABASEURI}'
+    USERNAME = '${databases.admin.folder.1-connectivity.folder.1-1-data sources.datasources.jdbc.ds_gloviasmart_dev.USERNAME}'
+    USERPASSWORD = '${databases.admin.folder.1-connectivity.folder.1-1-data sources.datasources.jdbc.ds_gloviasmart_dev.USERPASSWORD}' ${databases.admin.folder.1-connectivity.folder.1-1-data sources.datasources.jdbc.ds_gloviasmart_dev.USERPASSWORD.ENCRYPTED}
+    CLASSPATH = 'Symfoware_postgres_jdbc42'
+    DATABASENAME = 'Generic'
+    DATABASEVERSION = ''
+    FETCHSIZE = 1000
+    VALIDATIONQUERY = ''
+    INITIALSIZE = 4
+    MAXIDLE = -1
+    MINIDLE = 0
+    MAXACTIVE = 20
+    EXHAUSTEDACTION = 1
+    TESTONBORROW = true
+    TESTONRETURN = false
+    TESTWHILEIDLE = false
+    TIMEBETWEENEVICTION = -1
+    NUMTESTPEREVICTION = 3
+    MINEVICTABLETIME = 1800000
+    POOLPREPAREDSTATEMENTS = false
+    MAXOPENPREPAREDSTATEMENTS = -1
+    DATA_LOAD_CONFIGURATION (
+        BATCHINSERTSIZE = 200
+    );
+

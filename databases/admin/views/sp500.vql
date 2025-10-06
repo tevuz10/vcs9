@@ -1,0 +1,47 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC sp500
+    DATASOURCENAME=athena
+    CATALOGNAME='${databases.admin.views.jdbc.sp500.CATALOGNAME}' ESCAPE
+    SCHEMANAME='${databases.admin.views.jdbc.sp500.SCHEMANAME}' ESCAPE
+    RELATIONNAME='sp500' 
+    OUTPUTSCHEMA (
+        date = 'date' :'java.lang.String' (OPT) (sourcetypesize='255', sourcetypeid='12', sourcetypename='string')  ESCAPE SORTABLE,
+        open = 'open' :'java.lang.String' (OPT) (sourcetypesize='255', sourcetypeid='12', sourcetypename='string')  ESCAPE SORTABLE,
+        high = 'high' :'java.lang.String' (OPT) (sourcetypesize='255', sourcetypeid='12', sourcetypename='string')  SORTABLE,
+        low = 'low' :'java.lang.String' (OPT) (sourcetypesize='255', sourcetypeid='12', sourcetypename='string')  SORTABLE,
+        close = 'close' :'java.lang.String' (OPT) (sourcetypesize='255', sourcetypeid='12', sourcetypename='string')  ESCAPE SORTABLE,
+        adjclose_0 = 'adj close' :'java.lang.String' (OPT) (sourcetypesize='255', sourcetypeid='12', sourcetypename='string')  ESCAPE SORTABLE,
+        volume = 'volume' :'java.lang.String' (OPT) (sourcetypesize='255', sourcetypeid='12', sourcetypename='string')  SORTABLE,
+        ticker = 'ticker' :'java.lang.String' (OPT) (sourcetypesize='255', sourcetypeid='12', sourcetypename='string')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE sp500 I18N jp (
+        date:text (sourcetypeid = '12', sourcetypesize = '255'),
+        open:text (sourcetypeid = '12', sourcetypesize = '255'),
+        high:text (sourcetypeid = '12', sourcetypesize = '255'),
+        low:text (sourcetypeid = '12', sourcetypesize = '255'),
+        close:text (sourcetypeid = '12', sourcetypesize = '255'),
+        adjclose_0:text (sourcetypeid = '12', sourcetypesize = '255'),
+        volume:text (sourcetypeid = '12', sourcetypesize = '255'),
+        ticker:text (sourcetypeid = '12', sourcetypesize = '255')
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD sp500(
+        I18N jp
+        CONSTRAINTS (
+             ADD date (any) OPT ANY
+             ADD open (any) OPT ANY
+             ADD high (any) OPT ANY
+             ADD low (any) OPT ANY
+             ADD close (any) OPT ANY
+             ADD adjclose_0 (any) OPT ANY
+             ADD volume (any) OPT ANY
+             ADD ticker (any) OPT ANY
+        )
+        OUTPUTLIST (adjclose_0, close, date, high, low, open, ticker, volume
+        )
+        WRAPPER (jdbc sp500)
+    )
+    DECLARE VIEW CLUSTER INDEX test ON (date);
+

@@ -1,0 +1,8 @@
+﻿CREATE OR REPLACE MAP simple catacana (
+    'ア' = 'ｱ'
+    'イ' = 'ｲ'
+    'ウ' = 'ｳ'
+    'エ' = 'ｴ'
+    'オ' = 'ｵ'
+);
+

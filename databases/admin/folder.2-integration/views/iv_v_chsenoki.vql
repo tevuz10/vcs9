@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW iv_v_chsenoki FOLDER = '/2-integration' DESCRIPTION = '隱ｿ謨ｴ邏肴悄' 
+    PRIMARY KEY ( 'kaishacd' , 'hatchbg' , 'hatchhans' , 'hatchmeisrban' , 'knshyoteirban' , 'chsenokirban' ) AS SELECT bv_v_chsenoki.kaishacd AS kaishacd, bv_v_chsenoki.hatchbg AS hatchbg, bv_v_chsenoki.hatchhans AS hatchhans, bv_v_chsenoki.hatchmeisrban AS hatchmeisrban, bv_v_chsenoki.knshyoteirban AS knshyoteirban, bv_v_chsenoki.chsenokirban AS chsenokirban, bv_v_chsenoki.nohnsury AS nohnsury, bv_v_chsenoki.nohntani AS nohntani, bv_v_chsenoki.noki AS noki, bv_v_chsenoki.chsenokinaiy AS chsenokinaiy, bv_v_chsenoki.chsenokicomnt AS chsenokicomnt, bv_v_chsenoki.nokiedirnkeijtaikb AS nokiedirnkeijtaikb, bv_v_chsenoki.sakjflg AS sakjflg, bv_v_chsenoki.skseibi AS skseibi, bv_v_chsenoki.skseishabumncd AS skseishabumncd, bv_v_chsenoki.skseishashaincd AS skseishashaincd, bv_v_chsenoki.skseipgid AS skseipgid, bv_v_chsenoki.kshinbi AS kshinbi, bv_v_chsenoki.kshinshabumncd AS kshinshabumncd, bv_v_chsenoki.kshinshashaincd AS kshinshashaincd, bv_v_chsenoki.kshinpgid AS kshinpgid, bv_v_chsenoki.rvs AS rvs FROM bv_v_chsenoki;
+
+ALTER VIEW iv_v_chsenoki
+ LAYOUT (bv_v_chsenoki = [20, 20, 200, 200]);
+

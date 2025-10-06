@@ -1,0 +1,25 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC sstt
+    DATASOURCENAME=denodo12
+    CATALOGNAME='${databases.admin.views.jdbc.sstt.CATALOGNAME}' 
+    SCHEMANAME='${databases.admin.views.jdbc.sstt.SCHEMANAME}' 
+    RELATIONNAME='sstt' 
+    OUTPUTSCHEMA (
+        stoke = 'stoke' :'java.time.OffsetDateTime' (OPT) (sourcetypedecimals='7', sourcetypesize='34', sourcetypeid='-155', sourcetypename='datetimeoffset')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE sstt I18N de_euro (
+        stoke:timestamptz (sourcetypeid = '2014', sourcetypedecimals = '7', sourcetypesize = '34')
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD sstt(
+        I18N de_euro
+        CONSTRAINTS (
+             ADD stoke (any) OPT ANY
+        )
+        OUTPUTLIST (stoke
+        )
+        WRAPPER (jdbc sstt)
+    );
+

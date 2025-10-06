@@ -1,0 +1,94 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JSON json_new
+    DATASOURCENAME=json
+    TUPLEROOT '/JSONFile/JSONArray'
+    ROUTE HTTP 'http.ApacheHttpClientConnection,120000' GET '${databases.admin.views.json.json_new.ROUTE.HTTP.URL}'
+    OUTPUTSCHEMA ("JSONFile" = 'JSONFile' : REGISTER OF (
+        "sequenceNumber" = 'JSONFile.JSONArray.sequenceNumber' : 'java.lang.String',
+        "registratedNumber" = 'JSONFile.JSONArray.registratedNumber' : 'java.lang.String',
+        process = 'JSONFile.JSONArray.process' : 'java.lang.String',
+        correct = 'JSONFile.JSONArray.correct' : 'java.lang.String',
+        kind = 'JSONFile.JSONArray.kind' : 'java.lang.String',
+        country = 'JSONFile.JSONArray.country' : 'java.lang.String',
+        latest = 'JSONFile.JSONArray.latest' : 'java.lang.String',
+        "registrationDate" = 'JSONFile.JSONArray.registrationDate' : 'java.lang.String',
+        "updateDate" = 'JSONFile.JSONArray.updateDate' : 'java.lang.String',
+        "disposalDate" = 'JSONFile.JSONArray.disposalDate' : 'java.lang.String',
+        "expireDate" = 'JSONFile.JSONArray.expireDate' : 'java.lang.String',
+        address = 'JSONFile.JSONArray.address' : 'java.lang.String',
+        "addressPrefectureCode" = 'JSONFile.JSONArray.addressPrefectureCode' : 'java.lang.String',
+        "addressCityCode" = 'JSONFile.JSONArray.addressCityCode' : 'java.lang.String',
+        "addressRequest" = 'JSONFile.JSONArray.addressRequest' : 'java.lang.String',
+        "addressRequestPrefectureCode" = 'JSONFile.JSONArray.addressRequestPrefectureCode' : 'java.lang.String',
+        "addressRequestCityCode" = 'JSONFile.JSONArray.addressRequestCityCode' : 'java.lang.String',
+        kana = 'JSONFile.JSONArray.kana' : 'java.lang.String',
+        name = 'JSONFile.JSONArray.name' : 'java.lang.String',
+        "addressInside" = 'JSONFile.JSONArray.addressInside' : 'java.lang.String',
+        "addressInsidePrefectureCode" = 'JSONFile.JSONArray.addressInsidePrefectureCode' : 'java.lang.String',
+        "addressInsideCityCode" = 'JSONFile.JSONArray.addressInsideCityCode' : 'java.lang.String',
+        "tradeName" = 'JSONFile.JSONArray.tradeName' : 'java.lang.String',
+        "popularName_previousName" = 'JSONFile.JSONArray.popularName_previousName' : 'java.lang.String'
+    )
+    );
+
+CREATE OR REPLACE TABLE json_new I18N jp (
+        "sequenceNumber":text,
+        "registratedNumber":text,
+        process:text,
+        correct:text,
+        kind:text,
+        country:text,
+        latest:text,
+        "registrationDate":text,
+        "updateDate":text,
+        "disposalDate":text,
+        "expireDate":text,
+        address:text,
+        "addressPrefectureCode":text,
+        "addressCityCode":text,
+        "addressRequest":text,
+        "addressRequestPrefectureCode":text,
+        "addressRequestCityCode":text,
+        kana:text,
+        name:text,
+        "addressInside":text,
+        "addressInsidePrefectureCode":text,
+        "addressInsideCityCode":text,
+        "tradeName":text,
+        "popularName_previousName":text
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD json_new(
+        I18N jp
+        CONSTRAINTS (
+             ADD "sequenceNumber" NOS ZERO ()
+             ADD "registratedNumber" NOS ZERO ()
+             ADD process NOS ZERO ()
+             ADD correct NOS ZERO ()
+             ADD kind NOS ZERO ()
+             ADD country NOS ZERO ()
+             ADD latest NOS ZERO ()
+             ADD "registrationDate" NOS ZERO ()
+             ADD "updateDate" NOS ZERO ()
+             ADD "disposalDate" NOS ZERO ()
+             ADD "expireDate" NOS ZERO ()
+             ADD address NOS ZERO ()
+             ADD "addressPrefectureCode" NOS ZERO ()
+             ADD "addressCityCode" NOS ZERO ()
+             ADD "addressRequest" NOS ZERO ()
+             ADD "addressRequestPrefectureCode" NOS ZERO ()
+             ADD "addressRequestCityCode" NOS ZERO ()
+             ADD kana NOS ZERO ()
+             ADD name NOS ZERO ()
+             ADD "addressInside" NOS ZERO ()
+             ADD "addressInsidePrefectureCode" NOS ZERO ()
+             ADD "addressInsideCityCode" NOS ZERO ()
+             ADD "tradeName" NOS ZERO ()
+             ADD "popularName_previousName" NOS ZERO ()
+        )
+        OUTPUTLIST (address, "addressCityCode", "addressInside", "addressInsideCityCode", "addressInsidePrefectureCode", "addressPrefectureCode", "addressRequest", "addressRequestCityCode", "addressRequestPrefectureCode", correct, country, "disposalDate", "expireDate", kana, kind, latest, name, "popularName_previousName", process, "registratedNumber", "registrationDate", "sequenceNumber", "tradeName", "updateDate"
+        )
+        WRAPPER (json json_new)
+    );
+

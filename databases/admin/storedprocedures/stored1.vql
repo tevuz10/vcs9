@@ -1,0 +1,17 @@
+﻿CREATE OR REPLACE VQL PROCEDURE stored1
+(idinternet OUT INTEGER, ttime OUT TIMESTAMP, idtax OUT VARCHAR)
+AS (
+    CURSOR cursordata IS 'SELECT iinc_id, ttime, taxid FROM internet_inc WHERE specific_field1 > 1';
+    rinternet cursordata%ROWTYPE;
+)
+BEGIN
+    OPEN cursordata;
+    LOOP 
+        FETCH cursordata INTO rinternet;
+        RETURN ROW ( idinternet, ttime, idtax) VALUES (rinternet.iinc_id, rinternet.ttime, rinternet.taxid);
+        EXIT WHEN cursordata%NOTFOUND;
+    END LOOP;
+    CLOSE cursordata;
+
+END;
+

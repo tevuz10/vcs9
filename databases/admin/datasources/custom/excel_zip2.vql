@@ -1,0 +1,32 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE CUSTOM excel_zip2
+    CLASSNAME='com.denodo.vdb.contrib.wrapper.xls.ExcelWrapper';
+
+CREATE OR REPLACE WRAPPER CUSTOM excel_zip2
+    DATASOURCENAME=excel_zip2
+    PARAMETERS (
+      'Type of file' = 'Excel 2007 or later (*.xlsx)',
+      'File location' = ROUTE S3 'hdfs.S3Connection' '${databases.admin.views.custom.excel_zip2.File location.ROUTE.S3.URI}'
+        AUTHENTICATION (
+      AWS_ACCESS_KEY_ID = '${databases.admin.views.custom.excel_zip2.File location.ROUTE.S3.AWS_ACCESS_KEY_ID}'
+      AWS_SECRET_ACCESS_KEY = '${databases.admin.views.custom.excel_zip2.File location.ROUTE.S3.AWS_SECRET_ACCESS_KEY}' ${databases.admin.views.custom.excel_zip2.File location.ROUTE.S3.AWS_SECRET_ACCESS_KEY.ENCRYPTED}
+    ) FILTER (UNZIP ),
+      'Worksheet' = '支援制度情報',
+      'Extract data from all sheets' = false,
+      'Extract sheet name as a new column' = false,
+      'Start cell' = 'A2',
+      'Has headers' = true,
+      'Stream tuples' = true
+    )
+    OUTPUTSCHEMA (
+        "項目No" = '項目No' : 'java.lang.Integer' (OPT) (sourcetypeid='4')  SORTABLE,
+        "分類" = '分類' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        "項目" = '項目' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        "区分" = '区分' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        "形式" = '形式' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        "複数可否" = '複数可否' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        "説明" = '説明' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        "入力制限" = '入力制限' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE,
+        "備考" = '備考' : 'java.lang.String' (OPT) (sourcetypeid='12')  SORTABLE
+    );
+

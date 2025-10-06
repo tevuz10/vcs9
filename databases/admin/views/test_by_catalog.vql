@@ -1,0 +1,22 @@
+﻿CREATE OR REPLACE WRAPPER JDBC test_by_catalog
+    DATASOURCENAME=bq3
+    SQLSENTENCE='select CURRENT_DATE(''Asia/Tokyo'')'   
+    OUTPUTSCHEMA (
+        f0_ = 'f0_' :'java.time.LocalDate' (sourcetypedecimals='0', sourcetypesize='10', sourcetypeid='91', sourcetypename='DATE')  SORTABLE NOT UPDATEABLE
+    );
+
+CREATE OR REPLACE TABLE test_by_catalog I18N jp (
+        f0_:localdate (sourcetypeid = '91', sourcetypedecimals = '0', sourcetypesize = '10')
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD test_by_catalog(
+        I18N jp
+        CONSTRAINTS (
+             ADD f0_ NOS ZERO ()
+        )
+        OUTPUTLIST (f0_
+        )
+        WRAPPER (jdbc test_by_catalog)
+    );
+

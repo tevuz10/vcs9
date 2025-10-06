@@ -1,0 +1,34 @@
+﻿CREATE OR REPLACE WRAPPER JSON bv_catalog_tag_views_para
+    FOLDER = '/api/catalog_tags/2.baseview'
+    DATASOURCENAME=ds_catalog_tag_views
+    TUPLEROOT '/JSONFile/views'
+    OUTPUTSCHEMA ("JSONFile" = 'JSONFile' : REGISTER OF (
+        "TAGID" = 'TAGID' : 'java.lang.String' (OBL) (DEFAULTVALUE='1') EXTERN URIPARAM,
+        id = 'JSONFile.views.id' : 'java.lang.Integer',
+        name = 'JSONFile.views.name' : 'java.lang.String',
+        "databaseName" = 'JSONFile.views.databaseName' : 'java.lang.String'
+    )
+    );
+
+CREATE OR REPLACE TABLE bv_catalog_tag_views_para I18N jp (
+        "TAGID":text (extern),
+        id:int,
+        name:text,
+        "databaseName":text
+    )
+    FOLDER = '/api/catalog_tags/2.baseview'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_catalog_tag_views_para(
+        I18N jp
+        CONSTRAINTS (
+             ADD "TAGID" (=) OBL ONE
+             ADD id NOS ZERO ()
+             ADD name NOS ZERO ()
+             ADD "databaseName" NOS ZERO ()
+        )
+        OUTPUTLIST ("databaseName", id, name
+        )
+        WRAPPER (json bv_catalog_tag_views_para)
+    );
+

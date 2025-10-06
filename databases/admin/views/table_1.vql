@@ -1,0 +1,25 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC "Table_1"
+    DATASOURCENAME=sqlserver
+    CATALOGNAME='${databases.admin.views.jdbc.table_1.CATALOGNAME}' 
+    SCHEMANAME='${databases.admin.views.jdbc.table_1.SCHEMANAME}' 
+    RELATIONNAME='Table_1' 
+    OUTPUTSCHEMA (
+        test = 'test' :'java.lang.String' (OPT) (sourcetypesize='50', sourcetypeid='-9', sourcetypename='nvarchar')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE "Table_1" I18N jp (
+        test:text (sourcetypeid = '-9', sourcetypesize = '50')
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD "Table_1"(
+        I18N jp
+        CONSTRAINTS (
+             ADD test (any) OPT ANY
+        )
+        OUTPUTLIST (test
+        )
+        WRAPPER (jdbc "Table_1")
+    );
+

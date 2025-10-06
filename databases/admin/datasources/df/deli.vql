@@ -1,0 +1,7 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE DF deli
+    ROUTE LOCAL 'LocalConnection' '${databases.admin.datasources.df.deli.ROUTE.LOCAL.PATH}' FILENAMEPATTERN = '(.*).csv' FILTER (UNZIP )
+    COLUMNDELIMITER = ','
+    ENDOFLINEDELIMITER = '\n'
+    HEADER = FALSE;
+

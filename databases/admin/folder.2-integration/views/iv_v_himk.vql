@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW iv_v_himk FOLDER = '/2-integration' DESCRIPTION = '蜩∫岼繝槭せ繧ｿ' 
+    PRIMARY KEY ( 'kaishacd' , 'himkcd' ) AS SELECT bv_v_himk.kaishacd AS kaishacd, bv_v_himk.himkcd AS himkcd, bv_v_himk.himkmei AS himkmei, bv_v_himk.hambaissk AS hambaissk, bv_v_himk.meiscategorygrpkb AS meiscategorygrpkb, bv_v_himk.gyomcd AS gyomcd, bv_v_himk.ryutschannel AS ryutschannel, bv_v_himk.hinmkstatus AS hinmkstatus, bv_v_himk.skseibi AS skseibi, bv_v_himk.skseishabumncd AS skseishabumncd, bv_v_himk.skseishashaincd AS skseishashaincd, bv_v_himk.skseipgid AS skseipgid, bv_v_himk.kshinbi AS kshinbi, bv_v_himk.kshinshabumncd AS kshinshabumncd, bv_v_himk.kshinshashaincd AS kshinshashaincd, bv_v_himk.kshinpgid AS kshinpgid, bv_v_himk.rvs AS rvs FROM bv_v_himk;
+
+ALTER VIEW iv_v_himk
+ LAYOUT (bv_v_himk = [20, 20, 200, 200]);
+

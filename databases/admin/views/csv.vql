@@ -1,0 +1,30 @@
+﻿CREATE OR REPLACE WRAPPER DF csv
+    DATASOURCENAME=csv
+    OUTPUTSCHEMA (
+        "Column0" = 'Column0',
+        "Column1" = 'Column1',
+        "Column2" = 'Column2',
+        "Column3" = 'Column3'
+    );
+
+CREATE OR REPLACE TABLE csv I18N jp (
+        "Column0":text,
+        "Column1":text,
+        "Column2":text,
+        "Column3":text
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD csv(
+        I18N jp
+        CONSTRAINTS (
+             ADD "Column0" NOS ZERO ()
+             ADD "Column1" NOS ZERO ()
+             ADD "Column2" NOS ZERO ()
+             ADD "Column3" NOS ZERO ()
+        )
+        OUTPUTLIST ("Column0", "Column1", "Column2", "Column3"
+        )
+        WRAPPER (df csv)
+    );
+

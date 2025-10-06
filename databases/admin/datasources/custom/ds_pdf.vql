@@ -1,0 +1,4 @@
+﻿CREATE OR REPLACE DATASOURCE CUSTOM ds_pdf
+    CLASSNAME='com.denodo.connect.filesystem.ReadWriteFileSystemConnector'
+    JARS 'denodo-filesystem-customwrapper';
+

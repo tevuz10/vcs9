@@ -1,0 +1,11 @@
+﻿CREATE OR REPLACE VIEW iv_catalog_view_all FOLDER = '/api/catalog_description/3.integrationview' DESCRIPTION = 'データカタログよりView一覧取得
+description項目の前後にはダブルクォーテーションを付与
+遅いのでキャッシュ化'  AS SELECT iv_catalog_view_detail.view_id AS view_id, bv_catalog_views.name AS viewname, bv_catalog_views.db AS dbname, (('"'||bv_catalog_views.description)||'"') AS view_description, (('"'||iv_catalog_view_detail.description)||'"') AS datacatalog_description, iv_catalog_view_detail.tags AS tags, iv_catalog_view_detail.categories AS categories FROM bv_catalog_views AS bv_catalog_views INNER JOIN iv_catalog_view_detail AS iv_catalog_view_detail ON (bv_catalog_views.db = iv_catalog_view_detail."DBNAME" AND bv_catalog_views.name = iv_catalog_view_detail."VIEWNAME")  WHERE iv_catalog_view_detail.view_id is not null ;
+
+ALTER VIEW iv_catalog_view_all
+ LAYOUT (bv_catalog_views = [20, 20, 200, 185], iv_catalog_view_detail = [300, 20, 200, 125]);
+
+ALTER VIEW iv_catalog_view_all
+ CACHE FULL
+    BATCHSIZEINCACHE DEFAULT TIMETOLIVEINCACHE NOEXPIRE;
+

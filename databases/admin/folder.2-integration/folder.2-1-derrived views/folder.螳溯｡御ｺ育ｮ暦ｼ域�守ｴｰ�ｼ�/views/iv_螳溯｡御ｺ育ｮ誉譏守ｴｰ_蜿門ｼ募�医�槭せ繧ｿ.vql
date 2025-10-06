@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW "iv_螳溯｡御ｺ育ｮ誉譏守ｴｰ_蜿門ｼ募�医�槭せ繧ｿ" FOLDER = '/2-integration/2-1-derrived views/螳溯｡御ｺ育ｮ暦ｼ域�守ｴｰ�ｼ�'
+    PRIMARY KEY ( 'kaishacd' , 'kojibg' , 'kojieda' , 'jysnhans' , 'kshucd' , 'jikkysnmeisrban' ) AS SELECT iv_v_jysnmeis.kaishacd AS kaishacd, iv_v_jysnmeis.kojibg AS kojibg, iv_v_jysnmeis.kojieda AS kojieda, iv_v_jysnmeis.jysnhans AS jysnhans, iv_v_jysnmeis.kshucd AS kshucd, iv_v_jysnmeis.jikkysnmeisrban AS jikkysnmeisrban, iv_v_trhksak.trhksakmei_ryak AS trhksakmei_ryak FROM iv_v_jysnmeis AS iv_v_jysnmeis LEFT OUTER JOIN iv_v_trhksak AS iv_v_trhksak ON (iv_v_jysnmeis.kaishacd = iv_v_trhksak.kaishacd AND iv_v_jysnmeis.hatchsaktrhksakgrpbg = iv_v_trhksak.trhksakgrpbg AND iv_v_jysnmeis.hatchsaktrhksakbg = iv_v_trhksak.trhksakbg) ;
+
+ALTER VIEW "iv_螳溯｡御ｺ育ｮ誉譏守ｴｰ_蜿門ｼ募�医�槭せ繧ｿ"
+ LAYOUT (iv_v_jysnmeis = [34, 49, 200, 200], iv_v_trhksak = [309, 53, 200, 200]);
+

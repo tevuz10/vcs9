@@ -1,0 +1,21 @@
+﻿CREATE OR REPLACE TABLE month I18N jp (
+        "YM":int (sourcetypeid = '4'),
+        "CD":int (sourcetypeid = '4'),
+        "YAKKA":int (sourcetypeid = '4'),
+        "YAKKA_ZEN":int (sourcetypeid = '4')
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD month(
+        I18N jp
+        CONSTRAINTS (
+             ADD "YM" (any) OPT ANY
+             ADD "CD" (any) OPT ANY
+             ADD "YAKKA" (any) OPT ANY
+             ADD "YAKKA_ZEN" (any) OPT ANY
+        )
+        OUTPUTLIST ("CD", "YAKKA", "YAKKA_ZEN", "YM"
+        )
+        WRAPPER (custom month)
+    );
+

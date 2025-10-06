@@ -1,0 +1,34 @@
+﻿CREATE OR REPLACE WRAPPER JSON bv_catalog_tags
+    FOLDER = '/api/catalog_tags/2.baseview'
+    DATASOURCENAME=ds_catalog_tags
+    TUPLEROOT '/JSONFile/JSONArray'
+    OUTPUTSCHEMA ("JSONFile" = 'JSONFile' : REGISTER OF (
+        id = 'JSONFile.JSONArray.id' : 'java.lang.Integer',
+        name = 'JSONFile.JSONArray.name' : 'java.lang.String',
+        description = 'JSONFile.JSONArray.description' : 'java.lang.String',
+        "descriptionType" = 'JSONFile.JSONArray.descriptionType' : 'java.lang.String'
+    )
+    );
+
+CREATE OR REPLACE TABLE bv_catalog_tags I18N jp (
+        id:int,
+        name:text,
+        description:text,
+        "descriptionType":text
+    )
+    FOLDER = '/api/catalog_tags/2.baseview'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_catalog_tags(
+        I18N jp
+        CONSTRAINTS (
+             ADD id NOS ZERO ()
+             ADD name NOS ZERO ()
+             ADD description NOS ZERO ()
+             ADD "descriptionType" NOS ZERO ()
+        )
+        OUTPUTLIST (description, "descriptionType", id, name
+        )
+        WRAPPER (json bv_catalog_tags)
+    );
+

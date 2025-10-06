@@ -1,0 +1,31 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE JDBC hive
+    DRIVERCLASSNAME = 'org.apache.hive.jdbc.HiveDriver'
+    DATABASEURI = '${databases.admin.datasources.jdbc.hive.DATABASEURI}'
+    USERNAME = '${databases.admin.datasources.jdbc.hive.USERNAME}'
+    USERPASSWORD = ''
+    CLASSPATH = 'hive-3.1.2'
+    DATABASENAME = 'hive'
+    DATABASEVERSION = '3_1_2'
+    FETCHSIZE = 1000
+    VALIDATIONQUERY = 'select 1'
+    INITIALSIZE = 4
+    MAXIDLE = -1
+    MINIDLE = 0
+    MAXACTIVE = 20
+    EXHAUSTEDACTION = 1
+    TESTONBORROW = true
+    TESTONRETURN = false
+    TESTWHILEIDLE = false
+    TIMEBETWEENEVICTION = -1
+    NUMTESTPEREVICTION = 3
+    MINEVICTABLETIME = 1800000
+    POOLPREPAREDSTATEMENTS = false
+    MAXOPENPREPAREDSTATEMENTS = -1
+    DATA_LOAD_CONFIGURATION (
+        BATCHINSERTSIZE = 200
+    )
+    SOURCECONFIGURATION (
+        delegatescalarfunctionslist = (abs, acos, addday, addhour, addminute, addmonth, addsecond, addweek, addyear, ascii, asin, atan, case, cast, ceil, char, coalesce, concat, convert_timezone(evaluate_literal), cos, cot, current_date, degrees, div, exp, firstdayofmonth, firstdayofweek, floor, formatdate, getday, getdayofweek, getdayofyear, getdaysbetween, gethour, getmillisecond, getminute, getmonth, getmonthsbetween, getquarter, getsecond, gettimeinmillis, getweek, getyear, initcap, instr, lastdayofmonth, lastdayofweek, left, len, ln, localtimestamp(evaluate_literal), log, lower, ltrim, max, min, mod, mult, nextweekday, now, nullif, pi, position, pow, power, previousweekday, radians, rand, regexp, removeaccents, repeat, replace, right, round, rtrim, sign, sin, split, sqrt, substr, substring, subtract, sum, tan, textcat, to_localdate, to_time, to_timestamp, trim, trunc, upper)
+    );
+

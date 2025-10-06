@@ -1,0 +1,36 @@
+﻿CREATE OR REPLACE WRAPPER DF deli4_new4
+    DATASOURCENAME=deli4
+    OUTPUTSCHEMA (
+        a1 = 'a1',
+        b1 = 'b1',
+        c1 = 'c1',
+        c4 = 'c4',
+        c3 = 'c3',
+        c2 = 'c2'
+    );
+
+CREATE OR REPLACE TABLE deli4_new4 I18N jp (
+        a1:text,
+        b1:text,
+        c1:text,
+        c4:text,
+        c3:text,
+        c2:text
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD deli4_new4(
+        I18N jp
+        CONSTRAINTS (
+             ADD a1 NOS ZERO ()
+             ADD b1 NOS ZERO ()
+             ADD c1 NOS ZERO ()
+             ADD c4 NOS ZERO ()
+             ADD c3 NOS ZERO ()
+             ADD c2 NOS ZERO ()
+        )
+        OUTPUTLIST (a1, b1, c1, c2, c3, c4
+        )
+        WRAPPER (df deli4_new4)
+    );
+

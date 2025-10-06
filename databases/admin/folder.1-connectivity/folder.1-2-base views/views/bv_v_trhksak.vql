@@ -1,0 +1,330 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC bv_v_trhksak
+    FOLDER = '/1-connectivity/1-2-base views'
+    DATASOURCENAME=ds_gloviasmart_dev
+    SCHEMANAME='${databases.admin.folder.1-connectivity.folder.1-2-base views.views.jdbc.bv_v_trhksak.SCHEMANAME}' ESCAPE
+    RELATIONNAME='v_trhksak' 
+    OUTPUTSCHEMA (
+        kaishacd = 'kaishacd' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='2', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        trhksakgrpbg = 'trhksakgrpbg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        trhksakbg = 'trhksakbg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='3', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        trhksakmei_seisk = 'trhksakmei_seisk' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='50', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        trhksakmei_ryak = 'trhksakmei_ryak' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='15', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        trhksakmei_kana = 'trhksakmei_kana' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='40', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        daihyshasmei = 'daihyshasmei' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='28', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        shihonkn = 'shihonkn' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='13', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        keishkb = 'keishkb' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='1', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        yubnbg = 'yubnbg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        tdfkcd = 'tdfkcd' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='2', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        jush1 = 'jush1' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='30', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        jush2 = 'jush2' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='30', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        jush3 = 'jush3' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='30', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        denwbg = 'denwbg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='17', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        faxbg = 'faxbg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='15', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        gyshkb = 'gyshkb' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='2', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        gyotaikb = 'gyotaikb' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='2', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        santeitsuchshbg = 'santeitsuchshbg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        tktshizk = 'tktshizk' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='29', sourcetypeid='93', sourcetypename='timestamp')  SORTABLE,
+        tokuisakflg = 'tokuisakflg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='1', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        skyussmbi = 'skyussmbi' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='2', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        nyknkijntukikb = 'nyknkijntukikb' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='1', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        nyknkijnbi = 'nyknkijnbi' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='2', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        nyknjoknskbtbg = 'nyknjoknskbtbg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='4', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        eigybichsekb = 'eigybichsekb' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='1', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        skyussofusakbumnmei_seisk = 'skyussofusakbumnmei_seisk' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='40', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        skyussofusakbumnmei_ryak = 'skyussofusakbumnmei_ryak' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='30', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        skyussofusaktantshayksk = 'skyussofusaktantshayksk' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='30', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        skyussofusaktantshasmei = 'skyussofusaktantshasmei' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='20', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        skyussofusakbumnyubnbg = 'skyussofusakbumnyubnbg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        skyussofusakbumntdfkcd = 'skyussofusakbumntdfkcd' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='2', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        skyussofusakbumnjush1 = 'skyussofusakbumnjush1' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='60', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        skyussofusakbumnjush2 = 'skyussofusakbumnjush2' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='60', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        skyussofusakbumnjush3 = 'skyussofusakbumnjush3' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='60', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        skyussofusakbumndenwbg = 'skyussofusakbumndenwbg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='17', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        skyussofusakbumnfaxbg = 'skyussofusakbumnfaxbg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='15', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        skyussofumailadr = 'skyussofumailadr' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        skyusakgrpbg = 'skyusakgrpbg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        skyusakbg = 'skyusakbg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='3', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        shriningrpbg = 'shriningrpbg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        shrininbg = 'shrininbg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='3', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        hatchsakshrisakflg = 'hatchsakshrisakflg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='1', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        tsryfutnkb = 'tsryfutnkb' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='1', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        chumnshsofusakkigymei1 = 'chumnshsofusakkigymei1' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        chumnshsofusakkigymei2 = 'chumnshsofusakkigymei2' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        chumnshsofusakbumnyubnbg = 'chumnshsofusakbumnyubnbg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        chumnshsofusakbumntdfkcd = 'chumnshsofusakbumntdfkcd' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='2', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        chumnshsofusakbumnjush1 = 'chumnshsofusakbumnjush1' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='60', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        chumnshsofusakbumnjush2 = 'chumnshsofusakbumnjush2' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='60', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        chumnshsofusakbumnjush3 = 'chumnshsofusakbumnjush3' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='60', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        chumnshsofusakbumndenwbg = 'chumnshsofusakbumndenwbg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='17', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        chumnshsofusakbumnfaxbg = 'chumnshsofusakbumnfaxbg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='15', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        chumnshsofumailadr = 'chumnshsofumailadr' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        shrisakginkstenmei_kaigiskny = 'shrisakginkstenmei_kaigiskny' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='180', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        shrisakginkjush_kaigiskny = 'shrisakginkjush_kaigiskny' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='180', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        swiftcd = 'swiftcd' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='11', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        ibancd = 'ibancd' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='34', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        biccd = 'biccd' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='11', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        gyshymdgchtantsh = 'gyshymdgchtantsh' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='2147483647', sourcetypeid='-9', sourcetypename='nvarchar')  SORTABLE,
+        gyshydenwbg = 'gyshydenwbg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='17', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        gyshyfaxbg = 'gyshyfaxbg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='17', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        gyshyktaibg = 'gyshyktaibg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='17', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        gyshyemailadr = 'gyshyemailadr' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        gyshyhykkb = 'gyshyhykkb' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='2', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        gyshytaioknkensu = 'gyshytaioknkensu' :'java.lang.Integer' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='3', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        gyshytaiojikn = 'gyshytaiojikn' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='30', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        gyshybiko = 'gyshybiko' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='200', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        yoshnknriariflg = 'yoshnknriariflg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='1', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        juchyoshngaku = 'juchyoshngaku' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='13', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        hatchyoshngaku = 'hatchyoshngaku' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='13', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        shiyfukflg = 'shiyfukflg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='1', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        yukohizk_from = 'yukohizk_from' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='29', sourcetypeid='93', sourcetypename='timestamp')  SORTABLE,
+        yukohizk_to = 'yukohizk_to' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='29', sourcetypeid='93', sourcetypename='timestamp')  SORTABLE,
+        jtaikb = 'jtaikb' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='2', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        jtaihyojkb = 'jtaihyojkb' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='2', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        shnniraibg = 'shnniraibg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='10', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        snseshashaincd = 'snseshashaincd' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='12', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        snsebi = 'snsebi' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='29', sourcetypeid='93', sourcetypename='timestamp')  SORTABLE,
+        shnnshashaincd = 'shnnshashaincd' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='12', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        shnnbi = 'shnnbi' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='29', sourcetypeid='93', sourcetypename='timestamp')  SORTABLE,
+        wfcomnt = 'wfcomnt' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='100', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        shritsuchsshutrktaishkb = 'shritsuchsshutrktaishkb' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='2', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        hatchedirnkeiflg = 'hatchedirnkeiflg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='1', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        cinetkigycd = 'cinetkigycd' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='12', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        skyugndgaku = 'skyugndgaku' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='13', sourcetypeid='2', sourcetypename='numeric')  SORTABLE,
+        kinsy = 'kinsy' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='2', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        shribiko = 'shribiko' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='200', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        hojbg = 'hojbg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='13', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        tkkskyshkjgyshkb = 'tkkskyshkjgyshkb' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='1', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        torkbg = 'torkbg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='14', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        sfdctrhksakrnkeiflg = 'sfdctrhksakrnkeiflg' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='2', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        skseibi = 'skseibi' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='29', sourcetypeid='93', sourcetypename='timestamp')  SORTABLE,
+        skseishabumncd = 'skseishabumncd' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='12', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        skseishashaincd = 'skseishashaincd' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='12', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        skseipgid = 'skseipgid' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='9', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        kshinbi = 'kshinbi' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='6', sourcetyperadix='10', sourcetypesize='29', sourcetypeid='93', sourcetypename='timestamp')  SORTABLE,
+        kshinshabumncd = 'kshinshabumncd' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='12', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        kshinshashaincd = 'kshinshashaincd' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='12', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        kshinpgid = 'kshinpgid' :'java.lang.String' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='9', sourcetypeid='12', sourcetypename='varchar')  SORTABLE,
+        rvs = 'rvs' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='16', sourcetypeid='2', sourcetypename='numeric')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE bv_v_trhksak I18N jp (
+        kaishacd:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '2'),
+        trhksakgrpbg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        trhksakbg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '3'),
+        trhksakmei_seisk:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '50'),
+        trhksakmei_ryak:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '15'),
+        trhksakmei_kana:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '40'),
+        daihyshasmei:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '28'),
+        shihonkn:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '13'),
+        keishkb:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '1'),
+        yubnbg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        tdfkcd:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '2'),
+        jush1:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '30'),
+        jush2:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '30'),
+        jush3:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '30'),
+        denwbg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '17'),
+        faxbg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '15'),
+        gyshkb:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '2'),
+        gyotaikb:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '2'),
+        santeitsuchshbg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        tktshizk:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '29'),
+        tokuisakflg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '1'),
+        skyussmbi:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '2'),
+        nyknkijntukikb:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '1'),
+        nyknkijnbi:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '2'),
+        nyknjoknskbtbg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '4'),
+        eigybichsekb:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '1'),
+        skyussofusakbumnmei_seisk:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '40'),
+        skyussofusakbumnmei_ryak:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '30'),
+        skyussofusaktantshayksk:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '30'),
+        skyussofusaktantshasmei:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '20'),
+        skyussofusakbumnyubnbg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        skyussofusakbumntdfkcd:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '2'),
+        skyussofusakbumnjush1:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '60'),
+        skyussofusakbumnjush2:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '60'),
+        skyussofusakbumnjush3:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '60'),
+        skyussofusakbumndenwbg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '17'),
+        skyussofusakbumnfaxbg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '15'),
+        skyussofumailadr:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '100'),
+        skyusakgrpbg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        skyusakbg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '3'),
+        shriningrpbg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        shrininbg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '3'),
+        hatchsakshrisakflg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '1'),
+        tsryfutnkb:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '1'),
+        chumnshsofusakkigymei1:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '100'),
+        chumnshsofusakkigymei2:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '100'),
+        chumnshsofusakbumnyubnbg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        chumnshsofusakbumntdfkcd:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '2'),
+        chumnshsofusakbumnjush1:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '60'),
+        chumnshsofusakbumnjush2:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '60'),
+        chumnshsofusakbumnjush3:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '60'),
+        chumnshsofusakbumndenwbg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '17'),
+        chumnshsofusakbumnfaxbg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '15'),
+        chumnshsofumailadr:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '100'),
+        shrisakginkstenmei_kaigiskny:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '180'),
+        shrisakginkjush_kaigiskny:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '180'),
+        swiftcd:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '11'),
+        ibancd:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '34'),
+        biccd:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '11'),
+        gyshymdgchtantsh:text (sourcetypeid = '-9', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '2147483647'),
+        gyshydenwbg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '17'),
+        gyshyfaxbg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '17'),
+        gyshyktaibg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '17'),
+        gyshyemailadr:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '100'),
+        gyshyhykkb:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '2'),
+        gyshytaioknkensu:int (sourcetypeid = '4', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '3'),
+        gyshytaiojikn:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '30'),
+        gyshybiko:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '200'),
+        yoshnknriariflg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '1'),
+        juchyoshngaku:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '13'),
+        hatchyoshngaku:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '13'),
+        shiyfukflg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '1'),
+        yukohizk_from:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '29'),
+        yukohizk_to:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '29'),
+        jtaikb:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '2'),
+        jtaihyojkb:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '2'),
+        shnniraibg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '10'),
+        snseshashaincd:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '12'),
+        snsebi:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '29'),
+        shnnshashaincd:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '12'),
+        shnnbi:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '29'),
+        wfcomnt:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '100'),
+        shritsuchsshutrktaishkb:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '2'),
+        hatchedirnkeiflg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '1'),
+        cinetkigycd:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '12'),
+        skyugndgaku:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '13'),
+        kinsy:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '2'),
+        shribiko:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '200'),
+        hojbg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '13'),
+        tkkskyshkjgyshkb:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '1'),
+        torkbg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '14'),
+        sfdctrhksakrnkeiflg:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '2'),
+        skseibi:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '29'),
+        skseishabumncd:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '12'),
+        skseishashaincd:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '12'),
+        skseipgid:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '9'),
+        kshinbi:timestamp (sourcetypeid = '93', sourcetyperadix = '10', sourcetypedecimals = '6', sourcetypesize = '29'),
+        kshinshabumncd:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '12'),
+        kshinshashaincd:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '12'),
+        kshinpgid:text (sourcetypeid = '12', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '9'),
+        rvs:long (sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '16')
+    )
+    FOLDER = '/1-connectivity/1-2-base views'
+    DESCRIPTION = '蜿門ｼ募�医�槭せ繧ｿ'
+    PRIMARY KEY ( 'kaishacd' , 'trhksakgrpbg' , 'trhksakbg' )
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE NOEXPIRE
+    ADD SEARCHMETHOD bv_v_trhksak(
+        I18N jp
+        CONSTRAINTS (
+             ADD kaishacd (any) OPT ANY
+             ADD trhksakgrpbg (any) OPT ANY
+             ADD trhksakbg (any) OPT ANY
+             ADD trhksakmei_seisk (any) OPT ANY
+             ADD trhksakmei_ryak (any) OPT ANY
+             ADD trhksakmei_kana (any) OPT ANY
+             ADD daihyshasmei (any) OPT ANY
+             ADD shihonkn (any) OPT ANY
+             ADD keishkb (any) OPT ANY
+             ADD yubnbg (any) OPT ANY
+             ADD tdfkcd (any) OPT ANY
+             ADD jush1 (any) OPT ANY
+             ADD jush2 (any) OPT ANY
+             ADD jush3 (any) OPT ANY
+             ADD denwbg (any) OPT ANY
+             ADD faxbg (any) OPT ANY
+             ADD gyshkb (any) OPT ANY
+             ADD gyotaikb (any) OPT ANY
+             ADD santeitsuchshbg (any) OPT ANY
+             ADD tktshizk (any) OPT ANY
+             ADD tokuisakflg (any) OPT ANY
+             ADD skyussmbi (any) OPT ANY
+             ADD nyknkijntukikb (any) OPT ANY
+             ADD nyknkijnbi (any) OPT ANY
+             ADD nyknjoknskbtbg (any) OPT ANY
+             ADD eigybichsekb (any) OPT ANY
+             ADD skyussofusakbumnmei_seisk (any) OPT ANY
+             ADD skyussofusakbumnmei_ryak (any) OPT ANY
+             ADD skyussofusaktantshayksk (any) OPT ANY
+             ADD skyussofusaktantshasmei (any) OPT ANY
+             ADD skyussofusakbumnyubnbg (any) OPT ANY
+             ADD skyussofusakbumntdfkcd (any) OPT ANY
+             ADD skyussofusakbumnjush1 (any) OPT ANY
+             ADD skyussofusakbumnjush2 (any) OPT ANY
+             ADD skyussofusakbumnjush3 (any) OPT ANY
+             ADD skyussofusakbumndenwbg (any) OPT ANY
+             ADD skyussofusakbumnfaxbg (any) OPT ANY
+             ADD skyussofumailadr (any) OPT ANY
+             ADD skyusakgrpbg (any) OPT ANY
+             ADD skyusakbg (any) OPT ANY
+             ADD shriningrpbg (any) OPT ANY
+             ADD shrininbg (any) OPT ANY
+             ADD hatchsakshrisakflg (any) OPT ANY
+             ADD tsryfutnkb (any) OPT ANY
+             ADD chumnshsofusakkigymei1 (any) OPT ANY
+             ADD chumnshsofusakkigymei2 (any) OPT ANY
+             ADD chumnshsofusakbumnyubnbg (any) OPT ANY
+             ADD chumnshsofusakbumntdfkcd (any) OPT ANY
+             ADD chumnshsofusakbumnjush1 (any) OPT ANY
+             ADD chumnshsofusakbumnjush2 (any) OPT ANY
+             ADD chumnshsofusakbumnjush3 (any) OPT ANY
+             ADD chumnshsofusakbumndenwbg (any) OPT ANY
+             ADD chumnshsofusakbumnfaxbg (any) OPT ANY
+             ADD chumnshsofumailadr (any) OPT ANY
+             ADD shrisakginkstenmei_kaigiskny (any) OPT ANY
+             ADD shrisakginkjush_kaigiskny (any) OPT ANY
+             ADD swiftcd (any) OPT ANY
+             ADD ibancd (any) OPT ANY
+             ADD biccd (any) OPT ANY
+             ADD gyshymdgchtantsh (any) OPT ANY
+             ADD gyshydenwbg (any) OPT ANY
+             ADD gyshyfaxbg (any) OPT ANY
+             ADD gyshyktaibg (any) OPT ANY
+             ADD gyshyemailadr (any) OPT ANY
+             ADD gyshyhykkb (any) OPT ANY
+             ADD gyshytaioknkensu (any) OPT ANY
+             ADD gyshytaiojikn (any) OPT ANY
+             ADD gyshybiko (any) OPT ANY
+             ADD yoshnknriariflg (any) OPT ANY
+             ADD juchyoshngaku (any) OPT ANY
+             ADD hatchyoshngaku (any) OPT ANY
+             ADD shiyfukflg (any) OPT ANY
+             ADD yukohizk_from (any) OPT ANY
+             ADD yukohizk_to (any) OPT ANY
+             ADD jtaikb (any) OPT ANY
+             ADD jtaihyojkb (any) OPT ANY
+             ADD shnniraibg (any) OPT ANY
+             ADD snseshashaincd (any) OPT ANY
+             ADD snsebi (any) OPT ANY
+             ADD shnnshashaincd (any) OPT ANY
+             ADD shnnbi (any) OPT ANY
+             ADD wfcomnt (any) OPT ANY
+             ADD shritsuchsshutrktaishkb (any) OPT ANY
+             ADD hatchedirnkeiflg (any) OPT ANY
+             ADD cinetkigycd (any) OPT ANY
+             ADD skyugndgaku (any) OPT ANY
+             ADD kinsy (any) OPT ANY
+             ADD shribiko (any) OPT ANY
+             ADD hojbg (any) OPT ANY
+             ADD tkkskyshkjgyshkb (any) OPT ANY
+             ADD torkbg (any) OPT ANY
+             ADD sfdctrhksakrnkeiflg (any) OPT ANY
+             ADD skseibi (any) OPT ANY
+             ADD skseishabumncd (any) OPT ANY
+             ADD skseishashaincd (any) OPT ANY
+             ADD skseipgid (any) OPT ANY
+             ADD kshinbi (any) OPT ANY
+             ADD kshinshabumncd (any) OPT ANY
+             ADD kshinshashaincd (any) OPT ANY
+             ADD kshinpgid (any) OPT ANY
+             ADD rvs (any) OPT ANY
+        )
+        OUTPUTLIST (biccd, chumnshsofumailadr, chumnshsofusakbumndenwbg, chumnshsofusakbumnfaxbg, chumnshsofusakbumnjush1, chumnshsofusakbumnjush2, chumnshsofusakbumnjush3, chumnshsofusakbumntdfkcd, chumnshsofusakbumnyubnbg, chumnshsofusakkigymei1, chumnshsofusakkigymei2, cinetkigycd, daihyshasmei, denwbg, eigybichsekb, faxbg, gyotaikb, gyshkb, gyshybiko, gyshydenwbg, gyshyemailadr, gyshyfaxbg, gyshyhykkb, gyshyktaibg, gyshymdgchtantsh, gyshytaiojikn, gyshytaioknkensu, hatchedirnkeiflg, hatchsakshrisakflg, hatchyoshngaku, hojbg, ibancd, jtaihyojkb, jtaikb, juchyoshngaku, jush1, jush2, jush3, kaishacd, keishkb, kinsy, kshinbi, kshinpgid, kshinshabumncd, kshinshashaincd, nyknjoknskbtbg, nyknkijnbi, nyknkijntukikb, rvs, santeitsuchshbg, sfdctrhksakrnkeiflg, shihonkn, shiyfukflg, shnnbi, shnniraibg, shnnshashaincd, shribiko, shrininbg, shriningrpbg, shrisakginkjush_kaigiskny, shrisakginkstenmei_kaigiskny, shritsuchsshutrktaishkb, skseibi, skseipgid, skseishabumncd, skseishashaincd, skyugndgaku, skyusakbg, skyusakgrpbg, skyussmbi, skyussofumailadr, skyussofusakbumndenwbg, skyussofusakbumnfaxbg, skyussofusakbumnjush1, skyussofusakbumnjush2, skyussofusakbumnjush3, skyussofusakbumnmei_ryak, skyussofusakbumnmei_seisk, skyussofusakbumntdfkcd, skyussofusakbumnyubnbg, skyussofusaktantshasmei, skyussofusaktantshayksk, snsebi, snseshashaincd, swiftcd, tdfkcd, tkkskyshkjgyshkb, tktshizk, tokuisakflg, torkbg, trhksakbg, trhksakgrpbg, trhksakmei_kana, trhksakmei_ryak, trhksakmei_seisk, tsryfutnkb, wfcomnt, yoshnknriariflg, yubnbg, yukohizk_from, yukohizk_to
+        )
+        WRAPPER (jdbc bv_v_trhksak)
+    )
+    DECLARE CACHE INDEX idx_v_trhksak UNIQUE  ON (kaishacd, trhksakgrpbg, trhksakbg);
+

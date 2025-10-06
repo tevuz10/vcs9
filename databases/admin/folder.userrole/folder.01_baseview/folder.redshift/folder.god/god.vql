@@ -1,0 +1,2 @@
+﻿CREATE OR REPLACE FOLDER '/userrole/01_baseview/redshift/god' ;
+

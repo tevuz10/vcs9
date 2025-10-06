@@ -1,0 +1,245 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JSON bv_scheduler_jobs
+    FOLDER = '/api/joblist'
+    DATASOURCENAME=ds_scheduler_jobs
+    TUPLEROOT '/JSONFile/JSONArray'
+    ROUTE HTTP 'http.ApacheHttpClientConnection,120000' GET '${databases.admin.folder.api.folder.joblist.views.json.bv_scheduler_jobs.ROUTE.HTTP.URL}'
+    OUTPUTSCHEMA ("JSONFile" = 'JSONFile' : REGISTER OF (
+        type = 'JSONFile.JSONArray.type' : 'java.lang.String',
+        id = 'JSONFile.JSONArray.id' : 'java.lang.Integer',
+        "projectId" = 'JSONFile.JSONArray.projectId' : 'java.lang.Integer',
+        "projectName" = 'JSONFile.JSONArray.projectName' : 'java.lang.String',
+        name = 'JSONFile.JSONArray.name' : 'java.lang.String',
+        draft = 'JSONFile.JSONArray.draft' : 'java.lang.String',
+        disabled = 'JSONFile.JSONArray.disabled' : 'java.lang.String',
+        description = 'JSONFile.JSONArray.description' : 'java.lang.String',
+        "extractionSection" = 'JSONFile.JSONArray.extractionSection' : REGISTER OF (
+            type = 'type' : 'java.lang.String',
+            "dataSourceID" = 'dataSourceID' : 'java.lang.Integer',
+            loadprocesses = 'loadprocesses' : ARRAY OF (
+                loadprocesses = 'loadprocesses' : REGISTER OF (
+                    "parameterizedQuery" = 'parameterizedQuery' : 'java.lang.String',
+                    "sourcesNotChange" = 'sourcesNotChange' : 'java.lang.String',
+                    "viewName" = 'viewName' : 'java.lang.String',
+                    "database" = 'database' : 'java.lang.String',
+                    "view" = 'view' : 'java.lang.String',
+                    "loadProcessName" = 'loadProcessName' : 'java.lang.String',
+                    "cacheInvalidationMode" = 'cacheInvalidationMode' : 'java.lang.String',
+                    "cacheAtomicOperation" = 'cacheAtomicOperation' : 'java.lang.String',
+                    "cacheLoadOnError" = 'cacheLoadOnError' : 'java.lang.String'
+                )
+            ),
+            "extractionData" = 'extractionData' : REGISTER OF (
+                "parameterizedQuery" = 'parameterizedQuery' : 'java.lang.String',
+                fields = 'fields' : ARRAY OF (
+                    fields = 'fields' : REGISTER OF (
+                        source = 'source' : REGISTER OF (
+                            type = 'type' : 'java.lang.String',
+                            "dataSourceID" = 'dataSourceID' : 'java.lang.Integer',
+                            "nonParameterizedQuery" = 'nonParameterizedQuery' : 'java.lang.String'
+                        )
+                    )
+                ),
+                "sourcesNotChange" = 'sourcesNotChange' : 'java.lang.String'
+            )
+        ),
+        "handlerSection" = 'JSONFile.JSONArray.handlerSection' : REGISTER OF (
+            handlers = 'handlers' : ARRAY OF (
+                handlers = 'handlers' : REGISTER OF (
+                    "handleOnlyOnLastRetry" = 'handleOnlyOnLastRetry' : 'java.lang.String',
+                    type = 'type' : 'java.lang.String',
+                    "originalIndex" = 'originalIndex' : 'java.lang.Integer',
+                    "mailAddresses" = 'mailAddresses' : ARRAY OF (
+                        "mailAddresses" = 'mailAddresses' : REGISTER OF (
+                            field_0 = 'field_0' : 'java.lang.String'
+                        )
+                    ),
+                    send = 'send' : ARRAY OF (
+                        send = 'send' : REGISTER OF (
+                            field_0 = 'field_0' : 'java.lang.String'
+                        )
+                    )
+                )
+            )
+        ),
+        "retrySection" = 'JSONFile.JSONArray.retrySection' : REGISTER OF (
+            retry = 'retry' : REGISTER OF (
+                "retryType" = 'retryType' : 'java.lang.String',
+                repeat = 'repeat' : 'java.lang.String',
+                count = 'count' : 'java.lang.Integer',
+                restart = 'restart' : 'java.lang.String',
+                timeout = 'timeout' : 'java.lang.Integer'
+            )
+        ),
+        "triggerSection" = 'JSONFile.JSONArray.triggerSection' : REGISTER OF (
+            triggers = 'triggers' : ARRAY OF (
+                triggers = 'triggers' : REGISTER OF (
+                    type = 'type' : 'java.lang.String',
+                    "cronExpression" = 'cronExpression' : 'java.lang.String',
+                    "dependencyInfo" = 'dependencyInfo' : REGISTER OF (
+                        "jobIDs" = 'jobIDs' : ARRAY OF (
+                            "jobIDs" = 'jobIDs' : REGISTER OF (
+                                field_0 = 'field_0' : 'java.lang.Integer'
+                            )
+                        ),
+                        "executeAnyway" = 'executeAnyway' : 'java.lang.String'
+                    )
+                )
+            )
+        ),
+        "reportSection" = 'JSONFile.JSONArray.reportSection' : REGISTER OF (
+            "reportConfig" = 'reportConfig' : REGISTER OF (
+                "maxIndividualReports" = 'maxIndividualReports' : 'java.lang.Integer',
+                "reportOnlyErrors" = 'reportOnlyErrors' : 'java.lang.String'
+            )
+        ),
+        "exportationSection" = 'JSONFile.JSONArray.exportationSection' : REGISTER OF (
+            "exportAsTransaction" = 'exportAsTransaction' : 'java.lang.String'
+        )
+    )
+    );
+
+CREATE OR REPLACE TYPE "ds_scheduler_jobs_extractionSection_loadprocesses_loadprocesses" AS REGISTER OF ("parameterizedQuery":text, "sourcesNotChange":text, "viewName":text, "database":text, "view":text, "loadProcessName":text, "cacheInvalidationMode":text, "cacheAtomicOperation":text, "cacheLoadOnError":text);
+
+CREATE OR REPLACE TYPE "ds_scheduler_jobs_extractionSection_loadprocesses" AS ARRAY OF "ds_scheduler_jobs_extractionSection_loadprocesses_loadprocesses";
+
+CREATE OR REPLACE TYPE "ds_scheduler_jobs_extractionSection_extractionData_fields_fields_source" AS REGISTER OF (type:text, "dataSourceID":int, "nonParameterizedQuery":text);
+
+CREATE OR REPLACE TYPE "ds_scheduler_jobs_extractionSection_extractionData_fields_fields" AS REGISTER OF (source:"ds_scheduler_jobs_extractionSection_extractionData_fields_fields_source");
+
+CREATE OR REPLACE TYPE "ds_scheduler_jobs_extractionSection_extractionData_fields" AS ARRAY OF "ds_scheduler_jobs_extractionSection_extractionData_fields_fields";
+
+CREATE OR REPLACE TYPE "ds_scheduler_jobs_extractionSection_extractionData" AS REGISTER OF ("parameterizedQuery":text, fields:"ds_scheduler_jobs_extractionSection_extractionData_fields", "sourcesNotChange":text);
+
+CREATE OR REPLACE TYPE "ds_scheduler_jobs_extractionSection" AS REGISTER OF (type:text, "dataSourceID":int, loadprocesses:"ds_scheduler_jobs_extractionSection_loadprocesses", "extractionData":"ds_scheduler_jobs_extractionSection_extractionData");
+
+CREATE OR REPLACE TYPE "ds_scheduler_jobs_handlerSection_handlers_handlers_mailAddresses_mailAddresses" AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE "ds_scheduler_jobs_handlerSection_handlers_handlers_mailAddresses" AS ARRAY OF "ds_scheduler_jobs_handlerSection_handlers_handlers_mailAddresses_mailAddresses";
+
+CREATE OR REPLACE TYPE "ds_scheduler_jobs_handlerSection_handlers_handlers_send_send" AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE "ds_scheduler_jobs_handlerSection_handlers_handlers_send" AS ARRAY OF "ds_scheduler_jobs_handlerSection_handlers_handlers_send_send";
+
+CREATE OR REPLACE TYPE "ds_scheduler_jobs_handlerSection_handlers_handlers" AS REGISTER OF ("handleOnlyOnLastRetry":text, type:text, "originalIndex":int, "mailAddresses":"ds_scheduler_jobs_handlerSection_handlers_handlers_mailAddresses", send:"ds_scheduler_jobs_handlerSection_handlers_handlers_send");
+
+CREATE OR REPLACE TYPE "ds_scheduler_jobs_handlerSection_handlers" AS ARRAY OF "ds_scheduler_jobs_handlerSection_handlers_handlers";
+
+CREATE OR REPLACE TYPE "ds_scheduler_jobs_handlerSection" AS REGISTER OF (handlers:"ds_scheduler_jobs_handlerSection_handlers");
+
+CREATE OR REPLACE TYPE "ds_scheduler_jobs_retrySection_retry" AS REGISTER OF ("retryType":text, repeat:text, count:int, restart:text, timeout:int);
+
+CREATE OR REPLACE TYPE "ds_scheduler_jobs_retrySection" AS REGISTER OF (retry:"ds_scheduler_jobs_retrySection_retry");
+
+CREATE OR REPLACE TYPE "ds_scheduler_jobs_triggerSection_triggers_triggers_dependencyInfo_jobIDs_jobIDs" AS REGISTER OF (field_0:int);
+
+CREATE OR REPLACE TYPE "ds_scheduler_jobs_triggerSection_triggers_triggers_dependencyInfo_jobIDs" AS ARRAY OF "ds_scheduler_jobs_triggerSection_triggers_triggers_dependencyInfo_jobIDs_jobIDs";
+
+CREATE OR REPLACE TYPE "ds_scheduler_jobs_triggerSection_triggers_triggers_dependencyInfo" AS REGISTER OF ("jobIDs":"ds_scheduler_jobs_triggerSection_triggers_triggers_dependencyInfo_jobIDs", "executeAnyway":text);
+
+CREATE OR REPLACE TYPE "ds_scheduler_jobs_triggerSection_triggers_triggers" AS REGISTER OF (type:text, "cronExpression":text, "dependencyInfo":"ds_scheduler_jobs_triggerSection_triggers_triggers_dependencyInfo");
+
+CREATE OR REPLACE TYPE "ds_scheduler_jobs_triggerSection_triggers" AS ARRAY OF "ds_scheduler_jobs_triggerSection_triggers_triggers";
+
+CREATE OR REPLACE TYPE "ds_scheduler_jobs_triggerSection" AS REGISTER OF (triggers:"ds_scheduler_jobs_triggerSection_triggers");
+
+CREATE OR REPLACE TYPE "ds_scheduler_jobs_reportSection_reportConfig" AS REGISTER OF ("maxIndividualReports":int, "reportOnlyErrors":text);
+
+CREATE OR REPLACE TYPE "ds_scheduler_jobs_reportSection" AS REGISTER OF ("reportConfig":"ds_scheduler_jobs_reportSection_reportConfig");
+
+CREATE OR REPLACE TYPE "ds_scheduler_jobs_exportationSection" AS REGISTER OF ("exportAsTransaction":text);
+
+CREATE OR REPLACE TABLE bv_scheduler_jobs I18N jp (
+        type:text,
+        id:int,
+        "projectId":int,
+        "projectName":text,
+        name:text,
+        draft:text,
+        disabled:text,
+        description:text,
+        "extractionSection":"ds_scheduler_jobs_extractionSection",
+        "handlerSection":"ds_scheduler_jobs_handlerSection",
+        "retrySection":"ds_scheduler_jobs_retrySection",
+        "triggerSection":"ds_scheduler_jobs_triggerSection",
+        "reportSection":"ds_scheduler_jobs_reportSection",
+        "exportationSection":"ds_scheduler_jobs_exportationSection"
+    )
+    FOLDER = '/api/joblist'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD bv_scheduler_jobs(
+        I18N jp
+        CONSTRAINTS (
+             ADD type NOS ZERO ()
+             ADD id NOS ZERO ()
+             ADD "projectId" NOS ZERO ()
+             ADD "projectName" NOS ZERO ()
+             ADD name NOS ZERO ()
+             ADD draft NOS ZERO ()
+             ADD disabled NOS ZERO ()
+             ADD description NOS ZERO ()
+             ADD "extractionSection" NOS ZERO ()
+             ADD "extractionSection".type NOS ZERO ()
+             ADD "extractionSection"."dataSourceID" NOS ZERO ()
+             ADD "extractionSection".loadprocesses NOS ZERO ()
+             ADD "extractionSection".loadprocesses NOS ZERO ()
+             ADD "extractionSection".loadprocesses."parameterizedQuery" NOS ZERO ()
+             ADD "extractionSection".loadprocesses."sourcesNotChange" NOS ZERO ()
+             ADD "extractionSection".loadprocesses."viewName" NOS ZERO ()
+             ADD "extractionSection".loadprocesses."database" NOS ZERO ()
+             ADD "extractionSection".loadprocesses."view" NOS ZERO ()
+             ADD "extractionSection".loadprocesses."loadProcessName" NOS ZERO ()
+             ADD "extractionSection".loadprocesses."cacheInvalidationMode" NOS ZERO ()
+             ADD "extractionSection".loadprocesses."cacheAtomicOperation" NOS ZERO ()
+             ADD "extractionSection".loadprocesses."cacheLoadOnError" NOS ZERO ()
+             ADD "extractionSection"."extractionData" NOS ZERO ()
+             ADD "extractionSection"."extractionData"."parameterizedQuery" NOS ZERO ()
+             ADD "extractionSection"."extractionData".fields NOS ZERO ()
+             ADD "extractionSection"."extractionData".fields NOS ZERO ()
+             ADD "extractionSection"."extractionData".fields.source NOS ZERO ()
+             ADD "extractionSection"."extractionData".fields.source.type NOS ZERO ()
+             ADD "extractionSection"."extractionData".fields.source."dataSourceID" NOS ZERO ()
+             ADD "extractionSection"."extractionData".fields.source."nonParameterizedQuery" NOS ZERO ()
+             ADD "extractionSection"."extractionData"."sourcesNotChange" NOS ZERO ()
+             ADD "handlerSection" NOS ZERO ()
+             ADD "handlerSection".handlers NOS ZERO ()
+             ADD "handlerSection".handlers NOS ZERO ()
+             ADD "handlerSection".handlers."handleOnlyOnLastRetry" NOS ZERO ()
+             ADD "handlerSection".handlers.type NOS ZERO ()
+             ADD "handlerSection".handlers."originalIndex" NOS ZERO ()
+             ADD "handlerSection".handlers."mailAddresses" NOS ZERO ()
+             ADD "handlerSection".handlers."mailAddresses" NOS ZERO ()
+             ADD "handlerSection".handlers."mailAddresses".field_0 NOS ZERO ()
+             ADD "handlerSection".handlers.send NOS ZERO ()
+             ADD "handlerSection".handlers.send NOS ZERO ()
+             ADD "handlerSection".handlers.send.field_0 NOS ZERO ()
+             ADD "retrySection" NOS ZERO ()
+             ADD "retrySection".retry NOS ZERO ()
+             ADD "retrySection".retry."retryType" NOS ZERO ()
+             ADD "retrySection".retry.repeat NOS ZERO ()
+             ADD "retrySection".retry.count NOS ZERO ()
+             ADD "retrySection".retry.restart NOS ZERO ()
+             ADD "retrySection".retry.timeout NOS ZERO ()
+             ADD "triggerSection" NOS ZERO ()
+             ADD "triggerSection".triggers NOS ZERO ()
+             ADD "triggerSection".triggers NOS ZERO ()
+             ADD "triggerSection".triggers.type NOS ZERO ()
+             ADD "triggerSection".triggers."cronExpression" NOS ZERO ()
+             ADD "triggerSection".triggers."dependencyInfo" NOS ZERO ()
+             ADD "triggerSection".triggers."dependencyInfo"."jobIDs" NOS ZERO ()
+             ADD "triggerSection".triggers."dependencyInfo"."jobIDs" NOS ZERO ()
+             ADD "triggerSection".triggers."dependencyInfo"."jobIDs".field_0 NOS ZERO ()
+             ADD "triggerSection".triggers."dependencyInfo"."executeAnyway" NOS ZERO ()
+             ADD "reportSection" NOS ZERO ()
+             ADD "reportSection"."reportConfig" NOS ZERO ()
+             ADD "reportSection"."reportConfig"."maxIndividualReports" NOS ZERO ()
+             ADD "reportSection"."reportConfig"."reportOnlyErrors" NOS ZERO ()
+             ADD "exportationSection" NOS ZERO ()
+             ADD "exportationSection"."exportAsTransaction" NOS ZERO ()
+        )
+        OUTPUTLIST (description, disabled, draft, "exportationSection", "extractionSection", "handlerSection", id, name, "projectId", "projectName", "reportSection", "retrySection", "triggerSection", type
+        )
+        WRAPPER (json bv_scheduler_jobs)
+    );
+

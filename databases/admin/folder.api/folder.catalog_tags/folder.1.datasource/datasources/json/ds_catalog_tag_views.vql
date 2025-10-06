@@ -1,0 +1,9 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE JSON ds_catalog_tag_views
+    FOLDER = '/api/catalog_tags/1.datasource'
+    ROUTE HTTP 'http.ApacheHttpClientConnection,120000' GET '${databases.admin.folder.api.folder.catalog_tags.folder.1..datasource.datasources.json.ds_catalog_tag_views.ROUTE.HTTP.URL}'
+ AUTHENTICATION BASIC ( 
+      USER '${databases.admin.folder.api.folder.catalog_tags.folder.1..datasource.datasources.json.ds_catalog_tag_views.ROUTE.HTTP.USER}'
+      PASSWORD '${databases.admin.folder.api.folder.catalog_tags.folder.1..datasource.datasources.json.ds_catalog_tag_views.ROUTE.HTTP.PASSWORD}' ${databases.admin.folder.api.folder.catalog_tags.folder.1..datasource.datasources.json.ds_catalog_tag_views.ROUTE.HTTP.PASSWORD.ENCRYPTED} )
+    PROXY OFF;
+

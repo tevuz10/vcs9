@@ -1,0 +1,13 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE DF monitor_log
+    ROUTE S3 'hdfs.S3Connection' '${databases.admin.datasources.df.monitor_log.ROUTE.S3.URI}' FILENAMEPATTERN = 'vdp-queries.log(.*)'
+    AUTHENTICATION (
+      AWS_ACCESS_KEY_ID = '${databases.admin.datasources.df.monitor_log.ROUTE.S3.AWS_ACCESS_KEY_ID}'
+      AWS_SECRET_ACCESS_KEY = '${databases.admin.datasources.df.monitor_log.ROUTE.S3.AWS_SECRET_ACCESS_KEY}' ${databases.admin.datasources.df.monitor_log.ROUTE.S3.AWS_SECRET_ACCESS_KEY.ENCRYPTED}
+    )
+    CHARSET = 'UTF-8'
+    COLUMNDELIMITER = '\t'
+    ENDOFLINEDELIMITER = '\n'
+    BEGINDELIMITER = 'ServerName'
+    HEADER = TRUE;
+

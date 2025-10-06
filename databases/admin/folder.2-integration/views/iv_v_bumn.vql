@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW iv_v_bumn FOLDER = '/2-integration' DESCRIPTION = '驛ｨ髢�繝槭せ繧ｿ' 
+    PRIMARY KEY ( 'kaishacd' , 'bumncd' ) AS SELECT bv_v_bumn.kaishacd AS kaishacd, bv_v_bumn.bumncd AS bumncd, bv_v_bumn.sdiskbtkb AS sdiskbtkb, bv_v_bumn.bumnmei_seisk AS bumnmei_seisk, bv_v_bumn.bumnmei_ryak AS bumnmei_ryak, bv_v_bumn.bumnmei_kana AS bumnmei_kana, bv_v_bumn.siwkbumnskbtkb AS siwkbumnskbtkb, bv_v_bumn.keijbumncd AS keijbumncd, bv_v_bumn.oyabumncd AS oyabumncd, bv_v_bumn.ssktaikcd AS ssktaikcd, bv_v_bumn.bumndenwbg AS bumndenwbg, bv_v_bumn.bumnfaxbg AS bumnfaxbg, bv_v_bumn.bumnkb AS bumnkb, bv_v_bumn.gamnskseiflg AS gamnskseiflg, bv_v_bumn.shiyfukflg AS shiyfukflg, bv_v_bumn.yukohizk_from AS yukohizk_from, bv_v_bumn.yukohizk_to AS yukohizk_to, bv_v_bumn.skseibi AS skseibi, bv_v_bumn.skseishabumncd AS skseishabumncd, bv_v_bumn.skseishashaincd AS skseishashaincd, bv_v_bumn.skseipgid AS skseipgid, bv_v_bumn.kshinbi AS kshinbi, bv_v_bumn.kshinshabumncd AS kshinshabumncd, bv_v_bumn.kshinshashaincd AS kshinshashaincd, bv_v_bumn.kshinpgid AS kshinpgid, bv_v_bumn.rvs AS rvs FROM bv_v_bumn;
+
+ALTER VIEW iv_v_bumn
+ LAYOUT (bv_v_bumn = [20, 20, 200, 200]);
+

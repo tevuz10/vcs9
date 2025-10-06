@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW iv_datacalog_categori_views FOLDER = '/api/catalog_categori/3.integrationview' AS SELECT bv_datacalog_categori.id AS categori_id, bv_datacalog_categori.name AS categori_name, bv_datacalog_categori.description AS categori_description, (bv_datacalog_categori_views_para."database")."serverId" AS "serverId", (bv_datacalog_categori_views_para."database")."databaseName" AS "databaseName", bv_datacalog_categori_views_para.name AS view_name FROM bv_datacalog_categori_views_para AS bv_datacalog_categori_views_para INNER JOIN bv_datacalog_categori AS bv_datacalog_categori ON bv_datacalog_categori_views_para."CATE_ID" = bv_datacalog_categori.id ;
+
+ALTER VIEW iv_datacalog_categori_views
+ LAYOUT (bv_datacalog_categori_views_para = [20, 20, 200, 225], bv_datacalog_categori = [348, 52, 200, 145]);
+

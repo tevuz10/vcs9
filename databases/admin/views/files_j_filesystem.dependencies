@@ -1,0 +1,7 @@
+﻿*/databases/admin/datasources/df/files.vql
+1/databases/admin/views/files.vql
+*/extensions/jars/denodo-filesystem-customwrapper.vql
+*/databases/admin/datasources/custom/filesystem.vql
+1/databases/admin/views/filesystem.vql
+*/databases/admin/views/files.vql
+*/databases/admin/views/filesystem.vql

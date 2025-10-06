@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW month_j_daily_ym AS SELECT month."YM" AS "YM", month."YAKKA_ZEN" AS "YAKKA_ZEN", daily."DT" AS "DT", daily."CD" AS "CD", daily."KEY_YM" AS "KEY_YM", daily."YAKKA" AS "YAKKA" FROM daily AS daily FULL OUTER JOIN month AS month ON (daily."DT" = month."YM" AND daily."CD" = month."CD") ;
+
+ALTER VIEW month_j_daily_ym
+ LAYOUT (month = [309, 58, 200, 200], daily = [39, 54, 200, 200]);
+

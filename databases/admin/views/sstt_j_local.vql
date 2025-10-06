@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW sstt_j_local AS SELECT sstt.stoke AS stoke FROM sstt AS sstt INNER JOIN denodo_training.local AS local ON sstt.stoke = local.time  CONTEXT ('I18N' = 'de_euro');
+
+ALTER VIEW sstt_j_local
+ LAYOUT (sstt = [20, 20, 200, 200], local = [300, 17, 200, 200]);
+

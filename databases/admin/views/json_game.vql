@@ -1,0 +1,39 @@
+﻿CREATE OR REPLACE WRAPPER JSON json_game
+    DATASOURCENAME=json
+    TUPLEROOT '/JSONFile'
+    OUTPUTSCHEMA ("JSONFile" = 'JSONFile' : REGISTER OF (
+        app_id = 'app_id' : 'java.lang.Integer',
+        description = 'description' : 'java.lang.String',
+        tags = 'tags' : ARRAY OF (
+            tags = 'tags' : REGISTER OF (
+                field_0 = 'field_0' : 'java.lang.String'
+            )
+        )
+    )
+    );
+
+CREATE OR REPLACE TYPE json_game_tags_tags AS REGISTER OF (field_0:text);
+
+CREATE OR REPLACE TYPE json_game_tags AS ARRAY OF json_game_tags_tags;
+
+CREATE OR REPLACE TABLE json_game I18N jp (
+        app_id:int,
+        description:text,
+        tags:json_game_tags
+    )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD json_game(
+        I18N jp
+        CONSTRAINTS (
+             ADD app_id NOS ZERO ()
+             ADD description NOS ZERO ()
+             ADD tags NOS ZERO ()
+             ADD tags NOS ZERO ()
+             ADD tags.field_0 NOS ZERO ()
+        )
+        OUTPUTLIST (app_id, description, tags
+        )
+        WRAPPER (json json_game)
+    );
+

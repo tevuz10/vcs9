@@ -1,0 +1,48 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC sp500_bq
+    DATASOURCENAME=bq3
+    CATALOGNAME='${databases.admin.views.jdbc.sp500_bq.CATALOGNAME}' 
+    SCHEMANAME='${databases.admin.views.jdbc.sp500_bq.SCHEMANAME}' 
+    RELATIONNAME='sp500' 
+    OUTPUTSCHEMA (
+        "Date" = 'Date' :'java.time.LocalDate' (OPT) (sourcetypesize='10', sourcetypeid='91', sourcetypename='DATE')  ESCAPE SORTABLE,
+        "Open" = 'Open' :'java.lang.Double' (OPT) (sourcetyperadix='2', sourcetypesize='15', sourcetypeid='8', sourcetypename='FLOAT64')  ESCAPE SORTABLE,
+        "High" = 'High' :'java.lang.Double' (OPT) (sourcetyperadix='2', sourcetypesize='15', sourcetypeid='8', sourcetypename='FLOAT64')  SORTABLE,
+        "Low" = 'Low' :'java.lang.Double' (OPT) (sourcetyperadix='2', sourcetypesize='15', sourcetypeid='8', sourcetypename='FLOAT64')  SORTABLE,
+        "Close" = 'Close' :'java.lang.Double' (OPT) (sourcetyperadix='2', sourcetypesize='15', sourcetypeid='8', sourcetypename='FLOAT64')  ESCAPE SORTABLE,
+        "Adj Close" = 'Adj Close' :'java.lang.Double' (OPT) (sourcetyperadix='2', sourcetypesize='15', sourcetypeid='8', sourcetypename='FLOAT64')  ESCAPE SORTABLE,
+        "Volume" = 'Volume' :'java.lang.Double' (OPT) (sourcetyperadix='2', sourcetypesize='15', sourcetypeid='8', sourcetypename='FLOAT64')  SORTABLE,
+        "Ticker" = 'Ticker' :'java.lang.String' (OPT) (sourcetypesize='65535', sourcetypeid='12', sourcetypename='STRING')  SORTABLE
+    );
+
+CREATE OR REPLACE TABLE sp500_bq I18N jp (
+        "Date":localdate (sourcetypeid = '91', sourcetypesize = '10'),
+        "Open":double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypesize = '15'),
+        "High":double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypesize = '15'),
+        "Low":double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypesize = '15'),
+        "Close":double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypesize = '15'),
+        "Adj Close":double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypesize = '15'),
+        "Volume":double (sourcetypeid = '8', sourcetyperadix = '2', sourcetypesize = '15'),
+        "Ticker":text (sourcetypeid = '12', sourcetypesize = '65535')
+    )
+    CACHE FULL
+    BATCHSIZEINCACHE DEFAULT
+    TIMETOLIVEINCACHE NOEXPIRE
+    ONSCHEMACHANGE RECREATE INCREMENTAL_LOAD
+    ADD SEARCHMETHOD sp500_bq(
+        I18N jp
+        CONSTRAINTS (
+             ADD "Date" (any) OPT ANY
+             ADD "Open" (any) OPT ANY
+             ADD "High" (any) OPT ANY
+             ADD "Low" (any) OPT ANY
+             ADD "Close" (any) OPT ANY
+             ADD "Adj Close" (any) OPT ANY
+             ADD "Volume" (any) OPT ANY
+             ADD "Ticker" (any) OPT ANY
+        )
+        OUTPUTLIST ("Adj Close", "Close", "Date", "High", "Low", "Open", "Ticker", "Volume"
+        )
+        WRAPPER (jdbc sp500_bq)
+    );
+

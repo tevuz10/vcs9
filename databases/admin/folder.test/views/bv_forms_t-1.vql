@@ -1,0 +1,32 @@
+﻿CREATE OR REPLACE TABLE "bv_forms_t-1" I18N jp (
+        "Id":int (sourcetypeid = '4'),
+        "開始時刻":timestamp (sourcetypeid = '93'),
+        "完了時刻":timestamp (sourcetypeid = '93'),
+        "メール":text (sourcetypeid = '12'),
+        "名前":text (sourcetypeid = '12'),
+        "あなたの所属は":text (sourcetypeid = '12'),
+        "このアンケートの満足度を教えてください。":int (sourcetypeid = '4'),
+        "ご意見・ご感想があればお聞かせください。":text (sourcetypeid = '12'),
+        "VARIABLENAME":text
+    )
+    FOLDER = '/test'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD "test_forms_t-1"(
+        I18N jp
+        CONSTRAINTS (
+             ADD "Id" (any) OPT ANY
+             ADD "開始時刻" (any) OPT ANY
+             ADD "完了時刻" (any) OPT ANY
+             ADD "メール" (any) OPT ANY
+             ADD "名前" (any) OPT ANY
+             ADD "あなたの所属は" (any) OPT ANY
+             ADD "このアンケートの満足度を教えてください。" (any) OPT ANY
+             ADD "ご意見・ご感想があればお聞かせください。" (any) OPT ANY
+             ADD "VARIABLENAME" (=) OBL ONE
+        )
+        OUTPUTLIST ("Id", "あなたの所属は", "このアンケートの満足度を教えてください。", "ご意見・ご感想があればお聞かせください。", "メール", "名前", "完了時刻", "開始時刻"
+        )
+        WRAPPER (custom "ds_forms_t-1")
+    );
+

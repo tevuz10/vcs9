@@ -1,0 +1,26 @@
+﻿CREATE OR REPLACE VQL PROCEDURE nct_case
+(dummy IN VARCHAR)
+AS (
+    x INT;
+    y VARCHAR;
+    CURSOR cur IS 'SELECT agent_id, agent_code from (select agentid + 1 as agent_id1, concat(agent_code, "a") as agent_codea from bv_cc_agent);';
+    rec cur%ROWTYPE;
+)
+BEGIN
+    OPEN cur;
+    LOOP 
+        FETCH cur INTO rec;
+        x:=rec.agent_id;
+        y:=rec.agent_code;
+        BEGIN_TRANSACTION;
+        UPDATE denodo_training.bv_ho_orders SET (id, customer_code, status) = (x, y, 'test') WHERE id = x;
+        COMMIT;
+        EXIT WHEN cur%NOTFOUND;
+    END LOOP;
+    CLOSE cur;
+EXCEPTION
+    WHEN others THEN
+        ROLLBACK;
+
+END;
+

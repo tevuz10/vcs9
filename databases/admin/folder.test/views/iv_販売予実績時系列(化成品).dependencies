@@ -1,0 +1,5 @@
+﻿1/databases/admin/folder.test/test.vql
+*/databases/admin/folder.test/test.vql
+*/databases/admin/folder.test/datasources/sapbwbapi/ds_sapbw_prod.vql
+1/databases/admin/folder.test/views/bv_販売予実績時系列(化成品).vql
+*/databases/admin/folder.test/views/bv_販売予実績時系列(化成品).vql

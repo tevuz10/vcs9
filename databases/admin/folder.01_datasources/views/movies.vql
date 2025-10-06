@@ -1,0 +1,59 @@
+﻿CREATE OR REPLACE WRAPPER DF movies
+    FOLDER = '/01_datasources'
+    DATASOURCENAME=movies
+    OUTPUTSCHEMA (
+        column0 = 'Column0',
+        column1 = 'Column1',
+        column2 = 'Column2',
+        column3 = 'Column3',
+        column4 = 'Column4',
+        column5 = 'Column5',
+        column6 = 'Column6',
+        column7 = 'Column7',
+        column8 = 'Column8',
+        column9 = 'Column9',
+        column10 = 'Column10',
+        column11 = 'Column11',
+        column12 = 'Column12'
+    );
+
+CREATE OR REPLACE TABLE movies I18N jp (
+        column0:text,
+        column1:text,
+        column2:text,
+        column3:text,
+        column4:text,
+        column5:text,
+        column6:text,
+        column7:text,
+        column8:text,
+        column9:text,
+        column10:text,
+        column11:text,
+        column12:text
+    )
+    FOLDER = '/01_datasources'
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD movies(
+        I18N jp
+        CONSTRAINTS (
+             ADD column0 NOS ZERO ()
+             ADD column1 NOS ZERO ()
+             ADD column2 NOS ZERO ()
+             ADD column3 NOS ZERO ()
+             ADD column4 NOS ZERO ()
+             ADD column5 NOS ZERO ()
+             ADD column6 NOS ZERO ()
+             ADD column7 NOS ZERO ()
+             ADD column8 NOS ZERO ()
+             ADD column9 NOS ZERO ()
+             ADD column10 NOS ZERO ()
+             ADD column11 NOS ZERO ()
+             ADD column12 NOS ZERO ()
+        )
+        OUTPUTLIST (column0, column1, column10, column11, column12, column2, column3, column4, column5, column6, column7, column8, column9
+        )
+        WRAPPER (df movies)
+    );
+

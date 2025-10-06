@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW iv_v_knshyotei FOLDER = '/2-integration' DESCRIPTION = '讀懷庶莠亥ｮ�' 
+    PRIMARY KEY ( 'kaishacd' , 'hatchbg' , 'hatchhans' , 'hatchmeisrban' , 'knshyoteirban' ) AS SELECT bv_v_knshyotei.kaishacd AS kaishacd, bv_v_knshyotei.hatchbg AS hatchbg, bv_v_knshyotei.hatchhans AS hatchhans, bv_v_knshyotei.hatchmeisrban AS hatchmeisrban, bv_v_knshyotei.knshyoteirban AS knshyoteirban, bv_v_knshyotei.noki AS noki, bv_v_knshyotei.knshyoteibi AS knshyoteibi, bv_v_knshyotei.knshsury AS knshsury, bv_v_knshyotei.knshtani AS knshtani, bv_v_knshyotei.knshtank AS knshtank, bv_v_knshyotei.knshgaku AS knshgaku, bv_v_knshyotei.knshyoteibiko AS knshyoteibiko, bv_v_knshyotei.sakjflg AS sakjflg, bv_v_knshyotei.skseibi AS skseibi, bv_v_knshyotei.skseishabumncd AS skseishabumncd, bv_v_knshyotei.skseishashaincd AS skseishashaincd, bv_v_knshyotei.skseipgid AS skseipgid, bv_v_knshyotei.kshinbi AS kshinbi, bv_v_knshyotei.kshinshabumncd AS kshinshabumncd, bv_v_knshyotei.kshinshashaincd AS kshinshashaincd, bv_v_knshyotei.kshinpgid AS kshinpgid, bv_v_knshyotei.rvs AS rvs FROM bv_v_knshyotei;
+
+ALTER VIEW iv_v_knshyotei
+ LAYOUT (bv_v_knshyotei = [20, 20, 200, 200]);
+

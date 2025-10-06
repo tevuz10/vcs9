@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW "iv_forms_t-1" FOLDER = '/test' AS SELECT "bv_forms_t-1"."Id" AS "Id", "bv_forms_t-1"."開始時刻" AS "開始時刻", "bv_forms_t-1"."完了時刻" AS "完了時刻", "bv_forms_t-1"."メール" AS "メール", "bv_forms_t-1"."名前" AS "名前", "bv_forms_t-1"."あなたの所属は" AS "あなたの所属は", "bv_forms_t-1"."このアンケートの満足度を教えてください。" AS "このアンケートの満足度を教えてください。", "bv_forms_t-1"."ご意見・ご感想があればお聞かせください。" AS "ご意見・ご感想があればお聞かせください。", "bv_forms_t-1"."VARIABLENAME" AS "VARIABLENAME" FROM bv_excel_wrapper AS bv_excel_wrapper INNER JOIN "bv_forms_t-1" AS "bv_forms_t-1" ON bv_excel_wrapper.filename = "bv_forms_t-1"."VARIABLENAME"  WHERE (bv_excel_wrapper.recursive = true AND bv_excel_wrapper.parentfolder = 'C:\Users\UI00847\清水建設株式会社\DX経営推進室：先端技術応用グループ - t\1');
+
+ALTER VIEW "iv_forms_t-1"
+ LAYOUT (bv_excel_wrapper = [137, 27, 200, 200], "bv_forms_t-1" = [446, 34, 200, 200]);
+

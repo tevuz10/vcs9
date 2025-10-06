@@ -1,0 +1,34 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE JDBC test255566
+    DRIVERCLASSNAME = 'org.postgresql.Driver'
+    DATABASEURI = '${databases.admin.datasources.jdbc.test255566.DATABASEURI}'
+    USERNAME = '${databases.admin.datasources.jdbc.test255566.USERNAME}'
+    USERPASSWORD = '${databases.admin.datasources.jdbc.test255566.USERPASSWORD}' ${databases.admin.datasources.jdbc.test255566.USERPASSWORD.ENCRYPTED}
+    CLASSPATH = 'postgresql-17'
+    DATABASENAME = 'postgresql'
+    DATABASEVERSION = '17'
+    FETCHSIZE = 1000
+    VALIDATIONQUERY = 'Select 1'
+    INITIALSIZE = 4
+    MAXIDLE = -1
+    MINIDLE = 0
+    MAXACTIVE = 20
+    EXHAUSTEDACTION = 1
+    TESTONBORROW = true
+    TESTONRETURN = false
+    TESTWHILEIDLE = false
+    TIMEBETWEENEVICTION = -1
+    NUMTESTPEREVICTION = 3
+    MINEVICTABLETIME = 1800000
+    POOLPREPAREDSTATEMENTS = false
+    MAXOPENPREPAREDSTATEMENTS = -1
+    PROPERTIES ('escapeSyntaxCallMode'='callIfNoReturn')
+    KERBEROSPROPERTIES ('jaasLogin'='false', 'user'='<user>')
+    DATA_LOAD_CONFIGURATION (
+        BATCHINSERTSIZE = 200
+    )
+    SOURCECONFIGURATION (
+        delegateaggregatefunctionslist = (avg, count, group_concat, max, min, stdev, stdevp, sum, var, varp),
+        delegatescalarfunctionslist = (abs, acos, addday, addhour, addmillis, addminute, addmonth, addsecond, addweek, addyear, ascii, asin, atan, atan2, base64_to_hex, case, cast, ceil, char, coalesce, concat, convert_timezone, convert_timezone(evaluate_literal), cos, cot, current_date, degrees, deletespaces, div, endwith, exp, expression_list, firstdayofmonth, floor, formatdate, getday, getdayofweek, getdayofyear, getdaysbetween, gethour, getmillisecond, getminute, getmonth, getquarter, getsecond, gettimefrommillis, getweek, getweeksbetween, getyear, hex_to_base64, initcap, instr, lastdayofmonth, left, leftpad, len, ln, localtimestamp(evaluate_literal), log, lower, ltrim, max, min, mod, mult, now, nullif, pi, position, pow, power, propercase, radians, rand, regexp, regexp_count, removeaccents, repeat, replace, right, rightpad, round, rtrim, sign, sin, sql_trim, sqrt, st_area, st_area_meters, st_boundary, st_buffer, st_buffer_meters, st_centroid, st_contains, st_convexhull, st_create_point, st_crosses, st_difference, st_dimension, st_disjoint, st_distance, st_distance_meters, st_endpoint, st_envelope, st_equals, st_exteriorring, st_geometryn, st_geometrytype, st_interiorringn, st_intersection, st_intersects, st_isclosed, st_isempty, st_isring, st_issimple, st_length, st_length_meters, st_numgeometries, st_numinteriorrings, st_numpoints, st_overlaps, st_pointn, st_relate, st_startpoint, st_symdifference, st_touches, st_transform, st_union, st_within, st_wkbtowkt, st_wkttowkb, st_x, st_y, startwith, substr, substring, subtract, sum, tan, textcat, to_date, to_interval_day_second(evaluate_literal), to_interval_year_month(evaluate_literal), to_localdate, to_time, to_timestamp, to_timestamptz, trim, trunc, upper)
+    );
+

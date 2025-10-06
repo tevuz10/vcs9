@@ -1,0 +1,7 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE DF testddd
+    ROUTE LOCAL 'LocalConnection' '${databases.admin.datasources.df.testddd.ROUTE.LOCAL.PATH}' FILENAMEPATTERN = ''
+    COLUMNDELIMITER = ','
+    ENDOFLINEDELIMITER = '\n'
+    HEADER = TRUE;
+

@@ -1,0 +1,8 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE DF deli4
+    ROUTE LOCAL 'LocalConnection' '${databases.admin.datasources.df.deli4.ROUTE.LOCAL.PATH}' FILENAMEPATTERN = '(.*)\.csv'
+    CHARSET = 'UTF-8'
+    COLUMNDELIMITER = ','
+    ENDOFLINEDELIMITER = '\n'
+    HEADER = FALSE;
+

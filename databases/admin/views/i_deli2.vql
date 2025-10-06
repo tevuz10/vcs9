@@ -1,0 +1,10 @@
+﻿CREATE OR REPLACE INTERFACE VIEW i_deli2 (
+        "Column0":text,
+        "Column1":text,
+        "Column2":text,
+        "Column3":text,
+        "Column4":text,
+        "Column5":text
+    )
+    SET IMPLEMENTATION deli2;
+

@@ -1,0 +1,37 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE WRAPPER JDBC monitor_configuration
+    DATASOURCENAME=sqlserver
+    CATALOGNAME='${databases.admin.views.jdbc.monitor_configuration.CATALOGNAME}' 
+    SCHEMANAME='${databases.admin.views.jdbc.monitor_configuration.SCHEMANAME}' 
+    RELATIONNAME='monitor_configuration' 
+    OUTPUTSCHEMA (
+        autoincrementid = 'autoincrementid' :'java.lang.Long' (OPT) (sourcetypedecimals='0', sourcetyperadix='10', sourcetypesize='19', sourcetypeid='-5', sourcetypename='bigint identity')  NOT NULL SORTABLE IS_AUTOINCREMENT,
+        lastupdatetime = 'lastupdatetime' :'java.time.LocalDateTime' (OPT) (sourcetypedecimals='3', sourcetypesize='23', sourcetypeid='93', sourcetypename='datetime2')  NOT NULL SORTABLE,
+        name = 'name' :'java.lang.String' (OPT) (sourcetypesize='100', sourcetypeid='-9', sourcetypename='nvarchar')  NOT NULL SORTABLE,
+        value = 'value' :'java.lang.String' (OPT) (sourcetypesize='100', sourcetypeid='-9', sourcetypename='nvarchar')  ESCAPE NOT NULL SORTABLE
+    )
+    CONSTRAINT 'pk_monitor_configuration' PRIMARY KEY ( 'autoincrementid' )
+    INDEX 'pk_monitor_configuration' CLUSTER UNIQUE PRIMARY ( 'autoincrementid' );
+
+CREATE OR REPLACE TABLE monitor_configuration I18N jp (
+        autoincrementid:long (notnull, autoincrement, sourcetypeid = '-5', sourcetyperadix = '10', sourcetypedecimals = '0', sourcetypesize = '19'),
+        lastupdatetime:timestamp (notnull, sourcetypeid = '93', sourcetypedecimals = '3', sourcetypesize = '23'),
+        name:text (notnull, sourcetypeid = '-9', sourcetypesize = '100'),
+        value:text (notnull, sourcetypeid = '-9', sourcetypesize = '100')
+    )
+    CONSTRAINT 'pk_monitor_configuration' PRIMARY KEY ( 'autoincrementid' )
+    CACHE OFF
+    TIMETOLIVEINCACHE DEFAULT
+    ADD SEARCHMETHOD monitor_configuration(
+        I18N jp
+        CONSTRAINTS (
+             ADD autoincrementid (any) OPT ANY
+             ADD lastupdatetime (any) OPT ANY
+             ADD name (any) OPT ANY
+             ADD value (any) OPT ANY
+        )
+        OUTPUTLIST (autoincrementid, lastupdatetime, name, value
+        )
+        WRAPPER (jdbc monitor_configuration)
+    );
+

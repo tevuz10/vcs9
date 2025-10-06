@@ -1,0 +1,10 @@
+﻿CREATE OR REPLACE VIEW iv_v_chsenoki_rownum FOLDER = '/2-integration/2-1-derrived views/2-1-1-rownum views'
+    PRIMARY KEY ( 'kaishacd' , 'hatchbg' , 'hatchhans' , 'hatchmeisrban' , 'knshyoteirban' , 'chsenokirban' ) AS SELECT iv_v_chsenoki.kaishacd AS kaishacd, iv_v_chsenoki.hatchbg AS hatchbg, iv_v_chsenoki.hatchhans AS hatchhans, iv_v_chsenoki.hatchmeisrban AS hatchmeisrban, iv_v_chsenoki.knshyoteirban AS knshyoteirban, iv_v_chsenoki.chsenokirban AS chsenokirban, iv_v_chsenoki.nohnsury AS nohnsury, iv_v_chsenoki.nohntani AS nohntani, iv_v_chsenoki.noki AS noki, iv_v_chsenoki.chsenokinaiy AS chsenokinaiy, iv_v_chsenoki.chsenokicomnt AS chsenokicomnt, iv_v_chsenoki.nokiedirnkeijtaikb AS nokiedirnkeijtaikb, iv_v_chsenoki.sakjflg AS sakjflg, iv_v_chsenoki.skseibi AS skseibi, iv_v_chsenoki.skseishabumncd AS skseishabumncd, iv_v_chsenoki.skseishashaincd AS skseishashaincd, iv_v_chsenoki.skseipgid AS skseipgid, iv_v_chsenoki.kshinbi AS kshinbi, iv_v_chsenoki.kshinshabumncd AS kshinshabumncd, iv_v_chsenoki.kshinshashaincd AS kshinshashaincd, iv_v_chsenoki.kshinpgid AS kshinpgid, iv_v_chsenoki.rvs AS rvs, row_number() OVER ( PARTITION BY iv_v_chsenoki.kaishacd, iv_v_chsenoki.hatchbg, iv_v_chsenoki.hatchhans, iv_v_chsenoki.hatchmeisrban, iv_v_chsenoki.knshyoteirban ORDER BY iv_v_chsenoki.chsenokirban DESC ) AS rownum FROM iv_v_chsenoki;
+
+ALTER VIEW iv_v_chsenoki_rownum
+ LAYOUT (iv_v_chsenoki = [267, 208, 200, 200]);
+
+ALTER VIEW iv_v_chsenoki_rownum
+ CACHE FULL
+    BATCHSIZEINCACHE DEFAULT TIMETOLIVEINCACHE NOEXPIRE;
+

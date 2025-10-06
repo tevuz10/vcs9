@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW p2_ds_pdf AS SELECT ds_pdf.parentfolder AS parentfolder, ds_pdf."relativePath" AS "relativePath", ds_pdf.filename AS filename, ds_pdf.extension AS extension, ds_pdf.fullpath AS fullpath, ds_pdf.filetype AS filetype, ds_pdf.hidden AS hidden, ds_pdf.datemodified AS datemodified, ds_pdf.canread AS canread, ds_pdf.canwrite AS canwrite, ds_pdf.canexecute AS canexecute, ds_pdf.size AS size, ds_pdf.recursive AS recursive, ds_pdf.binarycontents AS binarycontents, ds_pdf.textcontents AS textcontents, ds_pdf.readencoding AS readencoding, ds_pdf.append AS append, ds_pdf.overwrite AS overwrite FROM ds_pdf WHERE parentfolder = 'C:\Users\TatsuyaZenbutsu\Downloads\PDF';
+
+ALTER VIEW p2_ds_pdf
+ LAYOUT (ds_pdf = [20, 20, 200, 200]);
+

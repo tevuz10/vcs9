@@ -1,0 +1,11 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE DF dni
+    FOLDER = '/01_datasources'
+    ROUTE HTTP 'http.ApacheHttpClientConnection,120000' GET '${databases.admin.folder.01_datasources.datasources.df.dni.ROUTE.HTTP.URL}'
+    CHECKCERTIFICATES
+ AUTHENTICATION OFF
+    PROXY OFF
+    COLUMNDELIMITER = ','
+    ENDOFLINEDELIMITER = '\r\n'
+    HEADER = FALSE;
+

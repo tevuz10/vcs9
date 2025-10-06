@@ -1,0 +1,12 @@
+﻿# REQUIRES-PROPERTIES-FILE - # Do not remove this comment!
+CREATE OR REPLACE DATASOURCE DF sp500_s3
+    FOLDER = '/01_datasources'
+    ROUTE S3 'hdfs.S3Connection' '${databases.admin.folder.01_datasources.datasources.df.sp500_s3.ROUTE.S3.URI}' FILENAMEPATTERN = ''
+    AUTHENTICATION (
+      AWS_ACCESS_KEY_ID = '${databases.admin.folder.01_datasources.datasources.df.sp500_s3.ROUTE.S3.AWS_ACCESS_KEY_ID}'
+      AWS_SECRET_ACCESS_KEY = '${databases.admin.folder.01_datasources.datasources.df.sp500_s3.ROUTE.S3.AWS_SECRET_ACCESS_KEY}' ${databases.admin.folder.01_datasources.datasources.df.sp500_s3.ROUTE.S3.AWS_SECRET_ACCESS_KEY.ENCRYPTED}
+    )
+    COLUMNDELIMITER = ','
+    ENDOFLINEDELIMITER = '\n'
+    HEADER = TRUE;
+

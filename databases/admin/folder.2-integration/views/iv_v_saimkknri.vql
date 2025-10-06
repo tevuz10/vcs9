@@ -1,0 +1,6 @@
+﻿CREATE OR REPLACE VIEW iv_v_saimkknri FOLDER = '/2-integration' DESCRIPTION = '邏ｰ逶ｮ邂｡逅�繝槭せ繧ｿ' 
+    PRIMARY KEY ( 'kaishacd' , 'saimkkshucd' ) AS SELECT bv_v_saimkknri.kaishacd AS kaishacd, bv_v_saimkknri.saimkkshucd AS saimkkshucd, bv_v_saimkknri.hinmei AS hinmei, bv_v_saimkknri.shiy AS shiy, bv_v_saimkknri.hyjntani AS hyjntani, bv_v_saimkknri.hyjntank AS hyjntank, bv_v_saimkknri.hyjngnkahimkcd AS hyjngnkahimkcd, bv_v_saimkknri.jigyshur AS jigyshur, bv_v_saimkknri.makercd AS makercd, bv_v_saimkknri.shiyfukflg AS shiyfukflg, bv_v_saimkknri.yukohizk_from AS yukohizk_from, bv_v_saimkknri.yukohizk_to AS yukohizk_to, bv_v_saimkknri.skseibi AS skseibi, bv_v_saimkknri.skseishabumncd AS skseishabumncd, bv_v_saimkknri.skseishashaincd AS skseishashaincd, bv_v_saimkknri.skseipgid AS skseipgid, bv_v_saimkknri.kshinbi AS kshinbi, bv_v_saimkknri.kshinshabumncd AS kshinshabumncd, bv_v_saimkknri.kshinshashaincd AS kshinshashaincd, bv_v_saimkknri.kshinpgid AS kshinpgid, bv_v_saimkknri.rvs AS rvs FROM bv_v_saimkknri;
+
+ALTER VIEW iv_v_saimkknri
+ LAYOUT (bv_v_saimkknri = [20, 20, 200, 200]);
+

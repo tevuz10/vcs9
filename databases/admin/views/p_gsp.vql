@@ -1,0 +1,5 @@
+﻿CREATE OR REPLACE VIEW p_gsp AS SELECT gsp."ID" AS "ID", gsp.email AS email FROM gsp WHERE email = getvar('email', 'text');
+
+ALTER VIEW p_gsp
+ LAYOUT (gsp = [20, 20, 200, 200]);
+
